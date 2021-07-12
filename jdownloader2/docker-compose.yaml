@@ -1,0 +1,11 @@
+version: '3'
+services:
+  jdownloader-2:
+    container_name: jdownloader
+    restart: unless-stopped
+    image: jlesage/jdownloader-2
+    ports:
+      - "5200:5800"
+    volumes:
+      - "/docker/appdata/jdownloader-2:/config:rw"
+      - "/home/oem/storage/dkito-usb1/jdownloader:/output:rw"

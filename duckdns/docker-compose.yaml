@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  duckdns:
+    image: ghcr.io/linuxserver/duckdns
+    container_name: duckdns
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=America/Argentina/Buenos Aires
+      - SUBDOMAINS=kitsotik.duckdns.org
+      - TOKEN=eff5d87f-866c-44e1-98f5-3d44bc52f22a
+      - LOG_FILE=false #optional
+    volumes:
+      - /home/oem/storage/dkito-usb1/contenedores/duckdns:/config #optional
+    restart: unless-stopped

@@ -1,0 +1,28 @@
+version: '3'
+ 
+services:
+  samba:
+    build: .
+    image: servercontainers/samba
+    container_name: samba
+    restart: always
+    hostname: FileServer
+    networks:
+        mcvlan192:
+           ipv4_address: 192.168.0.21
+
+    #depends_on:
+    #  - rclone-mount-gdrive-gb
+    #  - rclone-mount-gdrive-gmq
+
+    environment:
+      SAMBA_VOLUME_CONFIG_public: "[Public]; path=/shares/public; guest ok = yes; read only = no; browseable = yes"
+    
+    volumes:
+      - /home/oem/storage:/shares/public
+
+
+networks:
+  mcvlan192:
+    external: true
+

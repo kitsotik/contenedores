@@ -1,0 +1,1695 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<odoo>
+  <!--    <data noupdate="0"></data> -->
+  <data noupdate="1">
+    <record id="report_excel_48" model="report.excel">
+      <field name="out_file_name">'Sale Order_'  + obj.name +  '_%d-%m-%Y'</field>
+      <field name="name">Sale Order with Product Images (XLSX)</field>
+      <field name="sheet_reference">Sale Order</field>
+      <field name="description">Sale Order (XLSX)</field>
+      <field name="description_report">Sale Order
+</field>
+      <field name="root_model_id" model="report.excel" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+    </record>
+    <record id="report_excel_template_attachment_537" model="ir.attachment">
+      <field name="name">sale_order_with_images_template.xlsx</field>
+      <field name="type">binary</field>
+      <field name="datas" type="base64" file="report_excel_sale_order_with_product_images/static/template/sale_order_with_images_template.xlsx"/>
+      <field name="res_id" ref="report_excel_48"/>
+      <field name="res_model">report.excel</field>
+    </record>
+    <record id="report_excel_template_attachment_536" model="ir.attachment">
+      <field name="name">sale_order_with_images_template_example.xlsx</field>
+      <field name="type">binary</field>
+      <field name="datas" type="base64" file="report_excel_sale_order_with_product_images/static/template/sale_order_with_images_template_example.xlsx"/>
+      <field name="res_id" ref="report_excel_48"/>
+      <field name="res_model">report.excel</field>
+    </record>
+    <record id="report_excel_section_64" model="report.excel.section">
+      <field name="report_excel_id" ref="report_excel_48"/>
+      <field name="root_model_id" model="report.excel.section" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="sequence">10</field>
+      <field name="name">Section 1 - Sale Order Header, Footer</field>
+      <field name="parent_id" eval="[]"/>
+      <field name="type_data">data_line</field>
+      <field name="level" eval="0"/>
+      <field name="root_model_related_field_id" eval="[]"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="check_root_model">True</field>
+      <field name="section" eval="False"/>
+      <field name="section_level">1</field>
+      <field name="section_start">A1</field>
+      <field name="section_end">S33</field>
+      <field name="domain">[]</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_656" model="report.excel.fields">
+      <field name="sequence">100</field>
+      <field name="cell">A1</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_657" model="report.excel.fields">
+      <field name="sequence">101</field>
+      <field name="cell">A2</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.report_header</field>
+      <field name="field_type">text</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_658" model="report.excel.fields">
+      <field name="sequence">102</field>
+      <field name="cell">A4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">result = cell(A4) + ' ' + cell(O4) +'\n' + cell(P4) + ' '  + cell(Q4) + ' '  + cell(R4) +'\n' + cell(S4)</field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.street</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_659" model="report.excel.fields">
+      <field name="sequence">103</field>
+      <field name="cell">K4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">datetime</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">date_order</field>
+      <field name="field_type">datetime</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_660" model="report.excel.fields">
+      <field name="sequence">104</field>
+      <field name="cell">Q4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.state_id.code</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_661" model="report.excel.fields">
+      <field name="sequence">105</field>
+      <field name="cell">O4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.street2</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_662" model="report.excel.fields">
+      <field name="sequence">106</field>
+      <field name="cell">P4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.city</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_663" model="report.excel.fields">
+      <field name="sequence">107</field>
+      <field name="cell">R4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.zip</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_664" model="report.excel.fields">
+      <field name="sequence">108</field>
+      <field name="cell">S4</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.country_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_665" model="report.excel.fields">
+      <field name="sequence">109</field>
+      <field name="cell">K5</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">name</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_666" model="report.excel.fields">
+      <field name="sequence">110</field>
+      <field name="cell">A11</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">pure_address = ''
+for line in cell(A11).split('\n'):
+  if line.strip():
+    pure_address = pure_address + line + '\n'
+result = pure_address</field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">partner_id.contact_address</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_667" model="report.excel.fields">
+      <field name="sequence">111</field>
+      <field name="cell">I11</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">pure_address = ''
+for line in cell(I11).split('\n'):
+  if line.strip():
+    pure_address = pure_address + line + '\n'
+result = pure_address</field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">partner_shipping_id.contact_address</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_668" model="report.excel.fields">
+      <field name="sequence">112</field>
+      <field name="cell">A15</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">user_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_669" model="report.excel.fields">
+      <field name="sequence">113</field>
+      <field name="cell">C15</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">carrier_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_670" model="report.excel.fields">
+      <field name="sequence">114</field>
+      <field name="cell">E15</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">incoterm</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_671" model="report.excel.fields">
+      <field name="sequence">115</field>
+      <field name="cell">G15</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">payment_term_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_672" model="report.excel.fields">
+      <field name="sequence">116</field>
+      <field name="cell">I15</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">datetime</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">expected_date</field>
+      <field name="field_type">datetime</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_673" model="report.excel.fields">
+      <field name="sequence">117</field>
+      <field name="cell">K15</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">commitment_date</field>
+      <field name="field_type">datetime</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_674" model="report.excel.fields">
+      <field name="sequence">118</field>
+      <field name="cell">A31</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">result = 'Should you have any enquiries concerning this order, please contact ' + cell(A31) + (' on ' + cell(O31) if cell(O31) else '')</field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">user_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_675" model="report.excel.fields">
+      <field name="sequence">119</field>
+      <field name="cell">O31</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">user_id.phone</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_676" model="report.excel.fields">
+      <field name="sequence">120</field>
+      <field name="cell">A32</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">result = cell(A32) + (' ' + cell(O4) if cell(O4) else '') + (', ' + cell(P4) if cell(P4) else '') + (', ' + cell(O32) if cell(O32) else '') + (', ' + cell(R4) if cell(R4) else '') + (', ' + cell(S4) if cell(S4) else '')</field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.street</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description"></field>
+    </record>
+    <record id="report_excel_fields_677" model="report.excel.fields">
+      <field name="sequence">121</field>
+      <field name="cell">O32</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.state_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_678" model="report.excel.fields">
+      <field name="sequence">122</field>
+      <field name="cell">A33</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">result = ('Phone: ' + cell(A33) if cell(O33) else '') + ('  E-mail: ' + cell(O33) if cell(O33) else '') + ('  Website: ' + cell(P33) if cell(P33) else '')</field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.phone</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_679" model="report.excel.fields">
+      <field name="sequence">123</field>
+      <field name="cell">O33</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.email</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_680" model="report.excel.fields">
+      <field name="sequence">124</field>
+      <field name="cell">P33</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id.website</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_681" model="report.excel.fields">
+      <field name="sequence">125</field>
+      <field name="cell">A29</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula">True</field>
+      <field name="formulas">result = "Make all checks payable to " + cell(A29) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">company_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_682" model="report.excel.fields">
+      <field name="sequence">126</field>
+      <field name="cell">K23</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">currency_id.symbol</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_683" model="report.excel.fields">
+      <field name="sequence">127</field>
+      <field name="cell">K24</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">currency_id.symbol</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_684" model="report.excel.fields">
+      <field name="sequence">128</field>
+      <field name="cell">K25</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">currency_id.symbol</field>
+      <field name="field_type">char</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_685" model="report.excel.fields">
+      <field name="sequence">129</field>
+      <field name="cell">L23</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">amount_untaxed</field>
+      <field name="field_type">monetary</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_686" model="report.excel.fields">
+      <field name="sequence">130</field>
+      <field name="cell">L24</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">amount_tax</field>
+      <field name="field_type">monetary</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_687" model="report.excel.fields">
+      <field name="sequence">131</field>
+      <field name="cell">L25</field>
+      <field name="report_excel_section_id" ref="report_excel_section_64"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order')], limit=1).id"/>
+      <field name="root_model_name">sale.order</field>
+      <field name="model_field_selector">amount_total</field>
+      <field name="field_type">monetary</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_section_65" model="report.excel.section">
+      <field name="root_model_id" model="report.excel.section" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="sequence">10</field>
+      <field name="name">Section 1-1 - Order Lines</field>
+      <field name="parent_id" ref="report_excel_section_64"/>
+      <field name="type_data">data_line</field>
+      <field name="level" eval="0"/>
+      <field name="root_model_related_field_id" ref="sale.field_sale_order__order_line"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="check_root_model">True</field>
+      <field name="section">True</field>
+      <field name="section_level">1</field>
+      <field name="section_start">A18</field>
+      <field name="section_end">O21</field>
+      <field name="domain">[]</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_688" model="report.excel.fields">
+      <field name="sequence">100</field>
+      <field name="cell">B18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">product_id</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_689" model="report.excel.fields">
+      <field name="sequence">102</field>
+      <field name="cell">G18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">product_uom_qty</field>
+      <field name="field_type">float</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_690" model="report.excel.fields">
+      <field name="sequence">103</field>
+      <field name="cell">H18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">product_uom</field>
+      <field name="field_type">many2one</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_691" model="report.excel.fields">
+      <field name="sequence">104</field>
+      <field name="cell">I18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">price_unit</field>
+      <field name="field_type">float</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_692" model="report.excel.fields">
+      <field name="sequence">105</field>
+      <field name="cell">J18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">tax_id</field>
+      <field name="field_type">many2many</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_693" model="report.excel.fields">
+      <field name="sequence">106</field>
+      <field name="cell">K18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">price_total</field>
+      <field name="field_type">monetary</field>
+      <field name="image_bool" eval="False"/>
+      <field name="colOff" eval="0"/>
+      <field name="rowOff" eval="0"/>
+      <field name="cx">1500000</field>
+      <field name="cy">1500000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_fields_694" model="report.excel.fields">
+      <field name="sequence">107</field>
+      <field name="cell">A18</field>
+      <field name="report_excel_section_id" ref="report_excel_section_65"/>
+      <field name="group_by" eval="False"/>
+      <field name="aggregate" eval="False"/>
+      <field name="aggregate_id" eval="[]"/>
+      <field name="having_operator" eval="False"/>
+      <field name="having_selection">value</field>
+      <field name="having_param_id" eval="[]"/>
+      <field name="having_value_type">float</field>
+      <field name="having_value_float" eval="0.0"/>
+      <field name="having_value_date" eval="False"/>
+      <field name="having_value_datetime" eval="False"/>
+      <field name="sort_by" eval="False"/>
+      <field name="formula" eval="False"/>
+      <field name="formulas"># Help with Python expressions 
+
+# The following variables can be used:
+#  - uid: is the current user’s database id
+#  - user: is the current user’s record
+#  - date, datetime, dateutil: useful Python libraries 
+#  - param(parameter_code): Report Parameter, for example  param(Parameter1_start_date)
+#  - cell(CELL_COORDINATE): Excel Cell of the current Section,  for example  cell(A7) 
+
+# Note: returned value have to be set in the variable 'result' 
+
+# Example of Python code:
+# if (cell(A7) == "out_invoice"):
+#   result = cell(H7) * -1
+# else:
+#   result = cell(H7) </field>
+      <field name="check_root_model">True</field>
+      <field name="root_model_id" model="report.excel.fields" eval="obj().env['ir.model'].search([('model', '=', 'sale.order.line')], limit=1).id"/>
+      <field name="root_model_name">sale.order.line</field>
+      <field name="model_field_selector">product_id.image_1920</field>
+      <field name="field_type">binary</field>
+      <field name="image_bool">True</field>
+      <field name="colOff">80000</field>
+      <field name="rowOff">80000</field>
+      <field name="cx">600000</field>
+      <field name="cy">600000</field>
+      <field name="description" eval="False"/>
+    </record>
+    <record id="report_excel_48_action1" model="ir.actions.act_window">
+      <field name="name">Sale Order with Product Images (XLSX)</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">report_excel_wizard</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" model="report.excel" eval="obj().env['ir.ui.view'].search([('model', '=', 'report_excel_wizard')]).id"/>
+      <field name="target">new</field>
+      <field name="context" eval="{'model': 'report.excel', 'id': ref('report_excel_48')}"/>
+    </record>
+    <record id="report_excel_48" model="report.excel">
+      <field name="template_name_id" ref="report_excel_template_attachment_537"/>
+    </record>
+  </data>
+</odoo>

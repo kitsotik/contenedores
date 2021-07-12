@@ -1,0 +1,56 @@
+version: '3'
+services:
+  minecraft1:
+    container_name: minecraft-creative
+    image: itzg/minecraft-bedrock-server
+    restart: always
+    ports:
+      - 19132:19132/udp
+    volumes:
+      - /home/kitsotik/contenedores/minecraft-creative:/data
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: "creative"
+      SERVER_NAME: "Hulks & Llamas Oh My"
+      TZ: America/Argentina/Buenos_Aires
+    stdin_open: true
+    tty: true
+  minecraft2:
+    container_name: minecraft-survival
+    image: itzg/minecraft-bedrock-server
+    restart: always
+    ports:
+      - 19130:19130/udp
+    volumes:
+      - /home/kitsotik/contenedores/minecraft-survival:/data
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: "survival"
+      SERVER_NAME: "Survival Challenge"
+      SERVER_PORT: 19130
+      #DIFFICULTY: "normal"
+      TZ: America/Argentina/Buenos_Aires
+    stdin_open: true
+    tty: true
+  minecraft3:
+    container_name: minecraft-miscworlds
+    image: itzg/minecraft-bedrock-server
+    restart: always
+    ports:
+      - 19125:19125/udp
+    volumes:
+      - /home/kitsotik/contenedores/minecraft-miscworlds:/data
+    environment:
+      EULA: "TRUE"
+      GAMEMODE: "creative"
+      LEVEL_NAME: "Blowup World"
+      #LEVEL_NAME: "Bamboo Forest"
+      #LEVEL_NAME: "llama land"
+      #LEVEL_NAME: "Boiii"
+      #LEVEL_NAME: "My World1"
+      SERVER_NAME: "Saved World - Blow-up World"
+      SERVER_PORT: 19125
+      TZ: America/Argentina/Buenos_Aires
+    stdin_open: true
+    tty: true
+    

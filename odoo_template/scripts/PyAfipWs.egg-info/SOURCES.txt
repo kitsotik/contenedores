@@ -1,0 +1,4 @@
+PyAfipWs.egg-info/PKG-INFO
+PyAfipWs.egg-info/SOURCES.txt
+PyAfipWs.egg-info/dependency_links.txt
+PyAfipWs.egg-info/top_level.txt

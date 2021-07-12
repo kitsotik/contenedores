@@ -1,0 +1,48 @@
+version: '3'
+ 
+services:
+  samba:
+    build: .
+    image: servercontainers/samba
+    container_name: samba
+    restart: always
+    hostname: FileServer
+    networks:
+        mcvlan192:
+           ipv4_address: 192.168.0.21
+    links:
+      - rclone-mount-gdrive-gb
+      - rclone-mount-gdrive-gmq
+
+    environment:
+      MODEL: 'TimeCapsule'
+      AVAHI_NAME: StorageServer
+
+      ACCOUNT_alice: alipass
+      UID_alice: 1000
+
+      ACCOUNT_bob: bobpass
+      UID_bob: 1001
+
+      SAMBA_VOLUME_CONFIG_aliceonly: "[Alice Share]; path=/shares/alice; valid users = alice; guest ok = no; read only = no; browseable = yes"
+      SAMBA_VOLUME_CONFIG_bobonly: "[Bob Share]; path=/shares/bob; valid users = bob; guest ok = no; read only = no; browseable = yes"   
+      #SAMBA_VOLUME_CONFIG_public: "[Public]; path=/shares/public; valid users = alice, bob; guest ok = no; read only = no; browseable = yes"
+      SAMBA_VOLUME_CONFIG_public_ro: "[Public ReadOnly]; path=/shares/public; guest ok = yes; read only = yes; browseable = yes"
+      
+      SAMBA_VOLUME_CONFIG_timemachine: "[TimeMachine]; path=/shares/timemachine/%U; valid users = alice, bob; guest ok = no; read only = no; browseable = no; fruit:time machine = yes; fruit:time machine max size = 500G;"
+   
+
+      SAMBA_VOLUME_CONFIG_public: "[Public]; path=/shares/public; guest ok = yes; read only = no; browseable = yes"
+    
+    volumes:
+      - /etc/avahi/services/:/external/avahi
+      
+      - ./shares/alice:/shares/alice
+      - ./shares/bob:/shares/bob
+      - /home/oem/storage:/shares/public
+      - ./shares/timemachine:/shares/timemachine
+
+networks:
+  mcvlan192:
+    external: true
+

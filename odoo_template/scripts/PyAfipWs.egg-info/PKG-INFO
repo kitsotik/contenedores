@@ -1,0 +1,28 @@
+Metadata-Version: 1.1
+Name: PyAfipWs
+Version: 2.7.0
+Summary: Interfases, tools and apps for Argentina's gov't. webservices (soap, com/dll, pdf, dbf, xml, etc.)
+Home-page: https://github.com/reingart/pyafipws
+Author: Mariano Reingart
+Author-email: reingart@gmail.com
+License: GNU GPL v3+
+Description: Interfases, herramientas y aplicativos para Servicios WebAFIP (Factura Electrónica, Granos, Aduana, etc.), ANMAT (Trazabilidad de Medicamentos), RENPRE (Trazabilidad de Precursores Químicos), ARBA (Remito Electrónico)
+Keywords: webservice electronic invoice pdf traceability
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Natural Language :: Spanish
+Classifier: Topic :: Office/Business :: Financial :: Point-Of-Sale
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Object Brokering

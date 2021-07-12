@@ -1,0 +1,32 @@
+version: '3'
+services:
+  minecraft:
+    container_name: mcs1-j
+    image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+    volumes:
+      - /home/oem/storage/dkito-usb1/contenedores/minecraft/datos:/data
+    environment:
+      EULA: "TRUE"
+      ONLINE_MODE: "FALSE"
+      GAMEMODE: "creative"
+      #GAMEMODE: creative survival adventure spectator 
+      SERVER_NAME: "PashecoWorld-Creativo"
+      TZ: America/Argentina/Buenos_Aires
+      #TYPE: "FORGE"
+      #FORGEVERSION: "10.13.4.1448"
+      #DIFFICULTY=peaceful, easy, normal, and hard
+      #WHITELIST=user1,user2
+      #LEVEL_NAME: "Blowup World"
+      #LEVEL_NAME: "Bamboo Forest"
+      #LEVEL_NAME: "llama land"
+      #LEVEL_NAME: "Boiii"
+      #LEVEL_NAME: "My World1"
+    restart: always
+    #deploy:
+        #resources:
+          #limits:
+            #memory: 1.5G
+    stdin_open: true
+    tty: true
