@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  odoo-app:
+    container_name: ${WEB_HOST}
+    image: ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG}
+    restart: always
+    depends_on:
+      - odoo-db
+    ports:
+      - "${WEB_PORT}:8069"
+    volumes:
+      - odoo-app-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/addons
+      - ./extra-addons:/mnt/extra-addons
+      - ./scripts:/mnt/scripts
+
+    entrypoint: "/usr/bin/odoo -c /etc/odoo/odoo.conf"
+
+    networks:
+      - odoo-network
+  odoo-db:
+    container_name: ${DB_HOST}
+    image: ${DB_IMAGE}:${DB_TAG}
+    restart: always
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+      - POSTGRES_USER=${DB_USER}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - odoo-network
+  odoo-rproxy:
+    container_name: odoo-rproxy
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+        - ./nginx:/etc/nginx/conf.d
+    networks:
+      - odoo-network
+    links:
+      - odoo-app
+
+volumes:
+  odoo-db-data:
+  odoo-app-data:
+
+networks:
+  odoo-network:
+    driver: bridge
