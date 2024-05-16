@@ -3,10 +3,6 @@ services:
     image: portainer/portainer-ce
     container_name: portainer
     restart: always
-    #labels:
-    #  - traefik.enable=true
-    #  - traefik.http.routers.portainer.rule=PathPrefix(`/`)
-    #  - traefik.http.services.portainer.loadbalancer.server.port=9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
