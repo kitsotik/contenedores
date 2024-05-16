@@ -1,10 +1,40 @@
-networks:
-  # enable connection with Traefik
-  traefik_default:
-    external: true
-
 services:
-  odoo-db:
+
+  odoo16-app:
+    container_name: ${WEB_HOST}
+    image: ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG}
+    restart: always
+    depends_on:
+      - odoo16-db
+    ports:
+      - ${WEB_PORT}:8069
+    #tty: true
+    #command: -- --dev=reload
+    environment:
+      - HOST=odoo16-db
+      - USER=${DB_USER}
+      - PASSWORD=${DB_PASSWD}
+    networks:
+      - traefik_public
+    volumes:
+      - odoo16-app-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/addons
+      - ./extra-addons:/mnt/extra-addons
+      - ./scripts:/mnt/scripts
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.odoo-external.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.odoo-external.entrypoints=web
+      - traefik.http.routers.odoo-external.middlewares=redirect-to-https
+      - traefik.http.routers.odoo-external-secure.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.odoo-external-secure.entrypoints=websecure
+      - traefik.http.routers.odoo-external-secure.tls.certresolver=letsencrypt
+      - traefik.http.routers.odoo-internal.rule=Host(`${IPLOCAL}`)
+      - traefik.http.routers.odoo-internal.entrypoints=web
+      - traefik.http.services.odoo.loadbalancer.server.port=8069
+
+  odoo16-db:
     container_name: ${DB_HOST}
     image: ${DB_IMAGE}:${DB_TAG}
     restart: always
@@ -16,40 +46,17 @@ services:
     ports:
       - "${DB_PORT}:5432"
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - odoo16-db-data:/var/lib/postgresql/data/pgdata
     networks:
-      - traefik_default
+      - traefik_public
 
-  odoo-app:
-    container_name: ${WEB_HOST}
-    image: ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG}
-    restart: always
-    depends_on:
-      - odoo-db
-    ports:
-      - "${WEB_PORT}:8069"
-    #tty: true
-    #command: -- --dev=reload
-    environment:
-      - HOST=odoo-db
-      - USER=${DB_USER}
-      - PASSWORD=${DB_PASSWD}
-    networks:
-      - traefik_default
-    volumes:
-      - odoo-app-data:/var/lib/odoo
-      - ./config:/etc/odoo
-      - ./addons:/mnt/addons
-      - ./extra-addons:/mnt/extra-addons
-      - ./scripts:/mnt/scripts
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.odoo-app.rule=Host(`${DOMAIN}`)
-      - traefik.http.routers.odoo-app.entrypoints=web
-      - traefik.http.services.odoo-app.loadbalancer.server.port=8069
 volumes:
-  odoo-db-data:
-  odoo-app-data:
+  odoo16-db-data:
+  odoo16-app-data:
+
+networks: # enable connection with Traefik
+  traefik_public:
+    external: true
 
 
 

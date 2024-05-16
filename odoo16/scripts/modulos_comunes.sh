@@ -62,11 +62,11 @@ chmod -R 777 /mnt/extra-addons/auto_backup
 git clone -b 16.0 https://github.com/ctmil/meli_oerp /mnt/extra-addons/meli_oerp
 pip3 install -r /mnt/extra-addons/meli_oerp/requirements.txt
 
+## habilitar las funcionalidades de Contabilidad , instalar el módulo om_account_accountant de OdooMates.
+git clone -b 16.0 https://github.com/odoomates/odooapps/ /mnt/extra-addons/odoo-mates
+
 ## Cybrosys
 #git clone -b 16.0 https://github.com/CybroOdoo/CybroAddons /mnt/extra-addons/CybroAddons
 #cp -r /mnt/extra-addons/CybroAddons/product_brand_sale /mnt/extra-addons/product_brand_sale
 #cp -r /mnt/extra-addons/CybroAddons/product_brand_ecommerce /mnt/extra-addons/product_brand_ecommerce
 
-## habilitar las funcionalidades de Contabilidad , instalar el módulo om_account_accountant de OdooMates.
-#git clone -b 16.0 https://github.com/odoomates/om_account /mnt/odoo-mates
-#git clone -b 16.0 https://github.com/odoomates/odooapps/ /mnt/extra-addons/odoo-mates
