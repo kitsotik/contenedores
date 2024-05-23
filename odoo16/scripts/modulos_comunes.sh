@@ -20,10 +20,10 @@ git clone -b 16.0 https://github.com/OCA/server-ux /mnt/extra-addons/oca-server-
 
 ## OCA Pos
 git clone -b 16.0 https://github.com/OCA/pos /mnt/extra-addons/oca-pos
-cp -r /mnt/extra-addons/oca-pos/pos_stock_available_online /mnt/extra-addons/oca-pos_stock_available_online
-cp -r /mnt/extra-addons/oca-pos/pos_order_reorder /mnt/extra-addons/oca-pos_order_reorder
-cp -r /mnt/extra-addons/oca-pos/pos_default_partner /mnt/extra-addons/oca-pos_default_partner
-cp -r /mnt/extra-addons/oca-pos/pos_order_to_sale_order /mnt/extra-addons/oca-pos_order_to_sale_order
+#cp -r /mnt/extra-addons/oca-pos/pos_stock_available_online /mnt/extra-addons/oca-pos_stock_available_online
+#cp -r /mnt/extra-addons/oca-pos/pos_order_reorder /mnt/extra-addons/oca-pos_order_reorder
+#cp -r /mnt/extra-addons/oca-pos/pos_default_partner /mnt/extra-addons/oca-pos_default_partner
+#cp -r /mnt/extra-addons/oca-pos/pos_order_to_sale_order /mnt/extra-addons/oca-pos_order_to_sale_order
 
 ## OCA Stock 
 git clone -b 16.0 https://github.com/OCA/stock-logistics-availability /mnt/extra-addons/oca-stock-logistics-availability
@@ -46,7 +46,7 @@ git clone -b 16.0 https://github.com/OCA/product-attribute /mnt/extra-addons/pro
 cp -r /mnt/extra-addons/product-attribute/product_pricelist_supplierinfo /mnt/extra-addons/oca-product_pricelist_supplierinfo
 
 ## OCA Agrega marcas a los productos *** mepa mejor del de cybrosys ?  permite en la web filtrar
-# git clone -b 16.0 https://github.com/OCA/brand /mnt/extra-addons/oca-brand
+git clone -b 16.0 https://github.com/OCA/brand /mnt/extra-addons/oca-brand
 
 ## OCA Web
 git clone -b 16.0 https://github.com/OCA/web/ /mnt/extra-addons/oca-web

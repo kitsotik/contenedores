@@ -1,40 +1,26 @@
 [options]
 addons_path = /mnt/addons,/mnt/extra-addons,
-              /mnt/extra-addons/auto_backup,
-              /mnt/extra-addons/meli_oerp,
-              /mnt/extra-addons/oca-account-financial-reporting,
-              /mnt/extra-addons/oca-account-financial-tools,
-              /mnt/extra-addons/oca-report_xlsx_helper,
-              /mnt/extra-addons/oca-server-ux,
-              /mnt/extra-addons/oca-server-brand,
-              /mnt/extra-addons/oca-ecommerce,
-              /mnt/extra-addons/oca-pos,
-              /mnt/extra-addons/adhoc-odoo-argentina,
-              /mnt/extra-addons/adhoc-odoo-argentina-ce,
-              /mnt/extra-addons/adhoc-argentina-sale,
-              /mnt/extra-addons/adhoc-account-payment,
-              /mnt/extra-addons/adhoc-account-invoicing,
-              /mnt/extra-addons/adhoc-account-financial-tools,
-              /mnt/extra-addons/adhoc-product,
-              /mnt/extra-addons/adhoc-stock,
-              /mnt/extra-addons/adhoc-stock_voucher,
-	      /mnt/extra-addons/odoo-mates,
-
 db_host = odoo16-db
-admin_passwd = bgt56yhn*971
 http_interface = 0.0.0.0
 http_port = 8069
+gevent_port = 8072
+workers = 2
+
 http_enable = True
 xmlrpc = true
 jsonrpc = True
-gevent_port = 8072
 grpc = True
 db_name = False
 dbfilter = False
+db_maxconn = 64
+debug_mode = False
 static_cache = True
-log_level = info
+log_level = DEBUG
 geoip_database = /usr/share/GeoIP/GeoLiteCity.dat
+#import_partial =
+admin_passwd = bgt56yhn*971
 csv_internal_sep = ,
+data_dir = /var/lib/odoo
 email_from = False
 from_filter = False
 
