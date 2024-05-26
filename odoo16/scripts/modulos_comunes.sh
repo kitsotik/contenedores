@@ -44,6 +44,7 @@ git clone -b 16.0 https://github.com/OCA/e-commerce /mnt/extra-addons/oca-ecomme
 ## OCA Product attribute
 git clone -b 16.0 https://github.com/OCA/product-attribute /mnt/extra-addons/product-attribute
 cp -r /mnt/extra-addons/product-attribute/product_pricelist_supplierinfo /mnt/extra-addons/oca-product_pricelist_supplierinfo
+cp -r /mnt/extra-addons/product-attribute/product_manufacturer /mnt/extra-addons/oca-product_manufacturer
 
 ## OCA Agrega marcas a los productos *** mepa mejor del de cybrosys ?  permite en la web filtrar
 git clone -b 16.0 https://github.com/OCA/brand /mnt/extra-addons/oca-brand
@@ -52,6 +53,12 @@ git clone -b 16.0 https://github.com/OCA/brand /mnt/extra-addons/oca-brand
 git clone -b 16.0 https://github.com/OCA/web/ /mnt/extra-addons/oca-web
 cp -r /mnt/extra-addons/oca-web/web_responsive /mnt/extra-addons/web_responsive
 cp -r /mnt/extra-addons/oca-web/web_ir_actions_act_multi /mnt/extra-addons/web_ir_actions_act_multi
+
+## OCA Widget reconciliar
+git clone -b 16.0 https://github.com/OCA/account-reconcile /mnt/extra-addons/oca-account-reconcile
+
+## OCA Product Attribute
+git clone -b 16.0 https://github.com/OCA/product-attribute /mnt/extra-addons/oca-product-attribute
 
 ## backup (auto_backup)
 pip3 install paramiko pysftp
