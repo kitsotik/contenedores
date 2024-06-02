@@ -1,7 +1,7 @@
 import xmlrpc.client
 
 # Configuración de conexión
-url = 'http://149.50.138.116:8069'  # URL del servidor Odoo
+url = 'http://localhost:8069'  # URL del servidor Odoo
 db = 'o16db'
 username = 'admin'
 password = 'bgt56yhn*971'
