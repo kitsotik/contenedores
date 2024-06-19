@@ -31,6 +31,8 @@ cp -r /mnt/extra-addons/oca-stock-logistics-availability/stock_available /mnt/ex
 git clone -b 16.0 https://github.com/OCA/stock-logistics-workflow /mnt/extra-addons/oca-stock-logistics-workflow
 cp -r /mnt/extra-addons/oca-stock-logistics-workflow/stock_picking_invoice_link /mnt/extra-addons/stock_picking_invoice_link
 
+
+
 ##
 git clone -b 16.0 https://github.com/OCA/sale-workflow /mnt/extra-addons/oca-sale-workflow
 cp -r /mnt/extra-addons/oca-sale-workflow/sale_order_type /mnt/extra-addons/sale_order_type
