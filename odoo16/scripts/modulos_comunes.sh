@@ -31,8 +31,6 @@ cp -r /mnt/extra-addons/oca-stock-logistics-availability/stock_available /mnt/ex
 git clone -b 16.0 https://github.com/OCA/stock-logistics-workflow /mnt/extra-addons/oca-stock-logistics-workflow
 cp -r /mnt/extra-addons/oca-stock-logistics-workflow/stock_picking_invoice_link /mnt/extra-addons/stock_picking_invoice_link
 
-
-
 ##
 git clone -b 16.0 https://github.com/OCA/sale-workflow /mnt/extra-addons/oca-sale-workflow
 cp -r /mnt/extra-addons/oca-sale-workflow/sale_order_type /mnt/extra-addons/sale_order_type
@@ -79,3 +77,6 @@ git clone -b 16.0 https://github.com/odoomates/odooapps/ /mnt/extra-addons/odoo-
 #cp -r /mnt/extra-addons/CybroAddons/product_brand_sale /mnt/extra-addons/product_brand_sale
 #cp -r /mnt/extra-addons/CybroAddons/product_brand_ecommerce /mnt/extra-addons/product_brand_ecommerce
 
+# pos_l10n_ar_identification
+git clone -b 16.0 https://github.com/kitsotik/odoo_extra-addons /mnt/extra-addons/odoo_extra-addons
+cp -r /mnt/extra-addons/odoo_extra-addons/pos_l10n_ar_identification /mnt/extra-addons/pos_l10n_ar_identification
