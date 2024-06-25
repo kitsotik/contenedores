@@ -21,15 +21,15 @@ services:
       - ./scripts:/mnt/scripts
     labels:
       - traefik.enable=true
-      - traefik.http.routers.odoo.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.odoo.rule=Host(`www.${DOMAIN}`, `${DOMAIN}`)
       - traefik.http.routers.odoo.entrypoints=web
       - traefik.http.routers.odoo.middlewares=redirect-to-https
       - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
-      - traefik.http.routers.odoo-secure.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.odoo-secure.rule=Host(`www.${DOMAIN}`, `${DOMAIN}`)
       - traefik.http.routers.odoo-secure.entrypoints=websecure
       - traefik.http.routers.odoo-secure.tls.certresolver=letsencrypt
       - traefik.http.services.odoo.loadbalancer.server.port=8069
-      - traefik.http.routers.odoo-websocket.rule=Host(`${DOMAIN}`) && PathPrefix(`/websocket`)
+      - traefik.http.routers.odoo-websocket.rule=Host(`www.${DOMAIN}`, `${DOMAIN}`) && PathPrefix(`/websocket`)
       - traefik.http.routers.odoo-websocket.entrypoints=websecure
   odoo16-db:
     container_name: ${DB_HOST}
