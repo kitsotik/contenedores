@@ -3,7 +3,7 @@
 ## factura electronica PyAfipWS
 git clone -b py3k https://github.com/pyar/pyafipws.git /mnt/extra-addons/pyafipws
 pip3 install -r /mnt/extra-addons/pyafipws/requirements.txt
-cd /mnt/extra-addons/pyafipws
+## cd /mnt/extra-addons/pyafipws
 python3 /mnt/extra-addons/pyafipws/setup.py install
 mkdir /mnt/extra-addons/pyafipws/cache
 chmod -R 777 /mnt/extra-addons/pyafipws/cache

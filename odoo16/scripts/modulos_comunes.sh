@@ -46,6 +46,9 @@ git clone -b 16.0 https://github.com/OCA/product-attribute /mnt/extra-addons/pro
 cp -r /mnt/extra-addons/product-attribute/product_pricelist_supplierinfo /mnt/extra-addons/oca-product_pricelist_supplierinfo
 cp -r /mnt/extra-addons/product-attribute/product_manufacturer /mnt/extra-addons/oca-product_manufacturer
 
+## OCA Product Pack
+git clone -b 16.0 https://github.com/OCA/product-pack /mnt/extra-addons/oca-product-pack
+
 ## OCA Agrega marcas a los productos *** mepa mejor del de cybrosys ?  permite en la web filtrar
 git clone -b 16.0 https://github.com/OCA/brand /mnt/extra-addons/oca-brand
 
@@ -80,3 +83,9 @@ git clone -b 16.0 https://github.com/odoomates/odooapps/ /mnt/extra-addons/odoo-
 # pos_l10n_ar_identification
 git clone -b 16.0 https://github.com/kitsotik/odoo_extra-addons /mnt/extra-addons/odoo_extra-addons
 cp -r /mnt/extra-addons/odoo_extra-addons/pos_l10n_ar_identification /mnt/extra-addons/pos_l10n_ar_identification
+cp -r /mnt/extra-addons/odoo_extra-addons/website_floating_whatsapp_icon /mnt/extra-addons/website_floating_whatsapp_icon
+
+
+
+
+
