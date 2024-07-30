@@ -1,5 +1,4 @@
 #!/bin/bash
-rm -R /opt/odoo16/extra-addons-oca
 
 ## OCA Reportes 
 git clone -b 16.0 https://github.com/OCA/reporting-engine /opt/odoo16/extra-addons-oca/reporting-engine
