@@ -26,7 +26,7 @@ services:
       - traefik.http.routers.odoo-secure.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`)
       - traefik.http.routers.odoo-secure.entrypoints=websecure
       - traefik.http.routers.odoo-secure.tls.certresolver=letsencrypt
-      - traefik.http.services.odoo.loadbalancer.server.port=8069
+      - traefik.http.services.odoo.loadbalancer.server.port=${WEB_PORT}
       - traefik.http.routers.odoo-websocket.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`) && PathPrefix(`/websocket`)
       - traefik.http.routers.odoo-websocket.entrypoints=websecure
   odoo16-db:
