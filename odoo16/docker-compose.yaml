@@ -17,7 +17,6 @@ services:
       - odoo16-app-data:/var/lib/odoo
       - ./config:/etc/odoo
       - ./scripts:/mnt/scripts
-      - ./addons:/opt/odoo16/addons
     labels:
       - traefik.enable=true
       - traefik.http.routers.odoo.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`)
