@@ -39,4 +39,7 @@ git clone -b 16.0 https://github.com/OCA/web/ /opt/odoo16/extra-addons-oca/web/
 ## OCA Widget reconciliar
 git clone -b 16.0 https://github.com/OCA/account-reconcile /opt/odoo16/extra-addons-oca/account-reconcile
 
+## OCA website
+git clone -b 16.0 https://github.com/OCA/website /opt/odoo16/extra-addons-oca/website
+
 

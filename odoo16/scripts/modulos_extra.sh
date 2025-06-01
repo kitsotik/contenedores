@@ -24,7 +24,7 @@ git clone -b 16.0 https://github.com/kitsotik/odoo_extra-addons /opt/odoo16/extr
 cp -r /opt/odoo16/extra-addons/tmp/pos_l10n_ar_identification /opt/odoo16/extra-addons/pos_l10n_ar_identification
 cp -r /opt/odoo16/extra-addons/tmp/website_floating_whatsapp_icon /opt/odoo16/extra-addons/website_floating_whatsapp_icon
 cp -r /opt/odoo16/extra-addons/tmp/currency_update_exchange_rate_bna /opt/odoo16/extra-addons/currency_update_exchange_rate_bna
-
+cp -r /opt/odoo16/extra-addons/tmp/l10n_ar_partner /opt/odoo16/extra-addons/l10n_ar_partner
 
 
 
