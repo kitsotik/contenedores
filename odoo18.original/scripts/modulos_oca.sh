@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## OCA Account
+git clone -b 18.0 https://github.com/OCA/account-invoicing/ /opt/odoo/extra-addons-oca/account-invoicing
 git clone -b 18.0 https://github.com/OCA/account-financial-reporting /opt/odoo/extra-addons-oca/account-financial-reporting
 git clone -b 18.0 https://github.com/OCA/account-financial-tools /opt/odoo/extra-addons-oca/account-financial-tools
 

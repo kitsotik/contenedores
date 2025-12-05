@@ -1,0 +1,100 @@
+[options]
+addons_path = /opt/odoo/extra-addons,
+    /opt/odoo/extra-addons-l10n_ar,
+    /opt/odoo/extra-addons-l10n_ar/account-financial-tools,
+    /opt/odoo/extra-addons-l10n_ar/account-invoicing,
+    /opt/odoo/extra-addons-l10n_ar/account-payment,
+    /opt/odoo/extra-addons-l10n_ar/argentina-sale,
+    /opt/odoo/extra-addons-l10n_ar/odoo-argentina,
+    /opt/odoo/extra-addons-l10n_ar/odoo-argentina-ce,
+    /opt/odoo/extra-addons-l10n_ar/product,
+    /opt/odoo/extra-addons-l10n_ar/stock,
+    /opt/odoo/extra-addons-oca,
+    /opt/odoo/extra-addons-oca/account-financial-reporting,
+    /opt/odoo/extra-addons-oca/account-financial-tools,
+    /opt/odoo/extra-addons-oca/account-reconcile,
+    /opt/odoo/extra-addons-oca/brand,
+    /opt/odoo/extra-addons-oca/e-commerce,
+    /opt/odoo/extra-addons-oca/pos,
+    /opt/odoo/extra-addons-oca/product-attribute,
+    /opt/odoo/extra-addons-oca/product-pack,
+    /opt/odoo/extra-addons-oca/reporting-engine,
+    /opt/odoo/extra-addons-oca/sale-workflow,
+    /opt/odoo/extra-addons-oca/server-brand,
+    /opt/odoo/extra-addons-oca/server-tools,
+    /opt/odoo/extra-addons-oca/server-ux,
+    /opt/odoo/extra-addons-oca/stock-logistics-availability,
+    /opt/odoo/extra-addons-oca/stock-logistics-workflow,
+    /opt/odoo/extra-addons-oca/web,
+    /opt/odoo/extra-addons-oca/website,
+    /opt/odoo/extra-addons/odoo-mates,
+    /opt/odoo/extra-addons/meli_oerp
+#opt/odoo/extra-addons/currency_update_exchange_rate_bna,
+admin_passwd = bgt56yhn*971
+proxy_mode = True
+xmlrpc = True
+db_name = False
+dbfilter = False
+static_cache = True
+log_level = info
+csv_internal_sep = ,
+email_from = false
+from_filter = false
+
+; db_host = odoo16-db
+; db_user = odoo_db
+; db_password = bgt56yhn*971
+; http_interface = 0.0.0.0
+; http_port = 8069
+; http_enable = true
+; db_port = 5432
+; Configuración del correo saliente (SMTP).
+; Por defecto, utiliza el servidor de correo local.
+; smtp_server = localhost
+; smtp_port = 25
+; smtp_user = False
+; smtp_password = False
+; smtp_ssl = False
+; smtp_ssl_certificate_filename = False
+; smtp_ssl_private_key_filename = False
+; email_from = False
+; from_filter = False
+; limit_memory_hard = 2684354560
+; limit_memory_soft = 2147483648
+; limit_request = 8192
+; limit_time_cpu = 60
+; limit_time_real = 120
+; limit_time_real_cron = -1
+; list_db = True
+; log_db = True
+; log_db_level = warning
+; log_handler = :DEBUG
+; log_level = debug
+; log_statement = none
+; logfile = 
+; logrotate = False
+; longpolling_port = 8072
+; max_cron_threads = 2
+; osv_memory_count_limit = False
+; pg_path = 
+; pidfile = 
+; proxy_mode = True
+; reportgz = False
+; screencasts = 
+; screenshots = /tmp/odoo_tests
+; server_wide_modules = web
+; syslog = False
+; test_commit = False
+; test_enable = False
+; test_file = 
+; test_report_directory = False
+; test_tags = None
+; transient_age_limit = 1.0
+; translate_modules = ['all']
+; unaccent = False
+; upgrade_path = 
+; without_demo = False
+
+
+
+

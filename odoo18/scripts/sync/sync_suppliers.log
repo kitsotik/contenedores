@@ -1,0 +1,250 @@
+2025-12-03 01:35:54,753 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-03 01:35:54,876 - ERROR - ❌ Error conectando a Odoo 16 (VPS): <Fault 1: 'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 64, in __new__\n    return cls.registries[db_name]\n  File "<decorator-gen-8>", line 2, in __getitem__\n  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 87, in locked\n    return func(inst, *args, **kwargs)\n  File "/usr/lib/python3/dist-packages/odoo/tools/lru.py", line 34, in __getitem__\n    a = self.d[obj]\nKeyError: \'o16db\'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 147, in xmlrpc_2\n    response = self._xmlrpc(service)\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 127, in _xmlrpc\n    result = dispatch_rpc(service, method, params)\n  File "/usr/lib/python3/dist-packages/odoo/http.py", line 369, in dispatch_rpc\n    return dispatch(method, params)\n  File "/usr/lib/python3/dist-packages/odoo/service/common.py", line 56, in dispatch\n    return g[exp_method_name](*params)\n  File "/usr/lib/python3/dist-packages/odoo/service/common.py", line 25, in exp_authenticate\n    res_users = odoo.registry(db)[\'res.users\']\n  File "/usr/lib/python3/dist-packages/odoo/__init__.py", line 125, in registry\n    return modules.registry.Registry(database_name)\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 66, in __new__\n    return cls.new(db_name)\n  File "<decorator-gen-16>", line 2, in new\n  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 87, in locked\n    return func(inst, *args, **kwargs)\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 78, in new\n    registry.init(db_name)\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 159, in init\n    with closing(self.cursor()) as cr:\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 856, in cursor\n    return self._db.cursor()\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 740, in cursor\n    return Cursor(self.__pool, self.__dbname, self.__dsn)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 267, in __init__\n    self._cnx = pool.borrow(dsn)\n  File "<decorator-gen-2>", line 2, in borrow\n  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 87, in locked\n    return func(inst, *args, **kwargs)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 668, in borrow\n    result = psycopg2.connect(\n  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 127, in connect\n    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)\npsycopg2.OperationalError: connection to server at "odoo16-db" (172.18.0.4), port 5432 failed: FATAL:  database "o16db" does not exist\n\n'>
+2025-12-03 01:35:54,876 - ERROR - ❌ Error fatal: <Fault 1: 'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 64, in __new__\n    return cls.registries[db_name]\n  File "<decorator-gen-8>", line 2, in __getitem__\n  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 87, in locked\n    return func(inst, *args, **kwargs)\n  File "/usr/lib/python3/dist-packages/odoo/tools/lru.py", line 34, in __getitem__\n    a = self.d[obj]\nKeyError: \'o16db\'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 147, in xmlrpc_2\n    response = self._xmlrpc(service)\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 127, in _xmlrpc\n    result = dispatch_rpc(service, method, params)\n  File "/usr/lib/python3/dist-packages/odoo/http.py", line 369, in dispatch_rpc\n    return dispatch(method, params)\n  File "/usr/lib/python3/dist-packages/odoo/service/common.py", line 56, in dispatch\n    return g[exp_method_name](*params)\n  File "/usr/lib/python3/dist-packages/odoo/service/common.py", line 25, in exp_authenticate\n    res_users = odoo.registry(db)[\'res.users\']\n  File "/usr/lib/python3/dist-packages/odoo/__init__.py", line 125, in registry\n    return modules.registry.Registry(database_name)\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 66, in __new__\n    return cls.new(db_name)\n  File "<decorator-gen-16>", line 2, in new\n  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 87, in locked\n    return func(inst, *args, **kwargs)\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 78, in new\n    registry.init(db_name)\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 159, in init\n    with closing(self.cursor()) as cr:\n  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 856, in cursor\n    return self._db.cursor()\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 740, in cursor\n    return Cursor(self.__pool, self.__dbname, self.__dsn)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 267, in __init__\n    self._cnx = pool.borrow(dsn)\n  File "<decorator-gen-2>", line 2, in borrow\n  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 87, in locked\n    return func(inst, *args, **kwargs)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 668, in borrow\n    result = psycopg2.connect(\n  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 127, in connect\n    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)\npsycopg2.OperationalError: connection to server at "odoo16-db" (172.18.0.4), port 5432 failed: FATAL:  database "o16db" does not exist\n\n'>
+2025-12-03 01:36:35,899 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-03 01:36:36,508 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-03 01:36:36,509 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-03 01:36:36,661 - ERROR - ❌ Error conectando a Odoo 18 (Local): <ProtocolError for localhost:8069/xmlrpc/2/common: 500 INTERNAL SERVER ERROR>
+2025-12-03 01:36:36,662 - ERROR - ❌ Error fatal: <ProtocolError for localhost:8069/xmlrpc/2/common: 500 INTERNAL SERVER ERROR>
+2025-12-03 01:40:26,017 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-03 01:40:26,874 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-03 01:40:26,875 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-03 01:40:28,179 - ERROR - ❌ Error conectando a Odoo 18 (Local): Autenticación fallida en Odoo 18 (Local)
+2025-12-03 01:40:28,180 - ERROR - ❌ Error fatal: Autenticación fallida en Odoo 18 (Local)
+2025-12-03 01:40:46,636 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-03 01:40:47,202 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-03 01:40:47,202 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-03 01:40:48,554 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-03 01:40:48,554 - INFO - 
+2025-12-03 01:40:48,554 - INFO - ╔==========================================================╗
+2025-12-03 01:40:48,555 - INFO - ║          SINCRONIZACIÓN DE PROVEEDORES                  ║
+2025-12-03 01:40:48,555 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-03 01:40:48,555 - INFO - ╚==========================================================╝
+2025-12-03 01:40:48,555 - INFO - 
+2025-12-03 01:40:48,556 - INFO - ============================================================
+2025-12-03 01:40:48,556 - INFO - OBTENIENDO PROVEEDORES DESDE ODOO 16
+2025-12-03 01:40:48,556 - INFO - ============================================================
+2025-12-03 01:40:49,025 - INFO - ✓ Encontrados 25 proveedores
+2025-12-03 01:40:49,025 - INFO - 
+2025-12-03 01:40:49,025 - INFO - ============================================================
+2025-12-03 01:40:49,025 - INFO - SINCRONIZANDO PROVEEDORES
+2025-12-03 01:40:49,026 - INFO - ============================================================
+2025-12-03 01:40:49,026 - INFO - [1/25] Procesando: Air SRL
+2025-12-03 01:40:50,821 - INFO - ✓ Creado: Air SRL (ID: 10)
+2025-12-03 01:40:50,821 - INFO - [2/25] Procesando: CASA TRASORRAS S.A.
+2025-12-03 01:40:51,231 - INFO - ✓ Creado: CASA TRASORRAS S.A. (ID: 11)
+2025-12-03 01:40:51,232 - INFO - [3/25] Procesando: Ceven S.A
+2025-12-03 01:40:51,741 - INFO - ✓ Creado: Ceven S.A (ID: 12)
+2025-12-03 01:40:51,741 - INFO - [4/25] Procesando: ESProvider
+2025-12-03 01:40:52,073 - INFO - ✓ Creado: ESProvider (ID: 13)
+2025-12-03 01:40:52,073 - INFO - [5/25] Procesando: Electroquimica Delta SRL
+2025-12-03 01:40:52,485 - INFO - ✓ Creado: Electroquimica Delta SRL (ID: 14)
+2025-12-03 01:40:52,485 - INFO - [6/25] Procesando: Elit SA
+2025-12-03 01:40:52,901 - INFO - ✓ Creado: Elit SA (ID: 15)
+2025-12-03 01:40:52,901 - INFO - [7/25] Procesando: FREE S.A.
+2025-12-03 01:40:53,628 - INFO - ✓ Creado: FREE S.A. (ID: 16)
+2025-12-03 01:40:53,628 - INFO - [8/25] Procesando: Future Graphics LLC Argentina SA - Global
+2025-12-03 01:40:54,180 - INFO - ✓ Creado: Future Graphics LLC Argentina SA - Global (ID: 17)
+2025-12-03 01:40:54,180 - INFO - [9/25] Procesando: GRUPO NUCLEO S.A.
+2025-12-03 01:40:54,722 - INFO - ✓ Creado: GRUPO NUCLEO S.A. (ID: 18)
+2025-12-03 01:40:54,722 - INFO - [10/25] Procesando: GTC Ribbon S.A.
+2025-12-03 01:40:55,240 - INFO - ✓ Creado: GTC Ribbon S.A. (ID: 19)
+2025-12-03 01:40:55,240 - INFO - [11/25] Procesando: IKON Solutions S.A.
+2025-12-03 01:40:55,707 - INFO - ✓ Creado: IKON Solutions S.A. (ID: 20)
+2025-12-03 01:40:55,708 - INFO - [12/25] Procesando: INTCO SRL
+2025-12-03 01:40:56,424 - INFO - ✓ Creado: INTCO SRL (ID: 21)
+2025-12-03 01:40:56,424 - INFO - [13/25] Procesando: Intermaco S.R.L.
+2025-12-03 01:40:57,022 - INFO - ✓ Creado: Intermaco S.R.L. (ID: 22)
+2025-12-03 01:40:57,022 - INFO - [14/25] Procesando: Intracom Argentina S.A.
+2025-12-03 01:40:57,530 - INFO - ✓ Creado: Intracom Argentina S.A. (ID: 23)
+2025-12-03 01:40:57,530 - INFO - [15/25] Procesando: Invid Computers - Jukebox S.A
+2025-12-03 01:40:58,194 - INFO - ✓ Creado: Invid Computers - Jukebox S.A (ID: 24)
+2025-12-03 01:40:58,195 - INFO - [16/25] Procesando: MAGIC Pro *
+2025-12-03 01:40:58,752 - INFO - ✓ Creado: MAGIC Pro * (ID: 25)
+2025-12-03 01:40:58,753 - INFO - [17/25] Procesando: MANSILLA JUAN JOSE
+2025-12-03 01:41:00,179 - INFO - ✓ Creado: MANSILLA JUAN JOSE (ID: 26)
+2025-12-03 01:41:00,180 - INFO - [18/25] Procesando: MICROGLOBAL ARGENTINA S.A
+2025-12-03 01:41:00,694 - INFO - ✓ Creado: MICROGLOBAL ARGENTINA S.A (ID: 27)
+2025-12-03 01:41:00,694 - INFO - [19/25] Procesando: NB Distribuidora Mayorista SRL - NewBytes
+2025-12-03 01:41:01,114 - INFO - ✓ Creado: NB Distribuidora Mayorista SRL - NewBytes (ID: 28)
+2025-12-03 01:41:01,114 - INFO - [20/25] Procesando: OmniChannel S.A.
+2025-12-03 01:41:01,542 - INFO - ✓ Creado: OmniChannel S.A. (ID: 29)
+2025-12-03 01:41:01,543 - INFO - [21/25] Procesando: PLANETA VULCANO S.R.L.
+2025-12-03 01:41:02,046 - INFO - ✓ Creado: PLANETA VULCANO S.R.L. (ID: 30)
+2025-12-03 01:41:02,047 - INFO - [22/25] Procesando: Pc Arts Argentina S.A.
+2025-12-03 01:41:02,465 - INFO - ✓ Creado: Pc Arts Argentina S.A. (ID: 31)
+2025-12-03 01:41:02,465 - INFO - [23/25] Procesando: Polytech S.A.
+2025-12-03 01:41:02,871 - INFO - ✓ Creado: Polytech S.A. (ID: 32)
+2025-12-03 01:41:02,872 - INFO - [24/25] Procesando: RITHNER PORTEOUS & C.í.a. S.A. C.e.I.
+2025-12-03 01:41:03,228 - INFO - ✓ Creado: RITHNER PORTEOUS & C.í.a. S.A. C.e.I. (ID: 33)
+2025-12-03 01:41:03,229 - INFO - [25/25] Procesando: Stenfar S.A.U.
+2025-12-03 01:41:03,641 - INFO - ✓ Creado: Stenfar S.A.U. (ID: 34)
+2025-12-03 01:41:03,641 - INFO - 
+2025-12-03 01:41:03,641 - INFO - ============================================================
+2025-12-03 01:41:03,642 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-03 01:41:03,642 - INFO - ============================================================
+2025-12-03 01:41:03,642 - INFO - Total procesados: 25
+2025-12-03 01:41:03,643 - INFO - ✓ Creados:       25
+2025-12-03 01:41:03,643 - INFO - ✓ Actualizados:  0
+2025-12-03 01:41:03,643 - INFO - ❌ Errores:       0
+2025-12-03 01:41:03,644 - INFO - ⏱ Tiempo:         0:00:15.086860
+2025-12-03 01:41:03,644 - INFO - ============================================================
+2025-12-03 01:41:03,644 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-03 01:42:01,072 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-03 01:42:01,598 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-03 01:42:01,598 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-03 01:42:03,039 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-03 01:42:03,039 - INFO - 
+2025-12-03 01:42:03,039 - INFO - ╔==========================================================╗
+2025-12-03 01:42:03,040 - INFO - ║          SINCRONIZACIÓN DE PROVEEDORES                   ║
+2025-12-03 01:42:03,042 - INFO - ║               Odoo 16 → Odoo 18                          ║
+2025-12-03 01:42:03,042 - INFO - ╚==========================================================╝
+2025-12-03 01:42:03,044 - INFO - 
+2025-12-03 01:42:03,046 - INFO - ============================================================
+2025-12-03 01:42:03,047 - INFO - OBTENIENDO PROVEEDORES DESDE ODOO 16
+2025-12-03 01:42:03,047 - INFO - ============================================================
+2025-12-03 01:42:03,158 - INFO - ✓ Encontrados 25 proveedores
+2025-12-03 01:42:03,158 - INFO - 
+2025-12-03 01:42:03,158 - INFO - ============================================================
+2025-12-03 01:42:03,158 - INFO - SINCRONIZANDO PROVEEDORES
+2025-12-03 01:42:03,159 - INFO - ============================================================
+2025-12-03 01:42:03,159 - INFO - [1/25] Procesando: Air SRL
+2025-12-03 01:42:03,586 - INFO - ✓ Actualizado: Air SRL (ID: 10)
+2025-12-03 01:42:03,587 - INFO - [2/25] Procesando: CASA TRASORRAS S.A.
+2025-12-03 01:42:03,985 - INFO - ✓ Actualizado: CASA TRASORRAS S.A. (ID: 11)
+2025-12-03 01:42:03,985 - INFO - [3/25] Procesando: Ceven S.A
+2025-12-03 01:42:04,390 - INFO - ✓ Actualizado: Ceven S.A (ID: 12)
+2025-12-03 01:42:04,390 - INFO - [4/25] Procesando: ESProvider
+2025-12-03 01:42:04,659 - INFO - ✓ Actualizado: ESProvider (ID: 13)
+2025-12-03 01:42:04,659 - INFO - [5/25] Procesando: Electroquimica Delta SRL
+2025-12-03 01:42:05,050 - INFO - ✓ Actualizado: Electroquimica Delta SRL (ID: 14)
+2025-12-03 01:42:05,050 - INFO - [6/25] Procesando: Elit SA
+2025-12-03 01:42:05,459 - INFO - ✓ Actualizado: Elit SA (ID: 15)
+2025-12-03 01:42:05,460 - INFO - [7/25] Procesando: FREE S.A.
+2025-12-03 01:42:05,883 - INFO - ✓ Actualizado: FREE S.A. (ID: 16)
+2025-12-03 01:42:05,883 - INFO - [8/25] Procesando: Future Graphics LLC Argentina SA - Global
+2025-12-03 01:42:06,426 - INFO - ✓ Actualizado: Future Graphics LLC Argentina SA - Global (ID: 17)
+2025-12-03 01:42:06,427 - INFO - [9/25] Procesando: GRUPO NUCLEO S.A.
+2025-12-03 01:42:06,920 - INFO - ✓ Actualizado: GRUPO NUCLEO S.A. (ID: 18)
+2025-12-03 01:42:06,920 - INFO - [10/25] Procesando: GTC Ribbon S.A.
+2025-12-03 01:42:07,328 - INFO - ✓ Actualizado: GTC Ribbon S.A. (ID: 19)
+2025-12-03 01:42:07,329 - INFO - [11/25] Procesando: IKON Solutions S.A.
+2025-12-03 01:42:07,722 - INFO - ✓ Actualizado: IKON Solutions S.A. (ID: 20)
+2025-12-03 01:42:07,723 - INFO - [12/25] Procesando: INTCO SRL
+2025-12-03 01:42:08,117 - INFO - ✓ Actualizado: INTCO SRL (ID: 21)
+2025-12-03 01:42:08,118 - INFO - [13/25] Procesando: Intermaco S.R.L.
+2025-12-03 01:42:08,509 - INFO - ✓ Actualizado: Intermaco S.R.L. (ID: 22)
+2025-12-03 01:42:08,510 - INFO - [14/25] Procesando: Intracom Argentina S.A.
+2025-12-03 01:42:08,917 - INFO - ✓ Actualizado: Intracom Argentina S.A. (ID: 23)
+2025-12-03 01:42:08,917 - INFO - [15/25] Procesando: Invid Computers - Jukebox S.A
+2025-12-03 01:42:09,335 - INFO - ✓ Actualizado: Invid Computers - Jukebox S.A (ID: 24)
+2025-12-03 01:42:09,336 - INFO - [16/25] Procesando: MAGIC Pro *
+2025-12-03 01:42:09,686 - INFO - ✓ Actualizado: MAGIC Pro * (ID: 25)
+2025-12-03 01:42:09,686 - INFO - [17/25] Procesando: MANSILLA JUAN JOSE
+2025-12-03 01:42:10,094 - INFO - ✓ Actualizado: MANSILLA JUAN JOSE (ID: 26)
+2025-12-03 01:42:10,094 - INFO - [18/25] Procesando: MICROGLOBAL ARGENTINA S.A
+2025-12-03 01:42:10,854 - INFO - ✓ Actualizado: MICROGLOBAL ARGENTINA S.A (ID: 27)
+2025-12-03 01:42:10,854 - INFO - [19/25] Procesando: NB Distribuidora Mayorista SRL - NewBytes
+2025-12-03 01:42:11,305 - INFO - ✓ Actualizado: NB Distribuidora Mayorista SRL - NewBytes (ID: 28)
+2025-12-03 01:42:11,305 - INFO - [20/25] Procesando: OmniChannel S.A.
+2025-12-03 01:42:12,060 - INFO - ✓ Actualizado: OmniChannel S.A. (ID: 29)
+2025-12-03 01:42:12,060 - INFO - [21/25] Procesando: PLANETA VULCANO S.R.L.
+2025-12-03 01:42:12,641 - INFO - ✓ Actualizado: PLANETA VULCANO S.R.L. (ID: 30)
+2025-12-03 01:42:12,641 - INFO - [22/25] Procesando: Pc Arts Argentina S.A.
+2025-12-03 01:42:13,101 - INFO - ✓ Actualizado: Pc Arts Argentina S.A. (ID: 31)
+2025-12-03 01:42:13,102 - INFO - [23/25] Procesando: Polytech S.A.
+2025-12-03 01:42:13,506 - INFO - ✓ Actualizado: Polytech S.A. (ID: 32)
+2025-12-03 01:42:13,506 - INFO - [24/25] Procesando: RITHNER PORTEOUS & C.í.a. S.A. C.e.I.
+2025-12-03 01:42:13,879 - INFO - ✓ Actualizado: RITHNER PORTEOUS & C.í.a. S.A. C.e.I. (ID: 33)
+2025-12-03 01:42:13,879 - INFO - [25/25] Procesando: Stenfar S.A.U.
+2025-12-03 01:42:14,294 - INFO - ✓ Actualizado: Stenfar S.A.U. (ID: 34)
+2025-12-03 01:42:14,295 - INFO - 
+2025-12-03 01:42:14,295 - INFO - ============================================================
+2025-12-03 01:42:14,296 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-03 01:42:14,296 - INFO - ============================================================
+2025-12-03 01:42:14,296 - INFO - Total procesados: 25
+2025-12-03 01:42:14,296 - INFO - ✓ Creados:       0
+2025-12-03 01:42:14,297 - INFO - ✓ Actualizados:  25
+2025-12-03 01:42:14,297 - INFO - ❌ Errores:       0
+2025-12-03 01:42:14,298 - INFO - ⏱ Tiempo:         0:00:11.255998
+2025-12-03 01:42:14,298 - INFO - ============================================================
+2025-12-03 01:42:14,299 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-03 01:43:29,009 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-03 01:43:29,600 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-03 01:43:29,601 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-03 01:43:31,354 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-03 01:43:31,355 - INFO - 
+2025-12-03 01:43:31,355 - INFO - ╔==========================================================╗
+2025-12-03 01:43:31,355 - INFO - ║          SINCRONIZACIÓN DE PROVEEDORES                   ║
+2025-12-03 01:43:31,356 - INFO - ║               Odoo 16 → Odoo 18                          ║
+2025-12-03 01:43:31,356 - INFO - ╚==========================================================╝
+2025-12-03 01:43:31,356 - INFO - 
+2025-12-03 01:43:31,357 - INFO - ============================================================
+2025-12-03 01:43:31,357 - INFO - OBTENIENDO PROVEEDORES DESDE ODOO 16
+2025-12-03 01:43:31,357 - INFO - ============================================================
+2025-12-03 01:43:31,489 - INFO - ✓ Encontrados 25 proveedores
+2025-12-03 01:43:31,489 - INFO - 
+2025-12-03 01:43:31,492 - INFO - ============================================================
+2025-12-03 01:43:31,495 - INFO - SINCRONIZANDO PROVEEDORES
+2025-12-03 01:43:31,496 - INFO - ============================================================
+2025-12-03 01:43:31,497 - INFO - [1/25] Procesando: Air SRL
+2025-12-03 01:43:32,148 - INFO - ✓ Actualizado: Air SRL (ID: 10)
+2025-12-03 01:43:32,153 - INFO - [2/25] Procesando: CASA TRASORRAS S.A.
+2025-12-03 01:43:32,739 - INFO - ✓ Actualizado: CASA TRASORRAS S.A. (ID: 11)
+2025-12-03 01:43:32,740 - INFO - [3/25] Procesando: Ceven S.A
+2025-12-03 01:43:33,258 - INFO - ✓ Actualizado: Ceven S.A (ID: 12)
+2025-12-03 01:43:33,259 - INFO - [4/25] Procesando: ESProvider
+2025-12-03 01:43:33,590 - INFO - ✓ Actualizado: ESProvider (ID: 13)
+2025-12-03 01:43:33,590 - INFO - [5/25] Procesando: Electroquimica Delta SRL
+2025-12-03 01:43:34,164 - INFO - ✓ Actualizado: Electroquimica Delta SRL (ID: 14)
+2025-12-03 01:43:34,165 - INFO - [6/25] Procesando: Elit SA
+2025-12-03 01:43:34,640 - INFO - ✓ Actualizado: Elit SA (ID: 15)
+2025-12-03 01:43:34,640 - INFO - [7/25] Procesando: FREE S.A.
+2025-12-03 01:43:35,130 - INFO - ✓ Actualizado: FREE S.A. (ID: 16)
+2025-12-03 01:43:35,130 - INFO - [8/25] Procesando: Future Graphics LLC Argentina SA - Global
+2025-12-03 01:43:35,602 - INFO - ✓ Actualizado: Future Graphics LLC Argentina SA - Global (ID: 17)
+2025-12-03 01:43:35,603 - INFO - [9/25] Procesando: GRUPO NUCLEO S.A.
+2025-12-03 01:43:36,174 - INFO - ✓ Actualizado: GRUPO NUCLEO S.A. (ID: 18)
+2025-12-03 01:43:36,175 - INFO - [10/25] Procesando: GTC Ribbon S.A.
+2025-12-03 01:43:36,708 - INFO - ✓ Actualizado: GTC Ribbon S.A. (ID: 19)
+2025-12-03 01:43:36,709 - INFO - [11/25] Procesando: IKON Solutions S.A.
+2025-12-03 01:43:37,305 - INFO - ✓ Actualizado: IKON Solutions S.A. (ID: 20)
+2025-12-03 01:43:37,305 - INFO - [12/25] Procesando: INTCO SRL
+2025-12-03 01:43:37,767 - INFO - ✓ Actualizado: INTCO SRL (ID: 21)
+2025-12-03 01:43:37,767 - INFO - [13/25] Procesando: Intermaco S.R.L.
+2025-12-03 01:43:39,068 - INFO - ✓ Actualizado: Intermaco S.R.L. (ID: 22)
+2025-12-03 01:43:39,068 - INFO - [14/25] Procesando: Intracom Argentina S.A.
+2025-12-03 01:43:39,512 - INFO - ✓ Actualizado: Intracom Argentina S.A. (ID: 23)
+2025-12-03 01:43:39,513 - INFO - [15/25] Procesando: Invid Computers - Jukebox S.A
+2025-12-03 01:43:39,994 - INFO - ✓ Actualizado: Invid Computers - Jukebox S.A (ID: 24)
+2025-12-03 01:43:39,994 - INFO - [16/25] Procesando: MAGIC Pro *
+2025-12-03 01:43:40,393 - INFO - ✓ Actualizado: MAGIC Pro * (ID: 25)
+2025-12-03 01:43:40,394 - INFO - [17/25] Procesando: MANSILLA JUAN JOSE
+2025-12-03 01:43:40,890 - INFO - ✓ Actualizado: MANSILLA JUAN JOSE (ID: 26)
+2025-12-03 01:43:40,890 - INFO - [18/25] Procesando: MICROGLOBAL ARGENTINA S.A
+2025-12-03 01:43:41,455 - INFO - ✓ Actualizado: MICROGLOBAL ARGENTINA S.A (ID: 27)
+2025-12-03 01:43:41,456 - INFO - [19/25] Procesando: NB Distribuidora Mayorista SRL - NewBytes
+2025-12-03 01:43:42,058 - INFO - ✓ Actualizado: NB Distribuidora Mayorista SRL - NewBytes (ID: 28)
+2025-12-03 01:43:42,059 - INFO - [20/25] Procesando: OmniChannel S.A.
+2025-12-03 01:43:42,629 - INFO - ✓ Actualizado: OmniChannel S.A. (ID: 29)
+2025-12-03 01:43:42,629 - INFO - [21/25] Procesando: PLANETA VULCANO S.R.L.
+2025-12-03 01:43:43,044 - INFO - ✓ Actualizado: PLANETA VULCANO S.R.L. (ID: 30)
+2025-12-03 01:43:43,045 - INFO - [22/25] Procesando: Pc Arts Argentina S.A.
+2025-12-03 01:43:43,463 - INFO - ✓ Actualizado: Pc Arts Argentina S.A. (ID: 31)
+2025-12-03 01:43:43,463 - INFO - [23/25] Procesando: Polytech S.A.
+2025-12-03 01:43:43,876 - INFO - ✓ Actualizado: Polytech S.A. (ID: 32)
+2025-12-03 01:43:43,876 - INFO - [24/25] Procesando: RITHNER PORTEOUS & C.í.a. S.A. C.e.I.
+2025-12-03 01:43:44,349 - INFO - ✓ Actualizado: RITHNER PORTEOUS & C.í.a. S.A. C.e.I. (ID: 33)
+2025-12-03 01:43:44,349 - INFO - [25/25] Procesando: Stenfar S.A.U.
+2025-12-03 01:43:44,772 - INFO - ✓ Actualizado: Stenfar S.A.U. (ID: 34)
+2025-12-03 01:43:44,773 - INFO - 
+2025-12-03 01:43:44,773 - INFO - ============================================================
+2025-12-03 01:43:44,774 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-03 01:43:44,774 - INFO - ============================================================
+2025-12-03 01:43:44,774 - INFO - Total procesados: 25
+2025-12-03 01:43:44,774 - INFO - ✓ Creados:       0
+2025-12-03 01:43:44,775 - INFO - ✓ Actualizados:  25
+2025-12-03 01:43:44,775 - INFO - ❌ Errores:       0
+2025-12-03 01:43:44,775 - INFO - ⏱ Tiempo:         0:00:13.418072
+2025-12-03 01:43:44,776 - INFO - ============================================================
+2025-12-03 01:43:44,776 - INFO - ✓ ¡Sincronización completada exitosamente!

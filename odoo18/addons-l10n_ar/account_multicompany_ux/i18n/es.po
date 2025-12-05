@@ -1,0 +1,308 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* account_multicompany_ux
+# 
+# Translators:
+# Juan José Scarafía <scarafia.juanjose@gmail.com>, 2025
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-03 01:21+0000\n"
+"PO-Revision-Date: 2024-12-06 17:42+0000\n"
+"Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>, 2025\n"
+"Language-Team: Spanish (https://app.transifex.com/adhoc/teams/46451/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+#. module: account_multicompany_ux
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.product_template_form_view
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_category_property_form
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_partner_property_form
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_partner_property_form_pricelist
+msgid "(edit)"
+msgstr "(editar)"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_account_account
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__property_account_id
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_account_report
+msgid "Accounting Report"
+msgstr "Informe contable"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_partner__property_account_payable_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_users__property_account_payable_ids
+msgid "Accounts Payable"
+msgstr "Cuentas por Pagar"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_partner__property_account_receivable_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_users__property_account_receivable_ids
+msgid "Accounts Receivable"
+msgstr "Cuentas por Cobrar"
+
+#. module: account_multicompany_ux
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_account_change_company
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: account_multicompany_ux
+#: model:ir.actions.act_window,name:account_multicompany_ux.action_account_change_company
+#: model:ir.model,name:account_multicompany_ux.model_account_change_company
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_account_change_company
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_move_form
+msgid "Change Company"
+msgstr "Cambiar Compañía"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_res_company
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__company_ids
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_bank_statement_line__company_id
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__company_id
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_move__company_id
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: account_multicompany_ux
+#: model:ir.actions.act_window,name:account_multicompany_ux.action_res_company_property
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_res_company_account_property_form
+msgid "Company Properties"
+msgstr "Propiedades de la compañia"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_res_company_property
+msgid "Company Property"
+msgstr "Propiedades de la Compañí"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_res_company_property_mixin
+msgid "Company property mixin abstract"
+msgstr "Mezcla abstracta de propiedad de la empresa"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company__consolidation_company
+msgid "Consolidation Company"
+msgstr "Compañía de consolidación"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_product__standard_price_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_template__standard_price_ids
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.product_template_form_view
+msgid "Costs"
+msgstr "Costos Contables"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_partner__property_payment_term_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_users__property_payment_term_ids
+msgid "Customer Payment Term"
+msgstr "Condiciones de pago del Cliente"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__display_name
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__display_name
+msgid "Display Name"
+msgstr "Nombre Mostrado"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_category__property_account_expense_categ_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_product__property_account_expense_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_template__property_account_expense_ids
+msgid "Expense Accounts"
+msgstr "Cuenta de Gastos"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__property_position_id
+msgid "Fiscal Position"
+msgstr "Posición Fiscal"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_partner__property_account_position_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_users__property_account_position_ids
+msgid "Fiscal Positions"
+msgstr "Posiciones Fiscales"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__id
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_category__property_account_income_categ_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_product__property_account_income_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_product_template__property_account_income_ids
+msgid "Income Accounts"
+msgstr "Cuenta de Ingresos"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_account_journal
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__journal_id
+msgid "Journal"
+msgstr "Diario"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,help:account_multicompany_ux.field_res_company__consolidation_company
+msgid ""
+"Journal entries are not allowed on consolidation companies. (so invoices, "
+"payments, etc neither)"
+msgstr ""
+"Los asientos en los diarios no están permitidos en compañías de "
+"consolidación. (tampoco facturas, pagos, etc)"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__move_id
+msgid "Move"
+msgstr "Asiento"
+
+#. module: account_multicompany_ux
+#. odoo-python
+#: code:addons/account_multicompany_ux/models/res_company_property.py:0
+msgid "None"
+msgstr "Ninguna"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__property_term_id
+msgid "Payment Term"
+msgstr "Condiciones de pago"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__property_pricelist_id
+msgid "Pricelist"
+msgstr "Lista de precios"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_product_template
+msgid "Product"
+msgstr "Producto"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_product_category
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: account_multicompany_ux
+#: model:ir.model,name:account_multicompany_ux.model_product_product
+msgid "Product Variant"
+msgstr "Variante de producto"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__property_domain
+msgid "Property Domain"
+msgstr "Dominio de propiedad"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__property_field
+msgid "Property Field"
+msgstr "Campo de propiedad"
+
+#. module: account_multicompany_ux
+#. odoo-python
+#: code:addons/account_multicompany_ux/models/res_company_property.py:0
+msgid "Property for model %s not implemented yet"
+msgstr "Propiedad para el modelo %s no implementada todavía"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_bank_statement_line__reversed_entry_id
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_move__reversed_entry_id
+msgid "Reversal of"
+msgstr "Reversión de"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_partner__property_product_pricelist_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_users__property_product_pricelist_ids
+msgid "Sale Pricelists"
+msgstr "Lista de Precios de Venta"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company__short_name
+msgid "Short Name"
+msgstr "Nombre corto"
+
+#. module: account_multicompany_ux
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_company_form
+msgid "Short Name..."
+msgstr "Nombre corto..."
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,help:account_multicompany_ux.field_res_company__short_name
+msgid "Short name used to identify this company"
+msgstr "Nombre corto utilizado para identificar la compañía"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_account_change_company__suitable_journal_ids
+msgid "Suitable Journal"
+msgstr "Diario Adecuado"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_partner__property_supplier_payment_term_ids
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_users__property_supplier_payment_term_ids
+msgid "Supplier Payment Terms"
+msgstr "Condiciones de Pago del Proveedor"
+
+#. module: account_multicompany_ux
+#. odoo-python
+#: code:addons/account_multicompany_ux/wizards/account_change_company.py:0
+msgid ""
+"The selected company (%s) does not have a discount tax with the same type "
+"and amount as '%s'. The discount tax has been removed from the line."
+msgstr ""
+
+#. module: account_multicompany_ux
+#. odoo-python
+#: code:addons/account_multicompany_ux/models/account_move.py:0
+msgid "You can not create entries on a consolidation company"
+msgstr "Ud. no puede crear asientos en una compañía de consolidación"
+
+#. module: account_multicompany_ux
+#: model_terms:ir.ui.view,arch_db:account_multicompany_ux.view_account_change_company
+msgid "or"
+msgstr "o"
+
+#. module: account_multicompany_ux
+#: model:ir.model.fields,field_description:account_multicompany_ux.field_res_company_property__standard_price
+msgid "standard_price"
+msgstr "Precio Estándar"

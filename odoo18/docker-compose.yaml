@@ -1,14 +1,59 @@
 services:
+  # --- TRAEFIK (Reverse Proxy) ---
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik_proxy
+    restart: always
+    command:
+      - "--api.insecure=true" # Dashboard en puerto 8080
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # Descomentar estas líneas SOLO en VPS para certificados SSL reales:
+      # - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      # - "--certificatesresolvers.myresolver.acme.email=${ACME_EMAIL}"
+      # - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080" # Dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - traefik_certs:/letsencrypt
+    networks:
+      - traefik_public
+
+# --- PORTAINER (GUI para gestión de Docker) ---
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - "9000:9000" # Acceso web a Portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - portainer_data:/data # Volumen para almacenar la configuración de Portainer
+    networks:
+      - traefik_public # Lo ponemos en la misma red para la gestión
+
+  # --- ODOO APP ---
   odoo-app:
     container_name: ${WEB_HOST}
-    image: ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG}
+    # En vez de image, usamos build para instalar dependencias nativas
+    build:
+      context: .
+      dockerfile: ./odoo_custom/Dockerfile
+      args:
+        ODOO_VERSION: ${WEB_IMAGE_TAG}
     restart: always
     depends_on:
       - odoo-db
+    # Mantenemos tu puerto por si quieres acceso directo (bypass Traefik)
     ports:
-      - ${WEB_PORT}:8069
+      - "${WEB_PORT}:8069"
     environment:
-      - HOST=odoo-db
+      - HOST=${DB_HOST}
       - USER=${DB_USER}
       - PASSWORD=${DB_PASSWD}
     networks:
@@ -16,21 +61,29 @@ services:
     volumes:
       - odoo-app-data:/var/lib/odoo
       - ./config:/etc/odoo
-      - ./scripts:/mnt/scripts
+      - ./addons-omyg:/mnt/addons-omyg  # Carpeta de desarrollo personal
+      - ./addons-extra:/mnt/addons-extra  # módulos extra 
+      - ./addons-l10n_ar:/mnt/addons-l10n_ar  # módulos de localizacion
+      - ./addons-oca:/mnt/addons-oca  # módulos de OCA
     labels:
-      - traefik.enable=true
-      - traefik.http.routers.odoo.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`)
-      - traefik.http.routers.odoo.entrypoints=web
-      - traefik.http.routers.odoo.middlewares=redirect-to-https
-      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
-      - traefik.http.routers.odoo-secure.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`)
-      - traefik.http.routers.odoo-secure.entrypoints=websecure
-      - traefik.http.routers.odoo-secure.tls.certresolver=letsencrypt
-      - traefik.http.services.odoo.loadbalancer.server.port=8069
-      - traefik.http.routers.odoo-websocket.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`) && PathPrefix(`/websocket`)
-      - traefik.http.routers.odoo-websocket.entrypoints=websecure
+      - "traefik.enable=true"
+      
+      # Reglas para HTTP (Puerto 80)
+      - "traefik.http.routers.odoo.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      - "traefik.http.routers.odoo.entrypoints=web"
+      - "traefik.http.services.odoo.loadbalancer.server.port=8069"
+
+      # --- CONFIGURACIÓN PARA VPS (HTTPS) ---
+      # Descomenta este bloque cuando subas al VPS y tengas un dominio real:
+      # - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # - "traefik.http.routers.odoo.middlewares=redirect-to-https"
+      # - "traefik.http.routers.odoo-secure.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      # - "traefik.http.routers.odoo-secure.entrypoints=websecure"
+      # - "traefik.http.routers.odoo-secure.tls.certresolver=myresolver"
+
+  # --- DATABASE ---
   odoo-db:
-    container_name: odoo-db
+    container_name: ${DB_HOST}
     image: ${DB_IMAGE}:${DB_TAG}
     restart: always
     environment:
@@ -38,21 +91,20 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWD}
       - POSTGRES_USER=${DB_USER}
       - PGDATA=/var/lib/postgresql/data/pgdata
+    # Puerto interno expuesto solo si necesitas conectarte con un cliente SQL desde Windows
     ports:
       - "${DB_PORT}:5432"
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
     networks:
       - traefik_public
+
 volumes:
   odoo-app-data:
-    name: odoo-app-data
   odoo-db-data:
-    name: odoo-db-data
-networks: # enable connection with Traefik
+  portainer_data:
+  traefik_certs:
+
+networks:
   traefik_public:
-    external: true
-
-
-
-  
+    name: traefik_public

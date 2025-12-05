@@ -1,0 +1,5 @@
+# Requerimientos Odoo + addons comunes
+psycopg2-binary
+pillow
+lxml
+wheel
