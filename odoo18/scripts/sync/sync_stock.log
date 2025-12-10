@@ -1,0 +1,365 @@
+2025-12-07 01:52:09,151 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-07 01:52:09,817 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-07 01:52:09,817 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-07 01:52:11,880 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-07 01:52:11,881 - INFO - Cargando ubicaciones de stock en Odoo 18...
+2025-12-07 01:52:14,408 - INFO - ✓ Ubicación interna encontrada (ID: 8)
+2025-12-07 01:52:14,496 - INFO - ✓ Ubicación de inventario encontrada (ID: 14)
+2025-12-07 01:52:14,497 - INFO - 
+2025-12-07 01:52:14,497 - INFO - ╔==========================================================╗
+2025-12-07 01:52:14,497 - INFO - ║          SINCRONIZACIÓN DE STOCK/INVENTARIO              ║
+2025-12-07 01:52:14,497 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-07 01:52:14,498 - INFO - ╚==========================================================╝
+2025-12-07 01:52:14,498 - INFO - 
+2025-12-07 01:52:14,498 - INFO - 
+2025-12-07 01:52:14,498 - INFO - ============================================================
+2025-12-07 01:52:14,498 - INFO - SINCRONIZANDO STOCK
+2025-12-07 01:52:14,498 - INFO - ============================================================
+2025-12-07 01:52:14,498 - INFO - Cargando mapeo de productos...
+2025-12-07 01:52:14,708 - INFO - ✓ Cargados 900 productos mapeados
+2025-12-07 01:52:14,709 - INFO - Obteniendo cantidades de stock desde Odoo 16...
+2025-12-07 01:52:14,709 - INFO - ⏳ Leyendo lote 1/9 (100 productos)...
+2025-12-07 01:52:14,897 - INFO - ⏳ Leyendo lote 2/9 (100 productos)...
+2025-12-07 01:52:15,051 - INFO - ⏳ Leyendo lote 3/9 (100 productos)...
+2025-12-07 01:52:15,216 - INFO - ⏳ Leyendo lote 4/9 (100 productos)...
+2025-12-07 01:52:15,340 - INFO - ⏳ Leyendo lote 5/9 (100 productos)...
+2025-12-07 01:52:15,495 - INFO - ⏳ Leyendo lote 6/9 (100 productos)...
+2025-12-07 01:52:15,646 - INFO - ⏳ Leyendo lote 7/9 (100 productos)...
+2025-12-07 01:52:15,792 - INFO - ⏳ Leyendo lote 8/9 (100 productos)...
+2025-12-07 01:52:15,925 - INFO - ⏳ Leyendo lote 9/9 (100 productos)...
+2025-12-07 01:52:16,043 - INFO - ✓ Obtenidas cantidades de 879 productos almacenables
+2025-12-07 01:52:16,044 - INFO - 
+2025-12-07 01:52:16,044 - INFO - ============================================================
+2025-12-07 01:52:16,044 - INFO - AJUSTANDO INVENTARIO
+2025-12-07 01:52:16,044 - INFO - ============================================================
+2025-12-07 01:52:16,044 - INFO - [1/879] Procesando: [False] Cartucho HP 711 HEWCZ131A Magenta 29ml
+2025-12-07 01:52:18,182 - INFO - ✓ Ajustado: [False] Adaptador USB WiFi 867Mbps TPLINK Archer Nano T3U AC1300 Dual band (-1.00 → 0.00) [+1.00]
+2025-12-07 01:52:19,552 - INFO - [50/879] Procesando: [False] Ficha Conector RJ45 Cat 5e Bolsa x 100 GLC
+2025-12-07 01:52:21,829 - INFO - ✓ Ajustado: [False] Tarjeta de Memoria MICROSD 128Gb HikSemi V30  R:92MB/s W:50MB/s NEO PLUS camaras videovigilancia (2.00 → 1.00) [-1.00]
+2025-12-07 01:52:22,627 - INFO - ✓ Ajustado: [False] Toner Alternativo para HP W1500A 150A CON CHIP (16.00 → 15.00) [-1.00]
+2025-12-07 01:52:23,726 - INFO - [100/879] Procesando: [] Botella Tinta Original EPSON T504420-AL Amarillo
+2025-12-07 01:52:26,961 - INFO - ✓ Ajustado: [False] Cable HDMI 2.0 4K (A/A) - M M -  3.0Mts Intco (4.00 → 2.00) [-2.00]
+2025-12-07 01:52:27,826 - INFO - [150/879] Procesando: [False] Cargador UNIVERSAL 40W Automatico 8 TIPS SH-CN040W
+2025-12-07 01:52:31,903 - INFO - [200/879] Procesando: [] Botella Tinta Original EPSON T673120-AL Negro
+2025-12-07 01:52:33,007 - INFO - ✓ Ajustado: [False] Adaptador Bluetooth USB 5.3 Nano UB500+ Plus TPLINK (3.00 → 4.00) [+1.00]
+2025-12-07 01:52:35,852 - INFO - [250/879] Procesando: [False] Monitor 19 PERFORMANCE PF185R VGA/HDMI
+2025-12-07 01:52:36,901 - INFO - ✓ Ajustado: [False] MousePad Raptor Ultra Glide Antideslizante Impermeable S (260x210x3mm) (8.00 → 7.00) [-1.00]
+2025-12-07 01:52:39,748 - INFO - [300/879] Procesando: [] Cable AUDIO (2 RCA/2 RCA) M M  1.xMts
+2025-12-07 01:52:43,428 - INFO - ✓ Ajustado: [] Cable UTP *Metro CAT.5e Exterior (110.00 → 85.00) [-25.00]
+2025-12-07 01:52:43,843 - INFO - [350/879] Procesando: [] Cable UTP *Rollo 305mts. CAT.6e  Interior
+2025-12-07 01:52:46,204 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 6 Patchcord   2.0Mts (2.00 → 1.00) [-1.00]
+2025-12-07 01:52:48,418 - INFO - [400/879] Procesando: [] Cartucho Alternativo para HP 664 XL Color
+2025-12-07 01:52:52,308 - INFO - ✓ Ajustado: [] Cargador SHURE/BELSIC/ELEMAX 24w 12.0v 2.0a TIP 3.5x1.4mm (2.00 → 1.00) [-1.00]
+2025-12-07 01:52:52,549 - INFO - [450/879] Procesando: [] Cartucho Alternativo para EPSON 1332 Cian
+2025-12-07 01:52:53,823 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 731 Negro (22.00 → 21.00) [-1.00]
+2025-12-07 01:52:54,084 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 732 Cian (18.00 → 16.00) [-2.00]
+2025-12-07 01:52:54,574 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 733 Magenta (20.00 → 19.00) [-1.00]
+2025-12-07 01:52:54,846 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 734 Amarillo (15.00 → 14.00) [-1.00]
+2025-12-07 01:52:56,679 - INFO - [500/879] Procesando: [] Adaptador Bluetooth USB 5.0 Nano
+2025-12-07 01:52:57,171 - INFO - ✓ Ajustado: [] Adaptador DisplayPort VGA (20p / DB15) M -  H (-1.00 → 0.00) [+1.00]
+2025-12-07 01:53:00,296 - INFO - [550/879] Procesando: [] Fuente ATX 550w SHURE Cooler 12CM Negra
+2025-12-07 01:53:03,593 - INFO - [600/879] Procesando: [] Adaptador HDMI (HDMI / DVI-I 24+5) H - M
+2025-12-07 01:53:04,745 - INFO - ✓ Ajustado: [] Mouse inalambrico GENIUS NX-7000 USB Negro (3.00 → 2.00) [-1.00]
+2025-12-07 01:53:07,133 - INFO - [650/879] Procesando: [] Teclado USB Numerico KOLKE KTN-01
+2025-12-07 01:53:10,521 - INFO - [700/879] Procesando: [] Adaptador USB 3.0 (C / HDMI) M - H
+2025-12-07 01:53:13,448 - INFO - [750/879] Procesando: [] Toner Alternativo para SAMSUNG MLT-D116L
+2025-12-07 01:53:16,456 - INFO - [800/879] Procesando: [False] Adaptador USB 2.0 (C / RJ45) M - H  10/100 Mbps INTCO
+2025-12-07 01:53:19,422 - INFO - [850/879] Procesando: [False] Pen Drive  64Gb 3.2 Kingston 3.2 DTX
+2025-12-07 01:53:21,144 - INFO - 
+2025-12-07 01:53:21,144 - INFO - ============================================================
+2025-12-07 01:53:21,145 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-07 01:53:21,145 - INFO - ============================================================
+2025-12-07 01:53:21,145 - INFO - Total productos:     879
+2025-12-07 01:53:21,145 - INFO - ✓ Ajustados:         15
+2025-12-07 01:53:21,145 - INFO - ⊙ Sin cambios:       864
+2025-12-07 01:53:21,145 - INFO - ❌ Errores:           0
+2025-12-07 01:53:21,146 - INFO - 📦 Unidades ajustadas: 41.00
+2025-12-07 01:53:21,146 - INFO - ⏱ Tiempo:             0:01:06.647190
+2025-12-07 01:53:21,146 - INFO - ============================================================
+2025-12-07 01:53:21,146 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-07 02:07:48,148 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-07 02:07:48,650 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-07 02:07:48,651 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-07 02:07:49,973 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-07 02:07:49,974 - INFO - Cargando ubicaciones de stock en Odoo 18...
+2025-12-07 02:07:50,138 - INFO - ✓ Ubicación interna encontrada (ID: 8)
+2025-12-07 02:07:50,226 - INFO - ✓ Ubicación de inventario encontrada (ID: 14)
+2025-12-07 02:07:50,227 - INFO - 
+2025-12-07 02:07:50,227 - INFO - ╔==========================================================╗
+2025-12-07 02:07:50,227 - INFO - ║          SINCRONIZACIÓN DE STOCK/INVENTARIO              ║
+2025-12-07 02:07:50,227 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-07 02:07:50,228 - INFO - ╚==========================================================╝
+2025-12-07 02:07:50,228 - INFO - 
+2025-12-07 02:07:50,228 - INFO - 
+2025-12-07 02:07:50,229 - INFO - ============================================================
+2025-12-07 02:07:50,229 - INFO - SINCRONIZANDO STOCK
+2025-12-07 02:07:50,229 - INFO - ============================================================
+2025-12-07 02:07:50,229 - INFO - Cargando mapeo de productos...
+2025-12-07 02:07:50,442 - INFO - ✓ Cargados 900 productos mapeados
+2025-12-07 02:07:50,442 - INFO - Obteniendo cantidades de stock desde Odoo 16...
+2025-12-07 02:07:50,442 - INFO - ⏳ Leyendo lote 1/9 (100 productos)...
+2025-12-07 02:07:50,561 - INFO - ⏳ Leyendo lote 2/9 (100 productos)...
+2025-12-07 02:07:50,703 - INFO - ⏳ Leyendo lote 3/9 (100 productos)...
+2025-12-07 02:07:50,826 - INFO - ⏳ Leyendo lote 4/9 (100 productos)...
+2025-12-07 02:07:50,967 - INFO - ⏳ Leyendo lote 5/9 (100 productos)...
+2025-12-07 02:07:51,103 - INFO - ⏳ Leyendo lote 6/9 (100 productos)...
+2025-12-07 02:07:51,274 - INFO - ⏳ Leyendo lote 7/9 (100 productos)...
+2025-12-07 02:07:51,413 - INFO - ⏳ Leyendo lote 8/9 (100 productos)...
+2025-12-07 02:07:51,575 - INFO - ⏳ Leyendo lote 9/9 (100 productos)...
+2025-12-07 02:07:51,702 - INFO - ✓ Obtenidas cantidades de 879 productos almacenables
+2025-12-07 02:07:51,702 - INFO - 
+2025-12-07 02:07:51,703 - INFO - ============================================================
+2025-12-07 02:07:51,703 - INFO - AJUSTANDO INVENTARIO
+2025-12-07 02:07:51,703 - INFO - ============================================================
+2025-12-07 02:07:51,703 - INFO - [1/879] Procesando: [False] Cartucho HP 711 HEWCZ131A Magenta 29ml
+2025-12-07 02:07:53,688 - INFO - ✓ Ajustado: [False] Adaptador USB WiFi 867Mbps TPLINK Archer Nano T3U AC1300 Dual band (-1.00 → 0.00) [+1.00]
+2025-12-07 02:07:54,742 - INFO - [50/879] Procesando: [False] Ficha Conector RJ45 Cat 5e Bolsa x 100 GLC
+2025-12-07 02:07:56,677 - INFO - ✓ Ajustado: [False] Tarjeta de Memoria MICROSD 128Gb HikSemi V30  R:92MB/s W:50MB/s NEO PLUS camaras videovigilancia (2.00 → 1.00) [-1.00]
+2025-12-07 02:07:57,363 - INFO - ✓ Ajustado: [False] Toner Alternativo para HP W1500A 150A CON CHIP (16.00 → 15.00) [-1.00]
+2025-12-07 02:07:58,166 - INFO - [100/879] Procesando: [] Botella Tinta Original EPSON T504420-AL Amarillo
+2025-12-07 02:08:00,700 - INFO - ✓ Ajustado: [False] Cable HDMI 2.0 4K (A/A) - M M -  3.0Mts Intco (4.00 → 2.00) [-2.00]
+2025-12-07 02:08:01,267 - INFO - [150/879] Procesando: [False] Cargador UNIVERSAL 40W Automatico 8 TIPS SH-CN040W
+2025-12-07 02:08:04,080 - INFO - [200/879] Procesando: [] Botella Tinta Original EPSON T673120-AL Negro
+2025-12-07 02:08:04,895 - INFO - ✓ Ajustado: [False] Adaptador Bluetooth USB 5.3 Nano UB500+ Plus TPLINK (3.00 → 4.00) [+1.00]
+2025-12-07 02:08:07,143 - INFO - [250/879] Procesando: [False] Monitor 19 PERFORMANCE PF185R VGA/HDMI
+2025-12-07 02:08:07,931 - INFO - ✓ Ajustado: [False] MousePad Raptor Ultra Glide Antideslizante Impermeable S (260x210x3mm) (8.00 → 7.00) [-1.00]
+2025-12-07 02:08:10,076 - INFO - [300/879] Procesando: [] Cable AUDIO (2 RCA/2 RCA) M M  1.xMts
+2025-12-07 02:08:13,033 - INFO - ✓ Ajustado: [] Cable UTP *Metro CAT.5e Exterior (110.00 → 85.00) [-25.00]
+2025-12-07 02:08:13,284 - INFO - [350/879] Procesando: [] Cable UTP *Rollo 305mts. CAT.6e  Interior
+2025-12-07 02:08:14,778 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 6 Patchcord   2.0Mts (2.00 → 1.00) [-1.00]
+2025-12-07 02:08:16,398 - INFO - [400/879] Procesando: [] Cartucho Alternativo para HP 664 XL Color
+2025-12-07 02:08:19,142 - INFO - ✓ Ajustado: [] Cargador SHURE/BELSIC/ELEMAX 24w 12.0v 2.0a TIP 3.5x1.4mm (2.00 → 1.00) [-1.00]
+2025-12-07 02:08:19,397 - INFO - [450/879] Procesando: [] Cartucho Alternativo para EPSON 1332 Cian
+2025-12-07 02:08:20,635 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 731 Negro (22.00 → 21.00) [-1.00]
+2025-12-07 02:08:20,814 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 732 Cian (18.00 → 16.00) [-2.00]
+2025-12-07 02:08:20,987 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 733 Magenta (20.00 → 19.00) [-1.00]
+2025-12-07 02:08:21,160 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 734 Amarillo (15.00 → 14.00) [-1.00]
+2025-12-07 02:08:22,803 - INFO - [500/879] Procesando: [] Adaptador Bluetooth USB 5.0 Nano
+2025-12-07 02:08:23,146 - INFO - ✓ Ajustado: [] Adaptador DisplayPort VGA (20p / DB15) M -  H (-1.00 → 0.00) [+1.00]
+2025-12-07 02:08:25,885 - INFO - [550/879] Procesando: [] Fuente ATX 550w SHURE Cooler 12CM Negra
+2025-12-07 02:08:28,705 - INFO - [600/879] Procesando: [] Adaptador HDMI (HDMI / DVI-I 24+5) H - M
+2025-12-07 02:08:29,444 - INFO - ✓ Ajustado: [] Mouse inalambrico GENIUS NX-7000 USB Negro (3.00 → 2.00) [-1.00]
+2025-12-07 02:08:31,736 - INFO - [650/879] Procesando: [] Teclado USB Numerico KOLKE KTN-01
+2025-12-07 02:08:34,973 - INFO - [700/879] Procesando: [] Adaptador USB 3.0 (C / HDMI) M - H
+2025-12-07 02:08:38,077 - INFO - [750/879] Procesando: [] Toner Alternativo para SAMSUNG MLT-D116L
+2025-12-07 02:08:41,034 - INFO - [800/879] Procesando: [False] Adaptador USB 2.0 (C / RJ45) M - H  10/100 Mbps INTCO
+2025-12-07 02:08:43,841 - INFO - [850/879] Procesando: [False] Pen Drive  64Gb 3.2 Kingston 3.2 DTX
+2025-12-07 02:08:45,639 - INFO - 
+2025-12-07 02:08:45,640 - INFO - ============================================================
+2025-12-07 02:08:45,640 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-07 02:08:45,640 - INFO - ============================================================
+2025-12-07 02:08:45,640 - INFO - Total productos:     879
+2025-12-07 02:08:45,641 - INFO - ✓ Ajustados:         15
+2025-12-07 02:08:45,641 - INFO - ⊙ Sin cambios:       864
+2025-12-07 02:08:45,641 - INFO - ❌ Errores:           0
+2025-12-07 02:08:45,642 - INFO - 📦 Unidades ajustadas: 41.00
+2025-12-07 02:08:45,642 - INFO - ⏱ Tiempo:             0:00:55.412618
+2025-12-07 02:08:45,643 - INFO - ============================================================
+2025-12-07 02:08:45,644 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-07 02:11:47,611 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-07 02:11:48,132 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-07 02:11:48,133 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-07 02:11:49,478 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-07 02:11:49,479 - INFO - Cargando ubicaciones de stock en Odoo 18...
+2025-12-07 02:11:49,613 - INFO - ✓ Ubicación interna encontrada (ID: 8)
+2025-12-07 02:11:49,676 - INFO - ✓ Ubicación de inventario encontrada (ID: 14)
+2025-12-07 02:11:49,676 - INFO - 
+2025-12-07 02:11:49,677 - INFO - ╔==========================================================╗
+2025-12-07 02:11:49,677 - INFO - ║          SINCRONIZACIÓN DE STOCK/INVENTARIO              ║
+2025-12-07 02:11:49,678 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-07 02:11:49,678 - INFO - ╚==========================================================╝
+2025-12-07 02:11:49,678 - INFO - 
+2025-12-07 02:11:49,679 - INFO - 
+2025-12-07 02:11:49,679 - INFO - ============================================================
+2025-12-07 02:11:49,679 - INFO - SINCRONIZANDO STOCK
+2025-12-07 02:11:49,680 - INFO - ============================================================
+2025-12-07 02:11:49,680 - INFO - Cargando mapeo de productos...
+2025-12-07 02:11:49,821 - INFO - ✓ Cargados 900 productos mapeados
+2025-12-07 02:11:49,821 - INFO - Obteniendo cantidades de stock desde Odoo 16...
+2025-12-07 02:11:49,822 - INFO - ⏳ Leyendo lote 1/9 (100 productos)...
+2025-12-07 02:11:49,941 - INFO - ⏳ Leyendo lote 2/9 (100 productos)...
+2025-12-07 02:11:50,051 - INFO - ⏳ Leyendo lote 3/9 (100 productos)...
+2025-12-07 02:11:50,161 - INFO - ⏳ Leyendo lote 4/9 (100 productos)...
+2025-12-07 02:11:50,288 - INFO - ⏳ Leyendo lote 5/9 (100 productos)...
+2025-12-07 02:11:50,415 - INFO - ⏳ Leyendo lote 6/9 (100 productos)...
+2025-12-07 02:11:50,534 - INFO - ⏳ Leyendo lote 7/9 (100 productos)...
+2025-12-07 02:11:50,661 - INFO - ⏳ Leyendo lote 8/9 (100 productos)...
+2025-12-07 02:11:50,786 - INFO - ⏳ Leyendo lote 9/9 (100 productos)...
+2025-12-07 02:11:50,919 - INFO - ✓ Obtenidas cantidades de 879 productos almacenables
+2025-12-07 02:11:50,919 - INFO - 
+2025-12-07 02:11:50,919 - INFO - ============================================================
+2025-12-07 02:11:50,919 - INFO - AJUSTANDO INVENTARIO
+2025-12-07 02:11:50,919 - INFO - ============================================================
+2025-12-07 02:11:50,920 - INFO - [1/879] Procesando: [False] Cartucho HP 711 HEWCZ131A Magenta 29ml
+2025-12-07 02:11:52,912 - INFO - ✓ Ajustado: [False] Adaptador USB WiFi 867Mbps TPLINK Archer Nano T3U AC1300 Dual band (-1.00 → 0.00) [+1.00]
+2025-12-07 02:11:53,925 - INFO - [50/879] Procesando: [False] Ficha Conector RJ45 Cat 5e Bolsa x 100 GLC
+2025-12-07 02:11:55,828 - INFO - ✓ Ajustado: [False] Tarjeta de Memoria MICROSD 128Gb HikSemi V30  R:92MB/s W:50MB/s NEO PLUS camaras videovigilancia (2.00 → 1.00) [-1.00]
+2025-12-07 02:11:56,480 - INFO - ✓ Ajustado: [False] Toner Alternativo para HP W1500A 150A CON CHIP (16.00 → 15.00) [-1.00]
+2025-12-07 02:11:57,353 - INFO - [100/879] Procesando: [] Botella Tinta Original EPSON T504420-AL Amarillo
+2025-12-07 02:12:00,114 - INFO - ✓ Ajustado: [False] Cable HDMI 2.0 4K (A/A) - M M -  3.0Mts Intco (4.00 → 2.00) [-2.00]
+2025-12-07 02:12:00,734 - INFO - [150/879] Procesando: [False] Cargador UNIVERSAL 40W Automatico 8 TIPS SH-CN040W
+2025-12-07 02:12:03,641 - INFO - [200/879] Procesando: [] Botella Tinta Original EPSON T673120-AL Negro
+2025-12-07 02:12:04,506 - INFO - ✓ Ajustado: [False] Adaptador Bluetooth USB 5.3 Nano UB500+ Plus TPLINK (3.00 → 4.00) [+1.00]
+2025-12-07 02:12:06,794 - INFO - [250/879] Procesando: [False] Monitor 19 PERFORMANCE PF185R VGA/HDMI
+2025-12-07 02:12:07,686 - INFO - ✓ Ajustado: [False] MousePad Raptor Ultra Glide Antideslizante Impermeable S (260x210x3mm) (8.00 → 7.00) [-1.00]
+2025-12-07 02:12:10,260 - INFO - [300/879] Procesando: [] Cable AUDIO (2 RCA/2 RCA) M M  1.xMts
+2025-12-07 02:12:13,171 - INFO - ✓ Ajustado: [] Cable UTP *Metro CAT.5e Exterior (110.00 → 85.00) [-25.00]
+2025-12-07 02:12:13,409 - INFO - [350/879] Procesando: [] Cable UTP *Rollo 305mts. CAT.6e  Interior
+2025-12-07 02:12:14,948 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 6 Patchcord   2.0Mts (2.00 → 1.00) [-1.00]
+2025-12-07 02:12:16,519 - INFO - [400/879] Procesando: [] Cartucho Alternativo para HP 664 XL Color
+2025-12-07 02:12:19,289 - INFO - ✓ Ajustado: [] Cargador SHURE/BELSIC/ELEMAX 24w 12.0v 2.0a TIP 3.5x1.4mm (2.00 → 1.00) [-1.00]
+2025-12-07 02:12:19,515 - INFO - [450/879] Procesando: [] Cartucho Alternativo para EPSON 1332 Cian
+2025-12-07 02:12:20,756 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 731 Negro (22.00 → 21.00) [-1.00]
+2025-12-07 02:12:21,044 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 732 Cian (18.00 → 16.00) [-2.00]
+2025-12-07 02:12:21,273 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 733 Magenta (20.00 → 19.00) [-1.00]
+2025-12-07 02:12:21,508 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 734 Amarillo (15.00 → 14.00) [-1.00]
+2025-12-07 02:12:23,159 - INFO - [500/879] Procesando: [] Adaptador Bluetooth USB 5.0 Nano
+2025-12-07 02:12:23,568 - INFO - ✓ Ajustado: [] Adaptador DisplayPort VGA (20p / DB15) M -  H (-1.00 → 0.00) [+1.00]
+2025-12-07 02:12:26,713 - INFO - [550/879] Procesando: [] Fuente ATX 550w SHURE Cooler 12CM Negra
+2025-12-07 02:12:29,927 - INFO - [600/879] Procesando: [] Adaptador HDMI (HDMI / DVI-I 24+5) H - M
+2025-12-07 02:12:30,822 - INFO - ✓ Ajustado: [] Mouse inalambrico GENIUS NX-7000 USB Negro (3.00 → 2.00) [-1.00]
+2025-12-07 02:12:33,164 - INFO - [650/879] Procesando: [] Teclado USB Numerico KOLKE KTN-01
+2025-12-07 02:12:36,721 - INFO - [700/879] Procesando: [] Adaptador USB 3.0 (C / HDMI) M - H
+2025-12-07 02:12:39,733 - INFO - [750/879] Procesando: [] Toner Alternativo para SAMSUNG MLT-D116L
+2025-12-07 02:12:42,716 - INFO - [800/879] Procesando: [False] Adaptador USB 2.0 (C / RJ45) M - H  10/100 Mbps INTCO
+2025-12-07 02:12:45,814 - INFO - [850/879] Procesando: [False] Pen Drive  64Gb 3.2 Kingston 3.2 DTX
+2025-12-07 02:12:48,178 - INFO - 
+2025-12-07 02:12:48,178 - INFO - ============================================================
+2025-12-07 02:12:48,179 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-07 02:12:48,179 - INFO - ============================================================
+2025-12-07 02:12:48,180 - INFO - Total productos:     879
+2025-12-07 02:12:48,180 - INFO - ✓ Ajustados:         15
+2025-12-07 02:12:48,180 - INFO - ⊙ Sin cambios:       864
+2025-12-07 02:12:48,181 - INFO - ❌ Errores:           0
+2025-12-07 02:12:48,182 - INFO - 📦 Unidades ajustadas: 41.00
+2025-12-07 02:12:48,182 - INFO - ⏱ Tiempo:             0:00:58.501646
+2025-12-07 02:12:48,183 - INFO - ============================================================
+2025-12-07 02:12:48,184 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-07 02:12:55,678 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-07 02:12:56,278 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-07 02:12:56,278 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-07 02:12:57,821 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-07 02:12:57,821 - INFO - Cargando ubicaciones de stock en Odoo 18...
+2025-12-07 02:12:57,940 - INFO - ✓ Ubicación interna encontrada (ID: 8)
+2025-12-07 02:12:57,999 - INFO - ✓ Ubicación de inventario encontrada (ID: 14)
+2025-12-07 02:12:57,999 - INFO - 
+2025-12-07 02:12:57,999 - INFO - ╔==========================================================╗
+2025-12-07 02:12:57,999 - INFO - ║          SINCRONIZACIÓN DE STOCK/INVENTARIO              ║
+2025-12-07 02:12:58,000 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-07 02:12:58,000 - INFO - ╚==========================================================╝
+2025-12-07 02:12:58,000 - INFO - 
+2025-12-07 02:12:58,000 - INFO - 
+2025-12-07 02:12:58,001 - INFO - ============================================================
+2025-12-07 02:12:58,001 - INFO - SINCRONIZANDO STOCK
+2025-12-07 02:12:58,001 - INFO - ============================================================
+2025-12-07 02:12:58,002 - INFO - Cargando mapeo de productos...
+2025-12-07 02:12:58,154 - INFO - ✓ Cargados 900 productos mapeados
+2025-12-07 02:12:58,155 - INFO - Obteniendo cantidades de stock desde Odoo 16...
+2025-12-07 02:12:58,155 - INFO - ⏳ Leyendo lote 1/9 (100 productos)...
+2025-12-07 02:12:58,291 - INFO - ⏳ Leyendo lote 2/9 (100 productos)...
+2025-12-07 02:12:58,440 - INFO - ⏳ Leyendo lote 3/9 (100 productos)...
+2025-12-07 02:12:58,564 - INFO - ⏳ Leyendo lote 4/9 (100 productos)...
+2025-12-07 02:12:58,688 - INFO - ⏳ Leyendo lote 5/9 (100 productos)...
+2025-12-07 02:12:58,799 - INFO - ⏳ Leyendo lote 6/9 (100 productos)...
+2025-12-07 02:12:58,913 - INFO - ⏳ Leyendo lote 7/9 (100 productos)...
+2025-12-07 02:12:59,040 - INFO - ⏳ Leyendo lote 8/9 (100 productos)...
+2025-12-07 02:12:59,181 - INFO - ⏳ Leyendo lote 9/9 (100 productos)...
+2025-12-07 02:12:59,323 - INFO - ✓ Obtenidas cantidades de 879 productos almacenables
+2025-12-07 02:12:59,324 - INFO - 
+2025-12-07 02:12:59,324 - INFO - ============================================================
+2025-12-07 02:12:59,324 - INFO - AJUSTANDO INVENTARIO
+2025-12-07 02:12:59,325 - INFO - ============================================================
+2025-12-07 02:12:59,325 - INFO - [1/879] Procesando: [False] Cartucho HP 711 HEWCZ131A Magenta 29ml
+2025-12-07 02:13:02,224 - INFO - [50/879] Procesando: [False] Ficha Conector RJ45 Cat 5e Bolsa x 100 GLC
+2025-12-07 02:13:05,042 - INFO - [100/879] Procesando: [] Botella Tinta Original EPSON T504420-AL Amarillo
+2025-12-07 02:13:07,968 - INFO - [150/879] Procesando: [False] Cargador UNIVERSAL 40W Automatico 8 TIPS SH-CN040W
+2025-12-07 02:13:10,840 - INFO - [200/879] Procesando: [] Botella Tinta Original EPSON T673120-AL Negro
+2025-12-07 02:13:13,802 - INFO - [250/879] Procesando: [False] Monitor 19 PERFORMANCE PF185R VGA/HDMI
+2025-12-07 02:13:16,824 - INFO - [300/879] Procesando: [] Cable AUDIO (2 RCA/2 RCA) M M  1.xMts
+2025-12-07 02:13:20,454 - INFO - [350/879] Procesando: [] Cable UTP *Rollo 305mts. CAT.6e  Interior
+2025-12-07 02:13:24,943 - INFO - [400/879] Procesando: [] Cartucho Alternativo para HP 664 XL Color
+2025-12-07 02:13:30,219 - INFO - [450/879] Procesando: [] Cartucho Alternativo para EPSON 1332 Cian
+2025-12-07 02:13:34,242 - INFO - [500/879] Procesando: [] Adaptador Bluetooth USB 5.0 Nano
+2025-12-07 02:13:38,122 - INFO - [550/879] Procesando: [] Fuente ATX 550w SHURE Cooler 12CM Negra
+2025-12-07 02:13:41,555 - INFO - [600/879] Procesando: [] Adaptador HDMI (HDMI / DVI-I 24+5) H - M
+2025-12-07 02:13:44,666 - INFO - [650/879] Procesando: [] Teclado USB Numerico KOLKE KTN-01
+2025-12-07 02:13:48,526 - INFO - [700/879] Procesando: [] Adaptador USB 3.0 (C / HDMI) M - H
+2025-12-07 02:13:51,666 - INFO - [750/879] Procesando: [] Toner Alternativo para SAMSUNG MLT-D116L
+2025-12-07 02:13:55,196 - INFO - [800/879] Procesando: [False] Adaptador USB 2.0 (C / RJ45) M - H  10/100 Mbps INTCO
+2025-12-07 02:13:58,739 - INFO - [850/879] Procesando: [False] Pen Drive  64Gb 3.2 Kingston 3.2 DTX
+2025-12-07 02:14:00,704 - INFO - 
+2025-12-07 02:14:00,704 - INFO - ============================================================
+2025-12-07 02:14:00,704 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-07 02:14:00,705 - INFO - ============================================================
+2025-12-07 02:14:00,705 - INFO - Total productos:     879
+2025-12-07 02:14:00,705 - INFO - ✓ Ajustados:         0
+2025-12-07 02:14:00,706 - INFO - ⊙ Sin cambios:       879
+2025-12-07 02:14:00,706 - INFO - ❌ Errores:           0
+2025-12-07 02:14:00,706 - INFO - 📦 Unidades ajustadas: 0.00
+2025-12-07 02:14:00,707 - INFO - ⏱ Tiempo:             0:01:02.704885
+2025-12-07 02:14:00,707 - INFO - ============================================================
+2025-12-07 02:14:00,707 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-08 12:21:43,378 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-08 12:21:44,079 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-08 12:21:44,079 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-08 12:21:45,610 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-08 12:21:45,610 - INFO - Cargando ubicaciones de stock en Odoo 18...
+2025-12-08 12:21:45,755 - INFO - ✓ Ubicación interna encontrada (ID: 8)
+2025-12-08 12:21:45,829 - INFO - ✓ Ubicación de inventario encontrada (ID: 14)
+2025-12-08 12:21:45,830 - INFO - 
+2025-12-08 12:21:45,830 - INFO - ╔==========================================================╗
+2025-12-08 12:21:45,831 - INFO - ║          SINCRONIZACIÓN DE STOCK/INVENTARIO              ║
+2025-12-08 12:21:45,831 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-08 12:21:45,831 - INFO - ╚==========================================================╝
+2025-12-08 12:21:45,832 - INFO - 
+2025-12-08 12:21:45,832 - INFO - 
+2025-12-08 12:21:45,832 - INFO - ============================================================
+2025-12-08 12:21:45,833 - INFO - SINCRONIZANDO STOCK
+2025-12-08 12:21:45,833 - INFO - ============================================================
+2025-12-08 12:21:45,834 - INFO - Cargando mapeo de productos...
+2025-12-08 12:21:46,043 - INFO - ✓ Cargados 900 productos mapeados
+2025-12-08 12:21:46,043 - INFO - Obteniendo cantidades de stock desde Odoo 16...
+2025-12-08 12:21:46,044 - INFO - ⏳ Leyendo lote 1/9 (100 productos)...
+2025-12-08 12:21:46,595 - INFO - ⏳ Leyendo lote 2/9 (100 productos)...
+2025-12-08 12:21:46,756 - INFO - ⏳ Leyendo lote 3/9 (100 productos)...
+2025-12-08 12:21:46,900 - INFO - ⏳ Leyendo lote 4/9 (100 productos)...
+2025-12-08 12:21:47,053 - INFO - ⏳ Leyendo lote 5/9 (100 productos)...
+2025-12-08 12:21:47,184 - INFO - ⏳ Leyendo lote 6/9 (100 productos)...
+2025-12-08 12:21:47,344 - INFO - ⏳ Leyendo lote 7/9 (100 productos)...
+2025-12-08 12:21:47,477 - INFO - ⏳ Leyendo lote 8/9 (100 productos)...
+2025-12-08 12:21:47,630 - INFO - ⏳ Leyendo lote 9/9 (100 productos)...
+2025-12-08 12:21:47,780 - INFO - ✓ Obtenidas cantidades de 879 productos almacenables
+2025-12-08 12:21:47,781 - INFO - 
+2025-12-08 12:21:47,781 - INFO - ============================================================
+2025-12-08 12:21:47,782 - INFO - AJUSTANDO INVENTARIO
+2025-12-08 12:21:47,782 - INFO - ============================================================
+2025-12-08 12:21:47,782 - INFO - [1/879] Procesando: [False] Cartucho HP 711 HEWCZ131A Magenta 29ml
+2025-12-08 12:21:50,740 - INFO - [50/879] Procesando: [False] Ficha Conector RJ45 Cat 5e Bolsa x 100 GLC
+2025-12-08 12:21:53,536 - INFO - [100/879] Procesando: [] Botella Tinta Original EPSON T504420-AL Amarillo
+2025-12-08 12:21:56,450 - INFO - [150/879] Procesando: [False] Cargador UNIVERSAL 40W Automatico 8 TIPS SH-CN040W
+2025-12-08 12:21:59,283 - INFO - [200/879] Procesando: [] Botella Tinta Original EPSON T673120-AL Negro
+2025-12-08 12:22:02,188 - INFO - [250/879] Procesando: [False] Monitor 19 PERFORMANCE PF185R VGA/HDMI
+2025-12-08 12:22:05,104 - INFO - [300/879] Procesando: [] Cable AUDIO (2 RCA/2 RCA) M M  1.xMts
+2025-12-08 12:22:07,886 - INFO - [350/879] Procesando: [] Cable UTP *Rollo 305mts. CAT.6e  Interior
+2025-12-08 12:22:10,736 - INFO - [400/879] Procesando: [] Cartucho Alternativo para HP 664 XL Color
+2025-12-08 12:22:13,494 - INFO - [450/879] Procesando: [] Cartucho Alternativo para EPSON 1332 Cian
+2025-12-08 12:22:16,373 - INFO - [500/879] Procesando: [] Adaptador Bluetooth USB 5.0 Nano
+2025-12-08 12:22:19,183 - INFO - [550/879] Procesando: [] Fuente ATX 550w SHURE Cooler 12CM Negra
+2025-12-08 12:22:22,096 - INFO - [600/879] Procesando: [] Adaptador HDMI (HDMI / DVI-I 24+5) H - M
+2025-12-08 12:22:24,986 - INFO - [650/879] Procesando: [] Teclado USB Numerico KOLKE KTN-01
+2025-12-08 12:22:27,807 - INFO - [700/879] Procesando: [] Adaptador USB 3.0 (C / HDMI) M - H
+2025-12-08 12:22:30,668 - INFO - [750/879] Procesando: [] Toner Alternativo para SAMSUNG MLT-D116L
+2025-12-08 12:22:33,443 - INFO - [800/879] Procesando: [False] Adaptador USB 2.0 (C / RJ45) M - H  10/100 Mbps INTCO
+2025-12-08 12:22:36,325 - INFO - [850/879] Procesando: [False] Pen Drive  64Gb 3.2 Kingston 3.2 DTX
+2025-12-08 12:22:38,001 - INFO - 
+2025-12-08 12:22:38,001 - INFO - ============================================================
+2025-12-08 12:22:38,002 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-08 12:22:38,002 - INFO - ============================================================
+2025-12-08 12:22:38,002 - INFO - Total productos:     879
+2025-12-08 12:22:38,003 - INFO - ✓ Ajustados:         0
+2025-12-08 12:22:38,003 - INFO - ⊙ Sin cambios:       879
+2025-12-08 12:22:38,003 - INFO - ❌ Errores:           0
+2025-12-08 12:22:38,003 - INFO - 📦 Unidades ajustadas: 0.00
+2025-12-08 12:22:38,006 - INFO - ⏱ Tiempo:             0:00:52.171406
+2025-12-08 12:22:38,008 - INFO - ============================================================
+2025-12-08 12:22:38,009 - INFO - ✓ ¡Sincronización completada exitosamente!

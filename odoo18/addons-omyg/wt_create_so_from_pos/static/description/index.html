@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Odoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://apps.odoocdn.com/web/content/7297172-19e3d31/1/web.assets_frontend.css" rel="stylesheet">
+
+    <style>
+        /* Define alignment for images within oe_screenshot class */
+        .oe_screenshot img {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main container with relative positioning -->
+    <div class="container position-relative">
+        <!-- Header section -->
+        <div class="position-relative my-5">
+            <div class="row no-gutters shadow-sm">
+                <!-- Header content -->
+                <div class="col-md-12">
+                    <div class="bg-white h-100 d-flex justify-content-between align-items-center shadow p-4">
+                        <!-- Logo -->
+                        <div class="text-center mr-lg-5 mb-3 mb-lg-0">
+                            <a class="btn p-2" href="http://warlocktechnologies.com/" target="_blank">
+                                <img src="icon.png" alt="warlock-logo" style="height: 125px">
+                            </a>
+                        </div>
+                        
+                        <!-- Title -->
+                        <div class="text-center flex-grow-1">
+                            <h4 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #045373 !important; font-size: 1.7rem !important; margin-bottom: 0;">
+                                CREATE SALES ORDER FROM POS
+                            </h4>
+                        </div>
+
+                        <!-- Badges -->
+                        <div class="d-flex align-items-center">
+                            <div style="background-color: #7C7BAD !important; color: #fff !important; font-weight: 600 !important; padding: 5px 15px 8px !important; margin: 0 5px !important;">
+                                <i class="fa fa-check mr-1">Community</i>
+                            </div>
+                            <div style="background-color: #7C7BAD !important; color: #fff !important; font-weight: 600 !important; padding: 5px 15px 8px !important; margin: 0 5px !important;">
+                                <i class="fa fa-check mr-1">Enterprise</i>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Explore module section -->
+        <div class="row">
+            <!-- Overview -->
+            <div class="col-md-12" style="border-bottom: 1px solid #d5d5d5 !important; margin-bottom: 2rem !important">
+                <h2 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 2.5rem !important;">
+                    <i class="fa fa-compass mr-2"></i>Explore this module
+                </h2>
+            </div>
+
+            <!-- Overview -->
+            <div class="col-md-4">
+                <a href="#overview" style="text-decoration: none !important;">
+                    <div class="row" style="background-color: #f5f2f5 !important; border-radius: 10px !important; margin: 1rem !important; padding: 1.5em !important; height: auto !important;">
+                        <div class="col-8">
+                            <h3 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 1.0rem !important;">
+                                Overview
+                            </h3>
+                            <p style="font-family: 'Roboto', sans-serif !important; font-weight: 400 !important; color: #714B67 !important; font-size: 0.8rem !important;">
+                                Learn more about this module
+                            </p>
+                        </div>
+                        <div class="col-4 text-right d-flex justify-content-end align-items-center">
+                            <i class="fa fa-chevron-right" style="color: #714B67 !important;"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Features -->
+            <div class="col-md-4">
+                <a href="#features" style="text-decoration: none !important;">
+                    <div class="row" style="background-color: #f5f2f5 !important; border-radius: 10px !important; margin: 1rem !important; padding: 1.5em !important; height: auto !important;">
+                        <div class="col-8">
+                            <h3 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 1.0rem !important;">
+                                Features
+                            </h3>
+                            <p style="font-family: 'Roboto', sans-serif !important; font-weight: 400 !important; color: #714B67 !important; font-size: 0.8rem !important;">
+                                View features of this module
+                            </p>
+                        </div>
+                        <div class="col-4 text-right d-flex justify-content-end align-items-center">
+                            <i class="fa fa-chevron-right" style="color: #714B67 !important;"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Configuration -->
+            <div class="col-md-4">
+                <a href="#configuration" style="text-decoration: none !important;">
+                    <div class="row" style="background-color: #f5f2f5 !important; border-radius: 10px !important; margin: 1rem !important; padding: 1.5em !important; height: auto !important;">
+                        <div class="col-8">
+                            <h3 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 1.0rem !important;">
+                                Configuration
+                            </h3>
+                            <p style="font-family: 'Roboto', sans-serif !important; font-weight: 400 !important; color: #714B67 !important; font-size: 0.8rem !important;">
+                                See key configuration of this module.
+                            </p>
+                        </div>
+                        <div class="col-4 text-right d-flex justify-content-end align-items-center">
+                            <i class="fa fa-chevron-right" style="color: #714B67 !important;"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="row" id="overview">
+            <!-- Overview Heading -->
+            <div class="col-md-12" style="border-bottom: 1px solid #d5d5d5 !important; margin: 2rem 0 !important">
+                <h2 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 2.5rem !important;justify-content: center !important;">
+                    <i class="fa fa-pie-chart mr-2"></i> Overview
+                </h2>
+            </div>
+            <!-- Overview Content -->
+            <div class="col-md-12 pl-3 py-3 d-flex">
+                <div>
+                    <p style="font-family: 'Roboto', sans-serif !important; font-weight: 400 !important; color: #000000 !important; font-size: 1.4rem !important;"><b>
+                        CREATE SALES ORDER FROM POS allows you to create sale order and also provide functionality to view sale orders in pos.</b></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row" id="features">
+            <!-- Features Heading -->
+            <div class="col-md-12" style="border-bottom: 1px solid #d5d5d5 !important; margin: 2rem 0 !important">
+                <h2 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 2.5rem !important;">
+                    <i class="fa fa-star mr-2"></i> Features
+                </h2>
+            </div>
+
+            <!-- Features Content -->
+            <div class="col-md-12 pl-3 py-1 d-flex">
+                <div>
+                    <img src="check.png">
+                </div>
+                <div>
+                    <h4 style="font-family: 'Roboto', sans-serif !important; font-weight: 600 !important; color: #000000 !important; font-size: 1.5rem !important;">
+                        This module allows you to create sals order from point of sale.
+                    </h4>
+                </div>
+            </div>
+            <div class="col-md-12 pl-3 py-1 d-flex">
+                <div>
+                    <img src="check.png">
+                </div>
+                <div>
+                    <h4 style="font-family: 'Roboto', sans-serif !important; font-weight: 600 !important; color: #000000 !important; font-size: 1.5rem !important;">
+                        This module allows you to Confirm and Cancel the sales order from point of sale.
+                    </h4>
+                </div>
+            </div>
+            <div class="col-md-12 pl-3 py-1 d-flex">
+                <div>
+                    <img src="check.png">
+                </div>
+                <div>
+                    <h4 style="font-family: 'Roboto', sans-serif !important; font-weight: 600 !important; color: #000000 !important; font-size: 1.5rem !important;">
+                        You can manage Sales order in point of sale which is created from point of sale screen.
+                    </h4>
+                </div>
+            </div>
+            <!-- Add more features here -->
+            
+            
+        </div>
+
+        <!-- Configuration Section -->
+        <div class="row" id="configuration">
+            <!-- Configuration Heading -->
+            <div class="col-md-12" style="border-bottom: 1px solid #d5d5d5 !important; margin: 2rem 0 !important">
+                <h2 style="font-family: 'Montserrat', sans-serif !important; font-weight: 600 !important; color: #714B67 !important; font-size: 2.5rem !important;">
+                    <i class="fa fa-image mr-2"></i> Configuration
+                </h2>
+            </div>
+
+            <!-- Configuration Content -->
+            <div class="oe_row oe_spaced">
+                <!-- Add configuration steps here -->
+                
+            
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">MANAGE SALE ORDER</li><hr>
+                    <p>Go to Point of Sale -> Configuration -> Point of Sale, Inside point of Sale we have added one boolean field, if you want to manage sales order from point of sale screen then you have to mark this boolean field as true.</p>    
+                </ul>
+                
+                
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="1.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">CREATE AND VIEW SALES ORDER</li><hr>
+                    <p>Once you will mark the boolean field as true you can see two new buttons in point of sale screen.
+                        Create Sales Order
+                        View Sales Order.</p>    
+                </ul>
+                
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="2.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">CREATE SALE ORDER FIELD INVISIBLE</li><hr>
+                    <p>If you mark Create sale order field as false in point of sale then the buttons are invisible in point of sale screen.</p> 
+                </ul>
+                
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="3.png">
+                </div>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="4.png">
+                </div>
+
+
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SALE ORDER CREATION MESSAGE</li><hr>
+                    <p>Once you click on Create sales order button it will create a sale order and show the popup message.
+                        .</p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="7.png">
+                </div>
+
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">ORDER STATE</li><hr>
+                    <p>You can see the sale order is created with selected partner and products with draft state.
+                        </p>    
+                </ul>
+                
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="8.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">ERROR MESSAGE WITHOUT CUSTOMER SELECTION</li><hr>
+                    <p>If you will try to create sale order without selecting the customer it will show the error message.
+                        </p>    
+                </ul>
+               
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="6.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">ERROR MESSAGE WITHOUT PRODUCT SELECTION</li><hr>
+                    <p>If you will try to create sale order without adding the product it will also show the error message.
+                        </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="18.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">DETAILS OF SALE ORDER CREATION</li><hr>
+                    <p>By clicking on View sales Order button you can see the details of sale orders which is created from point of sale screen.
+                        </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="9.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SALE ORDERLINE CREATION DATA</li><hr>
+                    <p>By clicking on sale order line you will get one popup.
+                        it will ask you for whether you want to confirm the order or cancel the order.
+                        
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="10.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SALEORDER CONFIRM STATE</li><hr>
+                    <p> The sale order "S00026" is already in confirm state confirm Option is invisible.
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="11.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SALEORDER QUOTATION STATE</li><hr>
+                    <p> In the below image we have selected sales order "S00027" is currently in "Quotation" state.
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="12.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">QUOTATION DELIVERY STATE</li><hr>
+                    <p> Aftr Clicking on confirm sales order the state of sale order "S00027" is changed from quotation to Confirm and delivery is generated automatically.
+                
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="13.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SALE ORDER CANCEL STATE</li><hr>
+                    <p> In the below image we have selected sale order "S00029" which is in cancelled state..
+                
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="14.png">
+                </div>
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SALE ORDER CANCELLATION</li><hr>
+                    <p>Here we have selected sale order "S00028" which is in confirm state..
+
+                
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="16.png">
+                </div>
+                
+                <ul>
+                    <li class="mt-5" style="color:#000000;font-weight:bold; font-size:20px;">SELECT SALE ORDER IN CONFIRMATION STATE</li><hr>
+                    <p>After clicking on cancel sales order button you can see the salesorder is cancelled.
+
+                
+                     </p>    
+                </ul>
+                <div class="oe_screenshot mt-5">
+                    <img style="width: 95%; height: 60%;" src="17.png">
+                </div>
+                
+                
+                             
+             
+
+            </div>
+        <!-- Contact Section -->
+        <div class="container-fluid">
+            <div class="row h-100">
+                <div class="col-12 h-100 d-flex align-items-center justify-content-center" style="border-top: 1px solid black;margin-top:50px;">
+                    <div class="d-flex align-items-center "></div>
+                    <div class="mb-sm-0 mb-3 d-flex align-items-center">
+                        <img src="letter.png" style="width: 60px;height: 60px;margin-right: 20px" />
+                        <span class="text-center my-4" style="font-size: 18px; color: #045373;">sales@warlocktechnologies.com</span>
+                    </div>
+                    <div class="d-flex align-items-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

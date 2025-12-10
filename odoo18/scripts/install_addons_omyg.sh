@@ -15,7 +15,7 @@ DB_PASSWORD="bgt56yhn*971"
 HTTP_PORT=8069
 
 # Lista de módulos separados por espacio
-MODULES="cst_show_pos_product_price pos_full_product_name pos_restrict_product_stock"
+MODULES="cst_show_pos_product_price pos_full_product_name pos_restrict_product_stock dolares_arg"
 
 # Iterar sobre los módulos
 for MODULE in $MODULES; do

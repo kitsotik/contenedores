@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//block[@id='pos_interface_section']" position="inside">
                 <setting help="Visible the price on POS Product Screen.">
-                    <field name="pos_show_price" string="Product Price On PoS"/>
+                    <field name="pos_show_price" string="Precio de Producto en PdV"/>
                 </setting>
             </xpath>
         </field>

@@ -1,414 +1,414 @@
-2025-12-03 01:46:59,373 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
-2025-12-03 01:46:59,902 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
-2025-12-03 01:46:59,902 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
-2025-12-03 01:47:01,419 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
-2025-12-03 01:47:01,420 - INFO - 
-2025-12-03 01:47:01,420 - INFO - ╔==========================================================╗
-2025-12-03 01:47:01,421 - INFO - ║          SINCRONIZACIÓN DE CATEGORÍAS                    ║
-2025-12-03 01:47:01,421 - INFO - ║               Odoo 16 → Odoo 18                         ║
-2025-12-03 01:47:01,421 - INFO - ╚==========================================================╝
-2025-12-03 01:47:01,422 - INFO - 
-2025-12-03 01:47:01,422 - INFO - 
-2025-12-03 01:47:01,422 - INFO - ============================================================
-2025-12-03 01:47:01,423 - INFO - SINCRONIZANDO CATEGORÍAS DE PRODUCTOS
-2025-12-03 01:47:01,423 - INFO - ============================================================
-2025-12-03 01:47:01,549 - INFO - ✓ Encontradas 127 categorías de productos
-2025-12-03 01:47:01,550 - INFO - [1/127] Procesando: All
-2025-12-03 01:47:01,786 - INFO - [2/127] Procesando: All / Deliveries
-2025-12-03 01:47:02,014 - INFO - [3/127] Procesando: All / Expenses
-2025-12-03 01:47:02,230 - INFO - [4/127] Procesando: All / Saleable
-2025-12-03 01:47:02,537 - INFO - [5/127] Procesando: All / Saleable / PoS
-2025-12-03 01:47:02,796 - INFO - [6/127] Procesando: Componentes
-2025-12-03 01:47:03,015 - INFO - [7/127] Procesando: Componentes / Almacenamiento
-2025-12-03 01:47:03,231 - INFO - [8/127] Procesando: Componentes / Almacenamiento / Discos HDD
-2025-12-03 01:47:03,450 - INFO - [9/127] Procesando: Componentes / Almacenamiento / Discos HDD 2.5
-2025-12-03 01:47:03,668 - INFO - [10/127] Procesando: Componentes / Almacenamiento / Discos SSD - M2
-2025-12-03 01:47:03,884 - INFO - [11/127] Procesando: Componentes / Almacenamiento / Discos USB Externos
-2025-12-03 01:47:04,099 - INFO - [12/127] Procesando: Componentes / Almacenamiento / Discos USB Externos
-2025-12-03 01:47:04,311 - INFO - [13/127] Procesando: Componentes / Almacenamiento / Opticos
-2025-12-03 01:47:04,535 - INFO - [14/127] Procesando: Componentes / Almacenamiento / Pen Drive
-2025-12-03 01:47:04,753 - INFO - [15/127] Procesando: Componentes / Almacenamiento / Tarjetas de Memoria
-2025-12-03 01:47:04,972 - INFO - [16/127] Procesando: Componentes / Fuentes
-2025-12-03 01:47:05,186 - INFO - [17/127] Procesando: Componentes / Gabinetes
-2025-12-03 01:47:05,404 - INFO - [18/127] Procesando: Componentes / Memorias
-2025-12-03 01:47:05,619 - INFO - [19/127] Procesando: Componentes / Memorias / DDR2
-2025-12-03 01:47:05,838 - INFO - [20/127] Procesando: Componentes / Memorias / DDR3
-2025-12-03 01:47:06,059 - INFO - [21/127] Procesando: Componentes / Memorias / DDR4
-2025-12-03 01:47:06,275 - INFO - [22/127] Procesando: Componentes / Memorias / DDR5
-2025-12-03 01:47:06,491 - INFO - [23/127] Procesando: Componentes / Memorias / SODDR3
-2025-12-03 01:47:06,703 - INFO - [24/127] Procesando: Componentes / Memorias / SODDR4
-2025-12-03 01:47:06,921 - INFO - [25/127] Procesando: Componentes / Motherboards
-2025-12-03 01:47:07,141 - INFO - [26/127] Procesando: Componentes / Motherboards / Amd
-2025-12-03 01:47:07,357 - INFO - [27/127] Procesando: Componentes / Motherboards / Intel
-2025-12-03 01:47:07,694 - INFO - [28/127] Procesando: Componentes / Placas
-2025-12-03 01:47:07,918 - INFO - [29/127] Procesando: Componentes / Placas / Placas controladoras
-2025-12-03 01:47:08,136 - INFO - [30/127] Procesando: Componentes / Placas / Placas de Video
-2025-12-03 01:47:08,353 - INFO - [31/127] Procesando: Componentes / Placas / Placas de sonido
-2025-12-03 01:47:08,582 - INFO - [32/127] Procesando: Componentes / Procesadores
-2025-12-03 01:47:08,797 - INFO - [33/127] Procesando: Componentes / Procesadores / Amd
-2025-12-03 01:47:09,008 - INFO - [34/127] Procesando: Componentes / Procesadores / Intel
-2025-12-03 01:47:09,226 - INFO - [35/127] Procesando: Componentes / Repuestos Notebooks
-2025-12-03 01:47:09,481 - INFO - [36/127] Procesando: Componentes / Repuestos Notebooks / Baterias
-2025-12-03 01:47:09,689 - INFO - [37/127] Procesando: Componentes / Repuestos Notebooks / Coolers
-2025-12-03 01:47:09,914 - INFO - [38/127] Procesando: Componentes / Repuestos Notebooks / Pantallas
-2025-12-03 01:47:10,131 - INFO - [39/127] Procesando: Componentes / Repuestos Notebooks / Teclados
-2025-12-03 01:47:10,340 - INFO - [40/127] Procesando: Componentes / Ventiladores
-2025-12-03 01:47:10,559 - INFO - [41/127] Procesando: Conectividad
-2025-12-03 01:47:10,766 - INFO - [42/127] Procesando: Conectividad / Cables y Adaptadores
-2025-12-03 01:47:10,981 - INFO - [43/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Alimentacion
-2025-12-03 01:47:11,196 - INFO - [44/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Audio
-2025-12-03 01:47:11,417 - INFO - [45/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Molex
-2025-12-03 01:47:11,626 - INFO - [46/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores USB
-2025-12-03 01:47:11,842 - INFO - [47/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Video
-2025-12-03 01:47:12,055 - INFO - [48/127] Procesando: Conectividad / Cables y Adaptadores / Cables Audio
-2025-12-03 01:47:12,268 - INFO - [49/127] Procesando: Conectividad / Cables y Adaptadores / Cables Energia y datos
-2025-12-03 01:47:12,550 - INFO - [50/127] Procesando: Conectividad / Cables y Adaptadores / Cables USB
-2025-12-03 01:47:12,805 - INFO - [51/127] Procesando: Conectividad / Cables y Adaptadores / Cables UTP
-2025-12-03 01:47:13,017 - INFO - [52/127] Procesando: Conectividad / Cables y Adaptadores / Cables Video
-2025-12-03 01:47:13,234 - INFO - [53/127] Procesando: Conectividad / Camaras IP
-2025-12-03 01:47:13,450 - INFO - [54/127] Procesando: Conectividad / Interfaces
-2025-12-03 01:47:13,662 - INFO - [55/127] Procesando: Conectividad / Interfaces / Hub y lectores Usb
-2025-12-03 01:47:13,873 - INFO - [56/127] Procesando: Conectividad / Interfaces / Interfaces USB
-2025-12-03 01:47:14,090 - INFO - [57/127] Procesando: Conectividad / Redes
-2025-12-03 01:47:14,303 - INFO - [58/127] Procesando: Conectividad / Redes / Cableadas
-2025-12-03 01:47:14,526 - INFO - [59/127] Procesando: Conectividad / Redes / Inalambricas
-2025-12-03 01:47:14,735 - INFO - [60/127] Procesando: Impresion
-2025-12-03 01:47:14,945 - INFO - [61/127] Procesando: Impresion / Laser
-2025-12-03 01:47:15,156 - INFO - [62/127] Procesando: Impresion / Tinta
-2025-12-03 01:47:15,365 - INFO - [63/127] Procesando: Insumos
-2025-12-03 01:47:15,577 - INFO - [64/127] Procesando: Insumos / CDs - DVDs - Sobres
-2025-12-03 01:47:15,787 - INFO - [65/127] Procesando: Insumos / CDs - DVDs - Sobres / CDs Virgen
-2025-12-03 01:47:16,010 - INFO - [66/127] Procesando: Insumos / CDs - DVDs - Sobres / DVDs Virgen
-2025-12-03 01:47:16,222 - INFO - [67/127] Procesando: Insumos / CDs - DVDs - Sobres / Sobres
-2025-12-03 01:47:16,442 - INFO - [68/127] Procesando: Insumos / Cartuchos Tinta
-2025-12-03 01:47:16,652 - INFO - [69/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Alternativos BROTHER
-2025-12-03 01:47:16,863 - INFO - [70/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Alternativos Epson
-2025-12-03 01:47:17,082 - INFO - [71/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Alternativos HP
-2025-12-03 01:47:17,297 - INFO - [72/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Originales BROTHER
-2025-12-03 01:47:17,593 - INFO - [73/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Originales EPSON
-2025-12-03 01:47:17,841 - INFO - [74/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Originales HP
-2025-12-03 01:47:18,075 - INFO - [75/127] Procesando: Insumos / Papeleria
-2025-12-03 01:47:18,285 - INFO - [76/127] Procesando: Insumos / Papeleria / Resmas
-2025-12-03 01:47:18,498 - INFO - [77/127] Procesando: Insumos / Tintas - Cintas
-2025-12-03 01:47:18,706 - INFO - [78/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Alternativa
-2025-12-03 01:47:18,921 - INFO - [79/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Original BROTHER
-2025-12-03 01:47:19,133 - INFO - [80/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Original EPSON
-2025-12-03 01:47:19,345 - INFO - [81/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Original HP
-2025-12-03 01:47:19,557 - INFO - [82/127] Procesando: Insumos / Tintas - Cintas / Cintas Alternativas
-2025-12-03 01:47:19,767 - INFO - [83/127] Procesando: Insumos / Tintas - Cintas / Insumos para fax
-2025-12-03 01:47:19,989 - INFO - [84/127] Procesando: Insumos / Toner
-2025-12-03 01:47:20,453 - INFO - [85/127] Procesando: Insumos / Toner / Toner Alternativos para BROTHER
-2025-12-03 01:47:20,713 - INFO - [86/127] Procesando: Insumos / Toner / Toner Alternativos para HP
-2025-12-03 01:47:20,930 - INFO - [87/127] Procesando: Insumos / Toner / Toner Alternativos para LEXMARK
-2025-12-03 01:47:21,185 - INFO - [88/127] Procesando: Insumos / Toner / Toner Alternativos para PANTUM
-2025-12-03 01:47:21,408 - INFO - [89/127] Procesando: Insumos / Toner / Toner Alternativos para RICOH
-2025-12-03 01:47:21,620 - INFO - [90/127] Procesando: Insumos / Toner / Toner Alternativos para SAMSUNG
-2025-12-03 01:47:21,834 - INFO - [91/127] Procesando: Insumos / Toner / Toner Alternativos para XEROX
-2025-12-03 01:47:22,053 - INFO - [92/127] Procesando: Insumos / Toner / Toner Originales Brother
-2025-12-03 01:47:22,262 - INFO - [93/127] Procesando: Insumos / Toner / Toner Originales HP
-2025-12-03 01:47:22,519 - INFO - [94/127] Procesando: Insumos / Toner / Toner Originales para PANTUM
-2025-12-03 01:47:22,809 - INFO - [95/127] Procesando: Perifericos
-2025-12-03 01:47:23,022 - INFO - [96/127] Procesando: Perifericos / Auriculares - Microfonos
-2025-12-03 01:47:23,230 - INFO - [97/127] Procesando: Perifericos / Auriculares - Microfonos / Auriculares in ear
-2025-12-03 01:47:23,445 - INFO - [98/127] Procesando: Perifericos / Auriculares - Microfonos / Auriculares on ear
-2025-12-03 01:47:23,653 - INFO - [99/127] Procesando: Perifericos / Auriculares - Microfonos / Microfonos
-2025-12-03 01:47:23,862 - INFO - [100/127] Procesando: Perifericos / Energia
-2025-12-03 01:47:24,078 - INFO - [101/127] Procesando: Perifericos / Energia / Cargadores
-2025-12-03 01:47:24,286 - INFO - [102/127] Procesando: Perifericos / Energia / Cargadores USB
-2025-12-03 01:47:24,499 - INFO - [103/127] Procesando: Perifericos / Energia / Estabilizadores
-2025-12-03 01:47:24,711 - INFO - [104/127] Procesando: Perifericos / Energia / Pilas - Baterias
-2025-12-03 01:47:24,915 - INFO - [105/127] Procesando: Perifericos / Estuches
-2025-12-03 01:47:25,130 - INFO - [106/127] Procesando: Perifericos / Joysticks - Gamepads
-2025-12-03 01:47:25,342 - INFO - [107/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios
-2025-12-03 01:47:25,555 - INFO - [108/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios / Accesorios
-2025-12-03 01:47:25,772 - INFO - [109/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios / Bases para notebook
-2025-12-03 01:47:25,989 - INFO - [110/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios / Limpieza
-2025-12-03 01:47:26,246 - INFO - [111/127] Procesando: Perifericos / Teclados - Mouses - Pad
-2025-12-03 01:47:26,454 - INFO - [112/127] Procesando: Perifericos / Teclados - Mouses - Pad / Lector de Codigos
-2025-12-03 01:47:26,668 - INFO - [113/127] Procesando: Perifericos / Teclados - Mouses - Pad / Mouses con cable
-2025-12-03 01:47:26,879 - INFO - [114/127] Procesando: Perifericos / Teclados - Mouses - Pad / Mouses inalambricos
-2025-12-03 01:47:27,097 - INFO - [115/127] Procesando: Perifericos / Teclados - Mouses - Pad / Pad para Mouse
-2025-12-03 01:47:27,305 - INFO - [116/127] Procesando: Perifericos / Teclados - Mouses - Pad / Teclados + Mouse inalambricos
-2025-12-03 01:47:27,567 - INFO - [117/127] Procesando: Perifericos / Teclados - Mouses - Pad / Teclados con cable
-2025-12-03 01:47:27,840 - INFO - [118/127] Procesando: Perifericos / Webcams
-2025-12-03 01:47:28,053 - INFO - [119/127] Procesando: Servicios
-2025-12-03 01:47:28,265 - INFO - [120/127] Procesando: Tecnologia
-2025-12-03 01:47:28,470 - INFO - [121/127] Procesando: Tecnologia / Audio
-2025-12-03 01:47:28,710 - INFO - [122/127] Procesando: Tecnologia / Audio / Parlantes 2.0 2.1 5.0 USB
-2025-12-03 01:47:28,923 - INFO - [123/127] Procesando: Tecnologia / Audio / Parlantes Bluetooth
-2025-12-03 01:47:29,132 - INFO - [124/127] Procesando: Tecnologia / Cpu
-2025-12-03 01:47:29,344 - INFO - [125/127] Procesando: Tecnologia / Monitores
-2025-12-03 01:47:29,573 - INFO - [126/127] Procesando: Tecnologia / Notebooks
-2025-12-03 01:47:29,790 - INFO - [127/127] Procesando: Tecnologia / Tablet
-2025-12-03 01:47:30,007 - INFO - 
-2025-12-03 01:47:30,007 - INFO - ============================================================
-2025-12-03 01:47:30,007 - INFO - SINCRONIZANDO CATEGORÍAS DE POS
-2025-12-03 01:47:30,008 - INFO - ============================================================
-2025-12-03 01:47:30,099 - INFO - ✓ Encontradas 117 categorías de POS
-2025-12-03 01:47:30,100 - INFO - [1/117] Procesando: Componentes
-2025-12-03 01:47:30,299 - INFO - [2/117] Procesando: Tecnologia
-2025-12-03 01:47:30,483 - INFO - [3/117] Procesando: Tablet
-2025-12-03 01:47:30,678 - INFO - [4/117] Procesando: Almacenamiento
-2025-12-03 01:47:30,868 - INFO - [5/117] Procesando: Discos HDD
-2025-12-03 01:47:31,067 - INFO - [6/117] Procesando: Discos HDD 2.5
-2025-12-03 01:47:31,256 - INFO - [7/117] Procesando: Discos SSD - M2
-2025-12-03 01:47:31,453 - INFO - [8/117] Procesando: Discos USB Externos
-2025-12-03 01:47:31,649 - INFO - [9/117] Procesando: Discos USB Externos
-2025-12-03 01:47:31,876 - INFO - [10/117] Procesando: Opticos
-2025-12-03 01:47:32,077 - INFO - [11/117] Procesando: Pen Drive
-2025-12-03 01:47:32,393 - INFO - [12/117] Procesando: Tarjetas de Memoria
-2025-12-03 01:47:32,733 - INFO - [13/117] Procesando: Fuentes
-2025-12-03 01:47:33,023 - INFO - [14/117] Procesando: Gabinetes
-2025-12-03 01:47:33,213 - INFO - [15/117] Procesando: Memorias
-2025-12-03 01:47:33,403 - INFO - [16/117] Procesando: DDR2
-2025-12-03 01:47:33,595 - INFO - [17/117] Procesando: DDR3
-2025-12-03 01:47:33,786 - INFO - [18/117] Procesando: DDR4
-2025-12-03 01:47:33,980 - INFO - [19/117] Procesando: DDR5
-2025-12-03 01:47:34,174 - INFO - [20/117] Procesando: SODDR3
-2025-12-03 01:47:34,382 - INFO - [21/117] Procesando: SODDR4
-2025-12-03 01:47:34,573 - INFO - [22/117] Procesando: Motherboards
-2025-12-03 01:47:34,765 - INFO - [23/117] Procesando: Amd
-2025-12-03 01:47:34,957 - INFO - [24/117] Procesando: Intel
-2025-12-03 01:47:35,157 - INFO - [25/117] Procesando: Placas
-2025-12-03 01:47:35,354 - INFO - [26/117] Procesando: Placas controladoras
-2025-12-03 01:47:35,547 - INFO - [27/117] Procesando: Placas de Video
-2025-12-03 01:47:35,737 - INFO - [28/117] Procesando: Placas de sonido
-2025-12-03 01:47:35,931 - INFO - [29/117] Procesando: Procesadores
-2025-12-03 01:47:36,128 - INFO - [30/117] Procesando: Amd
-2025-12-03 01:47:36,324 - INFO - [31/117] Procesando: Intel
-2025-12-03 01:47:36,521 - INFO - [32/117] Procesando: Ventiladores
-2025-12-03 01:47:36,717 - INFO - [33/117] Procesando: Conectividad
-2025-12-03 01:47:36,904 - INFO - [34/117] Procesando: Cables y Adaptadores
-2025-12-03 01:47:37,101 - INFO - [35/117] Procesando: Adaptadores Alimentacion
-2025-12-03 01:47:37,299 - INFO - [36/117] Procesando: Adaptadores Audio
-2025-12-03 01:47:37,525 - INFO - [37/117] Procesando: Adaptadores Molex
-2025-12-03 01:47:37,811 - INFO - [38/117] Procesando: Adaptadores USB
-2025-12-03 01:47:38,009 - INFO - [39/117] Procesando: Adaptadores Video
-2025-12-03 01:47:38,207 - INFO - [40/117] Procesando: Cables Audio
-2025-12-03 01:47:38,400 - INFO - [41/117] Procesando: Cables Energia y datos
-2025-12-03 01:47:38,597 - INFO - [42/117] Procesando: Cables USB
-2025-12-03 01:47:38,789 - INFO - [43/117] Procesando: Cables UTP
-2025-12-03 01:47:38,982 - INFO - [44/117] Procesando: Cables Video
-2025-12-03 01:47:39,177 - INFO - [45/117] Procesando: Camaras IP
-2025-12-03 01:47:39,368 - INFO - [46/117] Procesando: Interfaces
-2025-12-03 01:47:39,562 - INFO - [47/117] Procesando: Hub y lectores Usb
-2025-12-03 01:47:39,757 - INFO - [48/117] Procesando: Interfaces USB
-2025-12-03 01:47:39,960 - INFO - [49/117] Procesando: Redes
-2025-12-03 01:47:40,158 - INFO - [50/117] Procesando: Cableadas
-2025-12-03 01:47:40,356 - INFO - [51/117] Procesando: Inalambricas
-2025-12-03 01:47:40,549 - INFO - [52/117] Procesando: Impresion
-2025-12-03 01:47:40,733 - INFO - [53/117] Procesando: Laser
-2025-12-03 01:47:40,924 - INFO - [54/117] Procesando: Tinta
-2025-12-03 01:47:41,114 - INFO - [55/117] Procesando: Insumos
-2025-12-03 01:47:41,298 - INFO - [56/117] Procesando: CDs - DVDs - Sobres
-2025-12-03 01:47:41,544 - INFO - [57/117] Procesando: CDs Virgen
-2025-12-03 01:47:41,748 - INFO - [58/117] Procesando: DVDs Virgen
-2025-12-03 01:47:41,940 - INFO - [59/117] Procesando: Sobres
-2025-12-03 01:47:42,141 - INFO - [60/117] Procesando: Cartuchos Tinta
-2025-12-03 01:47:42,330 - INFO - [61/117] Procesando: Cartuchos Alternativos Epson
-2025-12-03 01:47:42,577 - INFO - [62/117] Procesando: Cartuchos Alternativos HP
-2025-12-03 01:47:42,820 - INFO - [63/117] Procesando: Cartuchos Originales BROTHER
-2025-12-03 01:47:43,014 - INFO - [64/117] Procesando: Cartuchos Originales EPSON
-2025-12-03 01:47:43,210 - INFO - [65/117] Procesando: Cartuchos Originales HP
-2025-12-03 01:47:43,403 - INFO - [66/117] Procesando: Papeleria
-2025-12-03 01:47:43,599 - INFO - [67/117] Procesando: Resmas
-2025-12-03 01:47:43,797 - INFO - [68/117] Procesando: Tintas - Cintas
-2025-12-03 01:47:43,991 - INFO - [69/117] Procesando: Botella Tinta Alternativa
-2025-12-03 01:47:44,190 - INFO - [70/117] Procesando: Botella Tinta Original BROTHER
-2025-12-03 01:47:44,389 - INFO - [71/117] Procesando: Botella Tinta Original EPSON
-2025-12-03 01:47:44,587 - INFO - [72/117] Procesando: Botella Tinta Original HP
-2025-12-03 01:47:44,787 - INFO - [73/117] Procesando: Cintas Alternativas
-2025-12-03 01:47:44,989 - INFO - [74/117] Procesando: Toner
-2025-12-03 01:47:45,190 - INFO - [75/117] Procesando: Toner Alternativos para BROTHER
-2025-12-03 01:47:45,391 - INFO - [76/117] Procesando: Toner Alternativos para HP
-2025-12-03 01:47:45,588 - INFO - [77/117] Procesando: Toner Alternativos para PANTUM
-2025-12-03 01:47:45,783 - INFO - [78/117] Procesando: Toner Alternativos para RICOH
-2025-12-03 01:47:45,980 - INFO - [79/117] Procesando: Toner Alternativos para SAMSUNG
-2025-12-03 01:47:46,178 - INFO - [80/117] Procesando: Toner Alternativos para XEROX
-2025-12-03 01:47:46,375 - INFO - [81/117] Procesando: Toner Originales HP
-2025-12-03 01:47:46,573 - INFO - [82/117] Procesando: Toner Originales Brother
-2025-12-03 01:47:46,770 - INFO - [83/117] Procesando: Toner Originales para PANTUM
-2025-12-03 01:47:46,966 - INFO - [84/117] Procesando: Perifericos
-2025-12-03 01:47:47,149 - INFO - [85/117] Procesando: Auriculares - Microfonos
-2025-12-03 01:47:47,346 - INFO - [86/117] Procesando: Auriculares in ear
-2025-12-03 01:47:47,589 - INFO - [87/117] Procesando: Auriculares on ear
-2025-12-03 01:47:47,847 - INFO - [88/117] Procesando: Energia
-2025-12-03 01:47:48,041 - INFO - [89/117] Procesando: Cargadores
-2025-12-03 01:47:48,235 - INFO - [90/117] Procesando: Pilas - Baterias
-2025-12-03 01:47:48,433 - INFO - [91/117] Procesando: Soportes - Limpieza - Accesorios
-2025-12-03 01:47:48,629 - INFO - [92/117] Procesando: Limpieza
-2025-12-03 01:47:48,826 - INFO - [93/117] Procesando: Teclados - Mouses - Pad
-2025-12-03 01:47:49,021 - INFO - [94/117] Procesando: Mouses con cable
-2025-12-03 01:47:49,218 - INFO - [95/117] Procesando: Teclados + Mouse inalambricos
-2025-12-03 01:47:49,412 - INFO - [96/117] Procesando: Microfonos
-2025-12-03 01:47:49,611 - INFO - [97/117] Procesando: Cargadores USB
-2025-12-03 01:47:49,807 - INFO - [98/117] Procesando: Estuches
-2025-12-03 01:47:50,006 - INFO - [99/117] Procesando: Accesorios
-2025-12-03 01:47:50,211 - INFO - [100/117] Procesando: Mouses inalambricos
-2025-12-03 01:47:50,410 - INFO - [101/117] Procesando: Teclados con cable
-2025-12-03 01:47:50,626 - INFO - [102/117] Procesando: Cpu
-2025-12-03 01:47:50,822 - INFO - [103/117] Procesando: Audio
-2025-12-03 01:47:51,031 - INFO - [104/117] Procesando: Monitores
-2025-12-03 01:47:51,230 - INFO - [105/117] Procesando: Parlantes 2.0 2.1 5.0 USB
-2025-12-03 01:47:51,425 - INFO - [106/117] Procesando: Parlantes Bluetooth
-2025-12-03 01:47:51,622 - INFO - [107/117] Procesando: Notebooks
-2025-12-03 01:47:51,816 - INFO - [108/117] Procesando: Estabilizadores
-2025-12-03 01:47:52,013 - INFO - [109/117] Procesando: Joysticks - Gamepads
-2025-12-03 01:47:52,205 - INFO - [110/117] Procesando: Bases para notebook
-2025-12-03 01:47:52,402 - INFO - [111/117] Procesando: Lector de Codigos
-2025-12-03 01:47:52,676 - INFO - [112/117] Procesando: Pad para Mouse
-2025-12-03 01:47:52,896 - INFO - [113/117] Procesando: Webcams
-2025-12-03 01:47:53,092 - INFO - [114/117] Procesando: Servicios
-2025-12-03 01:47:53,276 - INFO - [115/117] Procesando: Botella Tinta Original BROTHER
-2025-12-03 01:47:53,473 - INFO - [116/117] Procesando: Repuestos Notebooks
-2025-12-03 01:47:53,666 - INFO - [117/117] Procesando: Pantallas
-2025-12-03 01:47:53,858 - INFO - 
-2025-12-03 01:47:53,859 - INFO - ============================================================
-2025-12-03 01:47:53,859 - INFO - SINCRONIZANDO CATEGORÍAS DE SITIO WEB/eCOMMERCE
-2025-12-03 01:47:53,859 - INFO - ============================================================
-2025-12-03 01:47:53,971 - INFO - ✓ Encontradas 119 categorías públicas
-2025-12-03 01:47:53,973 - INFO - [1/119] Procesando: Componentes
-2025-12-03 01:47:54,186 - INFO - [2/119] Procesando: Almacenamiento
-2025-12-03 01:47:54,385 - INFO - [3/119] Procesando: Discos HDD
-2025-12-03 01:47:54,576 - INFO - [4/119] Procesando: Discos HDD 2.5
-2025-12-03 01:47:54,763 - INFO - [5/119] Procesando: Discos SSD - M2
-2025-12-03 01:47:54,949 - INFO - [6/119] Procesando: Discos USB Externos
-2025-12-03 01:47:55,137 - INFO - [7/119] Procesando: Discos USB Externos
-2025-12-03 01:47:55,328 - INFO - [8/119] Procesando: Opticos
-2025-12-03 01:47:55,516 - INFO - [9/119] Procesando: Pen Drive
-2025-12-03 01:47:55,699 - INFO - [10/119] Procesando: Tarjetas de Memoria
-2025-12-03 01:47:55,891 - INFO - [11/119] Procesando: Fuentes
-2025-12-03 01:47:56,081 - INFO - [12/119] Procesando: Gabinetes
-2025-12-03 01:47:56,272 - INFO - [13/119] Procesando: Memorias
-2025-12-03 01:47:56,465 - INFO - [14/119] Procesando: DDR2
-2025-12-03 01:47:56,652 - INFO - [15/119] Procesando: DDR3
-2025-12-03 01:47:56,835 - INFO - [16/119] Procesando: DDR4
-2025-12-03 01:47:57,027 - INFO - [17/119] Procesando: DDR5
-2025-12-03 01:47:57,214 - INFO - [18/119] Procesando: SODDR3
-2025-12-03 01:47:57,403 - INFO - [19/119] Procesando: SODDR4
-2025-12-03 01:47:57,653 - INFO - [20/119] Procesando: Motherboards
-2025-12-03 01:47:57,887 - INFO - [21/119] Procesando: Amd
-2025-12-03 01:47:58,074 - INFO - [22/119] Procesando: Intel
-2025-12-03 01:47:58,263 - INFO - [23/119] Procesando: Placas
-2025-12-03 01:47:58,448 - INFO - [24/119] Procesando: Placas controladoras
-2025-12-03 01:47:58,638 - INFO - [25/119] Procesando: Placas de Video
-2025-12-03 01:47:58,825 - INFO - [26/119] Procesando: Placas de sonido
-2025-12-03 01:47:59,006 - INFO - [27/119] Procesando: Procesadores
-2025-12-03 01:47:59,199 - INFO - [28/119] Procesando: Amd
-2025-12-03 01:47:59,398 - INFO - [29/119] Procesando: Intel
-2025-12-03 01:47:59,584 - INFO - [30/119] Procesando: Ventiladores
-2025-12-03 01:47:59,774 - INFO - [31/119] Procesando: Conectividad
-2025-12-03 01:47:59,959 - INFO - [32/119] Procesando: Cables y Adaptadores
-2025-12-03 01:48:00,160 - INFO - [33/119] Procesando: Adaptadores Alimentacion
-2025-12-03 01:48:00,353 - INFO - [34/119] Procesando: Adaptadores Audio
-2025-12-03 01:48:00,545 - INFO - [35/119] Procesando: Adaptadores Molex
-2025-12-03 01:48:00,735 - INFO - [36/119] Procesando: Adaptadores USB
-2025-12-03 01:48:00,929 - INFO - [37/119] Procesando: Adaptadores Video
-2025-12-03 01:48:01,113 - INFO - [38/119] Procesando: Cables Audio
-2025-12-03 01:48:01,300 - INFO - [39/119] Procesando: Cables Energia y datos
-2025-12-03 01:48:01,487 - INFO - [40/119] Procesando: Cables USB
-2025-12-03 01:48:01,667 - INFO - [41/119] Procesando: Cables UTP
-2025-12-03 01:48:01,847 - INFO - [42/119] Procesando: Cables Video
-2025-12-03 01:48:02,031 - INFO - [43/119] Procesando: Camaras IP
-2025-12-03 01:48:02,226 - INFO - [44/119] Procesando: Interfaces
-2025-12-03 01:48:02,417 - INFO - [45/119] Procesando: Hub y lectores Usb
-2025-12-03 01:48:02,682 - INFO - [46/119] Procesando: Interfaces USB
-2025-12-03 01:48:02,911 - INFO - [47/119] Procesando: Redes
-2025-12-03 01:48:03,098 - INFO - [48/119] Procesando: Cableadas
-2025-12-03 01:48:03,283 - INFO - [49/119] Procesando: Inalambricas
-2025-12-03 01:48:03,474 - INFO - [50/119] Procesando: Impresion
-2025-12-03 01:48:03,665 - INFO - [51/119] Procesando: Laser
-2025-12-03 01:48:03,855 - INFO - [52/119] Procesando: Tinta
-2025-12-03 01:48:04,046 - INFO - [53/119] Procesando: Insumos
-2025-12-03 01:48:04,232 - INFO - [54/119] Procesando: CDs - DVDs - Sobres
-2025-12-03 01:48:04,419 - INFO - [55/119] Procesando: CDs Virgen
-2025-12-03 01:48:04,609 - INFO - [56/119] Procesando: DVDs Virgen
-2025-12-03 01:48:04,793 - INFO - [57/119] Procesando: Sobres
-2025-12-03 01:48:04,979 - INFO - [58/119] Procesando: Cartuchos Tinta
-2025-12-03 01:48:05,170 - INFO - [59/119] Procesando: Cartuchos Alternativos Epson
-2025-12-03 01:48:05,356 - INFO - [60/119] Procesando: Cartuchos Alternativos HP
-2025-12-03 01:48:05,543 - INFO - [61/119] Procesando: Cartuchos Originales BROTHER
-2025-12-03 01:48:05,728 - INFO - [62/119] Procesando: Cartuchos Originales EPSON
-2025-12-03 01:48:05,915 - INFO - [63/119] Procesando: Cartuchos Originales HP
-2025-12-03 01:48:06,104 - INFO - [64/119] Procesando: Papeleria
-2025-12-03 01:48:06,291 - INFO - [65/119] Procesando: Resmas
-2025-12-03 01:48:06,480 - INFO - [66/119] Procesando: Tintas - Cintas
-2025-12-03 01:48:06,663 - INFO - [67/119] Procesando: Botella Tinta Alternativa
-2025-12-03 01:48:06,847 - INFO - [68/119] Procesando: Botella Tinta Original BROTHER
-2025-12-03 01:48:07,032 - INFO - [69/119] Procesando: Botella Tinta Original EPSON
-2025-12-03 01:48:07,216 - INFO - [70/119] Procesando: Botella Tinta Original HP
-2025-12-03 01:48:07,400 - INFO - [71/119] Procesando: Cintas Alternativas
-2025-12-03 01:48:07,634 - INFO - [72/119] Procesando: Insumos para fax
-2025-12-03 01:48:07,887 - INFO - [73/119] Procesando: Toner
-2025-12-03 01:48:08,077 - INFO - [74/119] Procesando: Toner Alternativos para BROTHER
-2025-12-03 01:48:08,266 - INFO - [75/119] Procesando: Toner Alternativos para HP
-2025-12-03 01:48:08,455 - INFO - [76/119] Procesando: Toner Alternativos para PANTUM
-2025-12-03 01:48:08,665 - INFO - [77/119] Procesando: Toner Alternativos para RICOH
-2025-12-03 01:48:08,857 - INFO - [78/119] Procesando: Toner Alternativos para SAMSUNG
-2025-12-03 01:48:09,050 - INFO - [79/119] Procesando: Toner Alternativos para XEROX
-2025-12-03 01:48:09,239 - INFO - [80/119] Procesando: Toner Originales Brother
-2025-12-03 01:48:09,426 - INFO - [81/119] Procesando: Toner Originales HP
-2025-12-03 01:48:09,616 - INFO - [82/119] Procesando: Toner Originales para PANTUM
-2025-12-03 01:48:09,803 - INFO - [83/119] Procesando: Perifericos
-2025-12-03 01:48:09,995 - INFO - [84/119] Procesando: Auriculares - Microfonos
-2025-12-03 01:48:10,193 - INFO - [85/119] Procesando: Auriculares in ear
-2025-12-03 01:48:10,384 - INFO - [86/119] Procesando: Auriculares on ear
-2025-12-03 01:48:10,574 - INFO - [87/119] Procesando: Microfonos
-2025-12-03 01:48:10,758 - INFO - [88/119] Procesando: Energia
-2025-12-03 01:48:10,949 - INFO - [89/119] Procesando: Cargadores
-2025-12-03 01:48:11,138 - INFO - [90/119] Procesando: Cargadores USB
-2025-12-03 01:48:11,322 - INFO - [91/119] Procesando: Estabilizadores
-2025-12-03 01:48:11,509 - INFO - [92/119] Procesando: Pilas - Baterias
-2025-12-03 01:48:11,698 - INFO - [93/119] Procesando: Estuches
-2025-12-03 01:48:11,890 - INFO - [94/119] Procesando: Joysticks - Gamepads
-2025-12-03 01:48:12,076 - INFO - [95/119] Procesando: Soportes - Limpieza - Accesorios
-2025-12-03 01:48:12,263 - INFO - [96/119] Procesando: Accesorios
-2025-12-03 01:48:12,451 - INFO - [97/119] Procesando: Bases para notebook
-2025-12-03 01:48:12,691 - INFO - [98/119] Procesando: Limpieza
-2025-12-03 01:48:12,927 - INFO - [99/119] Procesando: Teclados - Mouses - Pad
-2025-12-03 01:48:13,112 - INFO - [100/119] Procesando: Lector de Codigos
-2025-12-03 01:48:13,300 - INFO - [101/119] Procesando: Mouses con cable
-2025-12-03 01:48:13,485 - INFO - [102/119] Procesando: Mouses inalambricos
-2025-12-03 01:48:13,676 - INFO - [103/119] Procesando: Pad para Mouse
-2025-12-03 01:48:13,888 - INFO - [104/119] Procesando: Teclados + Mouse inalambricos
-2025-12-03 01:48:14,072 - INFO - [105/119] Procesando: Teclados con cable
-2025-12-03 01:48:14,258 - INFO - [106/119] Procesando: Webcams
-2025-12-03 01:48:14,450 - INFO - [107/119] Procesando: Servicios
-2025-12-03 01:48:14,643 - INFO - [108/119] Procesando: Tecnologia
-2025-12-03 01:48:14,829 - INFO - [109/119] Procesando: Audio
-2025-12-03 01:48:15,017 - INFO - [110/119] Procesando: Parlantes 2.0 2.1 5.0 USB
-2025-12-03 01:48:15,204 - INFO - [111/119] Procesando: Parlantes Bluetooth
-2025-12-03 01:48:15,392 - INFO - [112/119] Procesando: Cpu
-2025-12-03 01:48:15,581 - INFO - [113/119] Procesando: Monitores
-2025-12-03 01:48:15,764 - INFO - [114/119] Procesando: Notebooks
-2025-12-03 01:48:15,951 - INFO - [115/119] Procesando: Botella Tinta Original BROTHER
-2025-12-03 01:48:16,140 - INFO - [116/119] Procesando: Repuestos Notebooks
-2025-12-03 01:48:16,328 - INFO - [117/119] Procesando: Teclados NTBK
-2025-12-03 01:48:16,524 - INFO - [118/119] Procesando: Pantallas
-2025-12-03 01:48:16,710 - INFO - [119/119] Procesando: Tablet
-2025-12-03 01:48:16,896 - INFO - 
-2025-12-03 01:48:16,897 - INFO - ============================================================
-2025-12-03 01:48:16,897 - INFO - RESUMEN DE SINCRONIZACIÓN
-2025-12-03 01:48:16,897 - INFO - ============================================================
-2025-12-03 01:48:16,898 - INFO - 
+2025-12-07 01:08:18,375 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-07 01:08:18,971 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-07 01:08:18,972 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-07 01:08:21,057 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-07 01:08:21,057 - INFO - 
+2025-12-07 01:08:21,057 - INFO - ╔==========================================================╗
+2025-12-07 01:08:21,058 - INFO - ║          SINCRONIZACIÓN DE CATEGORÍAS                    ║
+2025-12-07 01:08:21,058 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-07 01:08:21,058 - INFO - ╚==========================================================╝
+2025-12-07 01:08:21,058 - INFO - 
+2025-12-07 01:08:21,059 - INFO - 
+2025-12-07 01:08:21,059 - INFO - ============================================================
+2025-12-07 01:08:21,061 - INFO - SINCRONIZANDO CATEGORÍAS DE PRODUCTOS
+2025-12-07 01:08:21,062 - INFO - ============================================================
+2025-12-07 01:08:21,188 - INFO - ✓ Encontradas 127 categorías de productos
+2025-12-07 01:08:21,192 - INFO - [1/127] Procesando: All
+2025-12-07 01:08:21,647 - INFO - [2/127] Procesando: All / Deliveries
+2025-12-07 01:08:22,043 - INFO - [3/127] Procesando: All / Expenses
+2025-12-07 01:08:22,395 - INFO - [4/127] Procesando: All / Saleable
+2025-12-07 01:08:22,874 - INFO - [5/127] Procesando: All / Saleable / PoS
+2025-12-07 01:08:23,166 - INFO - [6/127] Procesando: Componentes
+2025-12-07 01:08:23,449 - INFO - [7/127] Procesando: Componentes / Almacenamiento
+2025-12-07 01:08:23,875 - INFO - [8/127] Procesando: Componentes / Almacenamiento / Discos HDD
+2025-12-07 01:08:24,201 - INFO - [9/127] Procesando: Componentes / Almacenamiento / Discos HDD 2.5
+2025-12-07 01:08:24,577 - INFO - [10/127] Procesando: Componentes / Almacenamiento / Discos SSD - M2
+2025-12-07 01:08:25,117 - INFO - [11/127] Procesando: Componentes / Almacenamiento / Discos USB Externos
+2025-12-07 01:08:25,431 - INFO - [12/127] Procesando: Componentes / Almacenamiento / Discos USB Externos
+2025-12-07 01:08:25,743 - INFO - [13/127] Procesando: Componentes / Almacenamiento / Opticos
+2025-12-07 01:08:26,032 - INFO - [14/127] Procesando: Componentes / Almacenamiento / Pen Drive
+2025-12-07 01:08:26,580 - INFO - [15/127] Procesando: Componentes / Almacenamiento / Tarjetas de Memoria
+2025-12-07 01:08:26,995 - INFO - [16/127] Procesando: Componentes / Fuentes
+2025-12-07 01:08:27,294 - INFO - [17/127] Procesando: Componentes / Gabinetes
+2025-12-07 01:08:27,746 - INFO - [18/127] Procesando: Componentes / Memorias
+2025-12-07 01:08:28,073 - INFO - [19/127] Procesando: Componentes / Memorias / DDR2
+2025-12-07 01:08:28,424 - INFO - [20/127] Procesando: Componentes / Memorias / DDR3
+2025-12-07 01:08:28,911 - INFO - [21/127] Procesando: Componentes / Memorias / DDR4
+2025-12-07 01:08:29,268 - INFO - [22/127] Procesando: Componentes / Memorias / DDR5
+2025-12-07 01:08:29,666 - INFO - [23/127] Procesando: Componentes / Memorias / SODDR3
+2025-12-07 01:08:30,249 - INFO - [24/127] Procesando: Componentes / Memorias / SODDR4
+2025-12-07 01:08:30,544 - INFO - [25/127] Procesando: Componentes / Motherboards
+2025-12-07 01:08:31,013 - INFO - [26/127] Procesando: Componentes / Motherboards / Amd
+2025-12-07 01:08:31,575 - INFO - [27/127] Procesando: Componentes / Motherboards / Intel
+2025-12-07 01:08:32,000 - INFO - [28/127] Procesando: Componentes / Placas
+2025-12-07 01:08:32,332 - INFO - [29/127] Procesando: Componentes / Placas / Placas controladoras
+2025-12-07 01:08:32,793 - INFO - [30/127] Procesando: Componentes / Placas / Placas de Video
+2025-12-07 01:08:33,075 - INFO - [31/127] Procesando: Componentes / Placas / Placas de sonido
+2025-12-07 01:08:33,421 - INFO - [32/127] Procesando: Componentes / Procesadores
+2025-12-07 01:08:33,689 - INFO - [33/127] Procesando: Componentes / Procesadores / Amd
+2025-12-07 01:08:34,050 - INFO - [34/127] Procesando: Componentes / Procesadores / Intel
+2025-12-07 01:08:34,351 - INFO - [35/127] Procesando: Componentes / Repuestos Notebooks
+2025-12-07 01:08:34,748 - INFO - [36/127] Procesando: Componentes / Repuestos Notebooks / Baterias
+2025-12-07 01:08:35,189 - INFO - [37/127] Procesando: Componentes / Repuestos Notebooks / Coolers
+2025-12-07 01:08:35,549 - INFO - [38/127] Procesando: Componentes / Repuestos Notebooks / Pantallas
+2025-12-07 01:08:35,946 - INFO - [39/127] Procesando: Componentes / Repuestos Notebooks / Teclados
+2025-12-07 01:08:36,378 - INFO - [40/127] Procesando: Componentes / Ventiladores
+2025-12-07 01:08:36,675 - INFO - [41/127] Procesando: Conectividad
+2025-12-07 01:08:36,976 - INFO - [42/127] Procesando: Conectividad / Cables y Adaptadores
+2025-12-07 01:08:37,354 - INFO - [43/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Alimentacion
+2025-12-07 01:08:37,753 - INFO - [44/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Audio
+2025-12-07 01:08:38,053 - INFO - [45/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Molex
+2025-12-07 01:08:38,390 - INFO - [46/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores USB
+2025-12-07 01:08:38,832 - INFO - [47/127] Procesando: Conectividad / Cables y Adaptadores / Adaptadores Video
+2025-12-07 01:08:39,138 - INFO - [48/127] Procesando: Conectividad / Cables y Adaptadores / Cables Audio
+2025-12-07 01:08:39,458 - INFO - [49/127] Procesando: Conectividad / Cables y Adaptadores / Cables Energia y datos
+2025-12-07 01:08:40,032 - INFO - [50/127] Procesando: Conectividad / Cables y Adaptadores / Cables USB
+2025-12-07 01:08:40,444 - INFO - [51/127] Procesando: Conectividad / Cables y Adaptadores / Cables UTP
+2025-12-07 01:08:40,689 - INFO - [52/127] Procesando: Conectividad / Cables y Adaptadores / Cables Video
+2025-12-07 01:08:40,942 - INFO - [53/127] Procesando: Conectividad / Camaras IP
+2025-12-07 01:08:41,567 - INFO - [54/127] Procesando: Conectividad / Interfaces
+2025-12-07 01:08:42,045 - INFO - [55/127] Procesando: Conectividad / Interfaces / Hub y lectores Usb
+2025-12-07 01:08:42,432 - INFO - [56/127] Procesando: Conectividad / Interfaces / Interfaces USB
+2025-12-07 01:08:42,720 - INFO - [57/127] Procesando: Conectividad / Redes
+2025-12-07 01:08:43,045 - INFO - [58/127] Procesando: Conectividad / Redes / Cableadas
+2025-12-07 01:08:43,286 - INFO - [59/127] Procesando: Conectividad / Redes / Inalambricas
+2025-12-07 01:08:43,618 - INFO - [60/127] Procesando: Impresion
+2025-12-07 01:08:43,873 - INFO - [61/127] Procesando: Impresion / Laser
+2025-12-07 01:08:44,125 - INFO - [62/127] Procesando: Impresion / Tinta
+2025-12-07 01:08:44,360 - INFO - [63/127] Procesando: Insumos
+2025-12-07 01:08:44,767 - INFO - [64/127] Procesando: Insumos / CDs - DVDs - Sobres
+2025-12-07 01:08:45,107 - INFO - [65/127] Procesando: Insumos / CDs - DVDs - Sobres / CDs Virgen
+2025-12-07 01:08:45,347 - INFO - [66/127] Procesando: Insumos / CDs - DVDs - Sobres / DVDs Virgen
+2025-12-07 01:08:45,579 - INFO - [67/127] Procesando: Insumos / CDs - DVDs - Sobres / Sobres
+2025-12-07 01:08:45,851 - INFO - [68/127] Procesando: Insumos / Cartuchos Tinta
+2025-12-07 01:08:46,153 - INFO - [69/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Alternativos BROTHER
+2025-12-07 01:08:46,399 - INFO - [70/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Alternativos Epson
+2025-12-07 01:08:46,628 - INFO - [71/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Alternativos HP
+2025-12-07 01:08:46,848 - INFO - [72/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Originales BROTHER
+2025-12-07 01:08:47,151 - INFO - [73/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Originales EPSON
+2025-12-07 01:08:47,376 - INFO - [74/127] Procesando: Insumos / Cartuchos Tinta / Cartuchos Originales HP
+2025-12-07 01:08:47,606 - INFO - [75/127] Procesando: Insumos / Papeleria
+2025-12-07 01:08:47,868 - INFO - [76/127] Procesando: Insumos / Papeleria / Resmas
+2025-12-07 01:08:48,150 - INFO - [77/127] Procesando: Insumos / Tintas - Cintas
+2025-12-07 01:08:48,642 - INFO - [78/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Alternativa
+2025-12-07 01:08:48,847 - INFO - [79/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Original BROTHER
+2025-12-07 01:08:49,051 - INFO - [80/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Original EPSON
+2025-12-07 01:08:49,241 - INFO - [81/127] Procesando: Insumos / Tintas - Cintas / Botella Tinta Original HP
+2025-12-07 01:08:49,436 - INFO - [82/127] Procesando: Insumos / Tintas - Cintas / Cintas Alternativas
+2025-12-07 01:08:49,782 - INFO - [83/127] Procesando: Insumos / Tintas - Cintas / Insumos para fax
+2025-12-07 01:08:50,017 - INFO - [84/127] Procesando: Insumos / Toner
+2025-12-07 01:08:50,224 - INFO - [85/127] Procesando: Insumos / Toner / Toner Alternativos para BROTHER
+2025-12-07 01:08:50,408 - INFO - [86/127] Procesando: Insumos / Toner / Toner Alternativos para HP
+2025-12-07 01:08:50,615 - INFO - [87/127] Procesando: Insumos / Toner / Toner Alternativos para LEXMARK
+2025-12-07 01:08:50,919 - INFO - [88/127] Procesando: Insumos / Toner / Toner Alternativos para PANTUM
+2025-12-07 01:08:51,100 - INFO - [89/127] Procesando: Insumos / Toner / Toner Alternativos para RICOH
+2025-12-07 01:08:51,327 - INFO - [90/127] Procesando: Insumos / Toner / Toner Alternativos para SAMSUNG
+2025-12-07 01:08:51,513 - INFO - [91/127] Procesando: Insumos / Toner / Toner Alternativos para XEROX
+2025-12-07 01:08:51,698 - INFO - [92/127] Procesando: Insumos / Toner / Toner Originales Brother
+2025-12-07 01:08:52,049 - INFO - [93/127] Procesando: Insumos / Toner / Toner Originales HP
+2025-12-07 01:08:52,235 - INFO - [94/127] Procesando: Insumos / Toner / Toner Originales para PANTUM
+2025-12-07 01:08:52,427 - INFO - [95/127] Procesando: Perifericos
+2025-12-07 01:08:52,622 - INFO - [96/127] Procesando: Perifericos / Auriculares - Microfonos
+2025-12-07 01:08:52,820 - INFO - [97/127] Procesando: Perifericos / Auriculares - Microfonos / Auriculares in ear
+2025-12-07 01:08:53,007 - INFO - [98/127] Procesando: Perifericos / Auriculares - Microfonos / Auriculares on ear
+2025-12-07 01:08:53,252 - INFO - [99/127] Procesando: Perifericos / Auriculares - Microfonos / Microfonos
+2025-12-07 01:08:53,503 - INFO - [100/127] Procesando: Perifericos / Energia
+2025-12-07 01:08:53,690 - INFO - [101/127] Procesando: Perifericos / Energia / Cargadores
+2025-12-07 01:08:53,876 - INFO - [102/127] Procesando: Perifericos / Energia / Cargadores USB
+2025-12-07 01:08:54,067 - INFO - [103/127] Procesando: Perifericos / Energia / Estabilizadores
+2025-12-07 01:08:54,278 - INFO - [104/127] Procesando: Perifericos / Energia / Pilas - Baterias
+2025-12-07 01:08:54,488 - INFO - [105/127] Procesando: Perifericos / Estuches
+2025-12-07 01:08:54,755 - INFO - [106/127] Procesando: Perifericos / Joysticks - Gamepads
+2025-12-07 01:08:54,955 - INFO - [107/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios
+2025-12-07 01:08:55,147 - INFO - [108/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios / Accesorios
+2025-12-07 01:08:55,336 - INFO - [109/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios / Bases para notebook
+2025-12-07 01:08:55,572 - INFO - [110/127] Procesando: Perifericos / Soportes - Limpieza - Accesorios / Limpieza
+2025-12-07 01:08:55,761 - INFO - [111/127] Procesando: Perifericos / Teclados - Mouses - Pad
+2025-12-07 01:08:55,951 - INFO - [112/127] Procesando: Perifericos / Teclados - Mouses - Pad / Lector de Codigos
+2025-12-07 01:08:56,140 - INFO - [113/127] Procesando: Perifericos / Teclados - Mouses - Pad / Mouses con cable
+2025-12-07 01:08:56,322 - INFO - [114/127] Procesando: Perifericos / Teclados - Mouses - Pad / Mouses inalambricos
+2025-12-07 01:08:56,564 - INFO - [115/127] Procesando: Perifericos / Teclados - Mouses - Pad / Pad para Mouse
+2025-12-07 01:08:56,760 - INFO - [116/127] Procesando: Perifericos / Teclados - Mouses - Pad / Teclados + Mouse inalambricos
+2025-12-07 01:08:56,949 - INFO - [117/127] Procesando: Perifericos / Teclados - Mouses - Pad / Teclados con cable
+2025-12-07 01:08:57,136 - INFO - [118/127] Procesando: Perifericos / Webcams
+2025-12-07 01:08:57,325 - INFO - [119/127] Procesando: Servicios
+2025-12-07 01:08:57,504 - INFO - [120/127] Procesando: Tecnologia
+2025-12-07 01:08:57,747 - INFO - [121/127] Procesando: Tecnologia / Audio
+2025-12-07 01:08:57,934 - INFO - [122/127] Procesando: Tecnologia / Audio / Parlantes 2.0 2.1 5.0 USB
+2025-12-07 01:08:58,123 - INFO - [123/127] Procesando: Tecnologia / Audio / Parlantes Bluetooth
+2025-12-07 01:08:58,320 - INFO - [124/127] Procesando: Tecnologia / Cpu
+2025-12-07 01:08:58,520 - INFO - [125/127] Procesando: Tecnologia / Monitores
+2025-12-07 01:08:58,710 - INFO - [126/127] Procesando: Tecnologia / Notebooks
+2025-12-07 01:08:58,951 - INFO - [127/127] Procesando: Tecnologia / Tablet
+2025-12-07 01:08:59,136 - INFO - 
+2025-12-07 01:08:59,136 - INFO - ============================================================
+2025-12-07 01:08:59,136 - INFO - SINCRONIZANDO CATEGORÍAS DE POS
+2025-12-07 01:08:59,136 - INFO - ============================================================
+2025-12-07 01:08:59,235 - INFO - ✓ Encontradas 117 categorías de POS
+2025-12-07 01:08:59,236 - INFO - [1/117] Procesando: Componentes
+2025-12-07 01:08:59,431 - INFO - [2/117] Procesando: Tecnologia
+2025-12-07 01:08:59,674 - INFO - [3/117] Procesando: Tablet
+2025-12-07 01:09:00,076 - INFO - [4/117] Procesando: Almacenamiento
+2025-12-07 01:09:00,263 - INFO - [5/117] Procesando: Discos HDD
+2025-12-07 01:09:00,484 - INFO - [6/117] Procesando: Discos HDD 2.5
+2025-12-07 01:09:00,747 - INFO - [7/117] Procesando: Discos SSD - M2
+2025-12-07 01:09:01,418 - INFO - [8/117] Procesando: Discos USB Externos
+2025-12-07 01:09:01,720 - INFO - [9/117] Procesando: Discos USB Externos
+2025-12-07 01:09:02,018 - INFO - [10/117] Procesando: Opticos
+2025-12-07 01:09:02,613 - INFO - [11/117] Procesando: Pen Drive
+2025-12-07 01:09:03,068 - INFO - [12/117] Procesando: Tarjetas de Memoria
+2025-12-07 01:09:03,344 - INFO - [13/117] Procesando: Fuentes
+2025-12-07 01:09:03,557 - INFO - [14/117] Procesando: Gabinetes
+2025-12-07 01:09:03,781 - INFO - [15/117] Procesando: Memorias
+2025-12-07 01:09:04,097 - INFO - [16/117] Procesando: DDR2
+2025-12-07 01:09:04,291 - INFO - [17/117] Procesando: DDR3
+2025-12-07 01:09:04,482 - INFO - [18/117] Procesando: DDR4
+2025-12-07 01:09:04,751 - INFO - [19/117] Procesando: DDR5
+2025-12-07 01:09:05,081 - INFO - [20/117] Procesando: SODDR3
+2025-12-07 01:09:05,294 - INFO - [21/117] Procesando: SODDR4
+2025-12-07 01:09:05,484 - INFO - [22/117] Procesando: Motherboards
+2025-12-07 01:09:05,759 - INFO - [23/117] Procesando: Amd
+2025-12-07 01:09:05,985 - INFO - [24/117] Procesando: Intel
+2025-12-07 01:09:06,204 - INFO - [25/117] Procesando: Placas
+2025-12-07 01:09:06,388 - INFO - [26/117] Procesando: Placas controladoras
+2025-12-07 01:09:06,588 - INFO - [27/117] Procesando: Placas de Video
+2025-12-07 01:09:06,817 - INFO - [28/117] Procesando: Placas de sonido
+2025-12-07 01:09:07,039 - INFO - [29/117] Procesando: Procesadores
+2025-12-07 01:09:07,262 - INFO - [30/117] Procesando: Amd
+2025-12-07 01:09:07,443 - INFO - [31/117] Procesando: Intel
+2025-12-07 01:09:07,649 - INFO - [32/117] Procesando: Ventiladores
+2025-12-07 01:09:07,871 - INFO - [33/117] Procesando: Conectividad
+2025-12-07 01:09:08,177 - INFO - [34/117] Procesando: Cables y Adaptadores
+2025-12-07 01:09:08,544 - INFO - [35/117] Procesando: Adaptadores Alimentacion
+2025-12-07 01:09:08,743 - INFO - [36/117] Procesando: Adaptadores Audio
+2025-12-07 01:09:08,930 - INFO - [37/117] Procesando: Adaptadores Molex
+2025-12-07 01:09:09,144 - INFO - [38/117] Procesando: Adaptadores USB
+2025-12-07 01:09:09,347 - INFO - [39/117] Procesando: Adaptadores Video
+2025-12-07 01:09:09,771 - INFO - [40/117] Procesando: Cables Audio
+2025-12-07 01:09:10,160 - INFO - [41/117] Procesando: Cables Energia y datos
+2025-12-07 01:09:10,356 - INFO - [42/117] Procesando: Cables USB
+2025-12-07 01:09:10,567 - INFO - [43/117] Procesando: Cables UTP
+2025-12-07 01:09:10,796 - INFO - [44/117] Procesando: Cables Video
+2025-12-07 01:09:10,991 - INFO - [45/117] Procesando: Camaras IP
+2025-12-07 01:09:11,220 - INFO - [46/117] Procesando: Interfaces
+2025-12-07 01:09:11,458 - INFO - [47/117] Procesando: Hub y lectores Usb
+2025-12-07 01:09:11,849 - INFO - [48/117] Procesando: Interfaces USB
+2025-12-07 01:09:12,223 - INFO - [49/117] Procesando: Redes
+2025-12-07 01:09:12,490 - INFO - [50/117] Procesando: Cableadas
+2025-12-07 01:09:12,690 - INFO - [51/117] Procesando: Inalambricas
+2025-12-07 01:09:12,893 - INFO - [52/117] Procesando: Impresion
+2025-12-07 01:09:13,261 - INFO - [53/117] Procesando: Laser
+2025-12-07 01:09:13,509 - INFO - [54/117] Procesando: Tinta
+2025-12-07 01:09:13,700 - INFO - [55/117] Procesando: Insumos
+2025-12-07 01:09:13,874 - INFO - [56/117] Procesando: CDs - DVDs - Sobres
+2025-12-07 01:09:14,119 - INFO - [57/117] Procesando: CDs Virgen
+2025-12-07 01:09:14,338 - INFO - [58/117] Procesando: DVDs Virgen
+2025-12-07 01:09:14,562 - INFO - [59/117] Procesando: Sobres
+2025-12-07 01:09:14,887 - INFO - [60/117] Procesando: Cartuchos Tinta
+2025-12-07 01:09:15,078 - INFO - [61/117] Procesando: Cartuchos Alternativos Epson
+2025-12-07 01:09:15,289 - INFO - [62/117] Procesando: Cartuchos Alternativos HP
+2025-12-07 01:09:15,504 - INFO - [63/117] Procesando: Cartuchos Originales BROTHER
+2025-12-07 01:09:15,779 - INFO - [64/117] Procesando: Cartuchos Originales EPSON
+2025-12-07 01:09:16,017 - INFO - [65/117] Procesando: Cartuchos Originales HP
+2025-12-07 01:09:16,244 - INFO - [66/117] Procesando: Papeleria
+2025-12-07 01:09:16,448 - INFO - [67/117] Procesando: Resmas
+2025-12-07 01:09:16,946 - INFO - [68/117] Procesando: Tintas - Cintas
+2025-12-07 01:09:17,479 - INFO - [69/117] Procesando: Botella Tinta Alternativa
+2025-12-07 01:09:18,569 - INFO - [70/117] Procesando: Botella Tinta Original BROTHER
+2025-12-07 01:09:19,463 - INFO - [71/117] Procesando: Botella Tinta Original EPSON
+2025-12-07 01:09:20,305 - INFO - [72/117] Procesando: Botella Tinta Original HP
+2025-12-07 01:09:21,397 - INFO - [73/117] Procesando: Cintas Alternativas
+2025-12-07 01:09:22,137 - INFO - [74/117] Procesando: Toner
+2025-12-07 01:09:22,636 - INFO - [75/117] Procesando: Toner Alternativos para BROTHER
+2025-12-07 01:09:23,200 - INFO - [76/117] Procesando: Toner Alternativos para HP
+2025-12-07 01:09:23,803 - INFO - [77/117] Procesando: Toner Alternativos para PANTUM
+2025-12-07 01:09:24,484 - INFO - [78/117] Procesando: Toner Alternativos para RICOH
+2025-12-07 01:09:25,085 - INFO - [79/117] Procesando: Toner Alternativos para SAMSUNG
+2025-12-07 01:09:25,524 - INFO - [80/117] Procesando: Toner Alternativos para XEROX
+2025-12-07 01:09:26,085 - INFO - [81/117] Procesando: Toner Originales HP
+2025-12-07 01:09:26,482 - INFO - [82/117] Procesando: Toner Originales Brother
+2025-12-07 01:09:27,031 - INFO - [83/117] Procesando: Toner Originales para PANTUM
+2025-12-07 01:09:28,200 - INFO - [84/117] Procesando: Perifericos
+2025-12-07 01:09:28,560 - INFO - [85/117] Procesando: Auriculares - Microfonos
+2025-12-07 01:09:29,192 - INFO - [86/117] Procesando: Auriculares in ear
+2025-12-07 01:09:29,695 - INFO - [87/117] Procesando: Auriculares on ear
+2025-12-07 01:09:30,232 - INFO - [88/117] Procesando: Energia
+2025-12-07 01:09:30,561 - INFO - [89/117] Procesando: Cargadores
+2025-12-07 01:09:32,427 - INFO - [90/117] Procesando: Pilas - Baterias
+2025-12-07 01:09:32,729 - INFO - [91/117] Procesando: Soportes - Limpieza - Accesorios
+2025-12-07 01:09:33,329 - INFO - [92/117] Procesando: Limpieza
+2025-12-07 01:09:34,336 - INFO - [93/117] Procesando: Teclados - Mouses - Pad
+2025-12-07 01:09:34,750 - INFO - [94/117] Procesando: Mouses con cable
+2025-12-07 01:09:35,336 - INFO - [95/117] Procesando: Teclados + Mouse inalambricos
+2025-12-07 01:09:35,643 - INFO - [96/117] Procesando: Microfonos
+2025-12-07 01:09:36,093 - INFO - [97/117] Procesando: Cargadores USB
+2025-12-07 01:09:36,461 - INFO - [98/117] Procesando: Estuches
+2025-12-07 01:09:36,716 - INFO - [99/117] Procesando: Accesorios
+2025-12-07 01:09:37,014 - INFO - [100/117] Procesando: Mouses inalambricos
+2025-12-07 01:09:37,347 - INFO - [101/117] Procesando: Teclados con cable
+2025-12-07 01:09:38,032 - INFO - [102/117] Procesando: Cpu
+2025-12-07 01:09:38,461 - INFO - [103/117] Procesando: Audio
+2025-12-07 01:09:38,704 - INFO - [104/117] Procesando: Monitores
+2025-12-07 01:09:38,963 - INFO - [105/117] Procesando: Parlantes 2.0 2.1 5.0 USB
+2025-12-07 01:09:39,250 - INFO - [106/117] Procesando: Parlantes Bluetooth
+2025-12-07 01:09:39,520 - INFO - [107/117] Procesando: Notebooks
+2025-12-07 01:09:39,868 - INFO - [108/117] Procesando: Estabilizadores
+2025-12-07 01:09:40,151 - INFO - [109/117] Procesando: Joysticks - Gamepads
+2025-12-07 01:09:40,418 - INFO - [110/117] Procesando: Bases para notebook
+2025-12-07 01:09:40,688 - INFO - [111/117] Procesando: Lector de Codigos
+2025-12-07 01:09:40,924 - INFO - [112/117] Procesando: Pad para Mouse
+2025-12-07 01:09:41,164 - INFO - [113/117] Procesando: Webcams
+2025-12-07 01:09:41,398 - INFO - [114/117] Procesando: Servicios
+2025-12-07 01:09:41,681 - INFO - [115/117] Procesando: Botella Tinta Original BROTHER
+2025-12-07 01:09:41,941 - INFO - [116/117] Procesando: Repuestos Notebooks
+2025-12-07 01:09:42,178 - INFO - [117/117] Procesando: Pantallas
+2025-12-07 01:09:42,435 - INFO - 
+2025-12-07 01:09:42,435 - INFO - ============================================================
+2025-12-07 01:09:42,435 - INFO - SINCRONIZANDO CATEGORÍAS DE SITIO WEB/eCOMMERCE
+2025-12-07 01:09:42,436 - INFO - ============================================================
+2025-12-07 01:09:42,571 - INFO - ✓ Encontradas 119 categorías públicas
+2025-12-07 01:09:42,585 - INFO - [1/119] Procesando: Componentes
+2025-12-07 01:09:43,110 - INFO - [2/119] Procesando: Almacenamiento
+2025-12-07 01:09:43,389 - INFO - [3/119] Procesando: Discos HDD
+2025-12-07 01:09:43,722 - INFO - [4/119] Procesando: Discos HDD 2.5
+2025-12-07 01:09:44,282 - INFO - [5/119] Procesando: Discos SSD - M2
+2025-12-07 01:09:44,580 - INFO - [6/119] Procesando: Discos USB Externos
+2025-12-07 01:09:45,029 - INFO - [7/119] Procesando: Discos USB Externos
+2025-12-07 01:09:45,332 - INFO - [8/119] Procesando: Opticos
+2025-12-07 01:09:45,698 - INFO - [9/119] Procesando: Pen Drive
+2025-12-07 01:09:45,946 - INFO - [10/119] Procesando: Tarjetas de Memoria
+2025-12-07 01:09:46,172 - INFO - [11/119] Procesando: Fuentes
+2025-12-07 01:09:46,474 - INFO - [12/119] Procesando: Gabinetes
+2025-12-07 01:09:46,719 - INFO - [13/119] Procesando: Memorias
+2025-12-07 01:09:46,944 - INFO - [14/119] Procesando: DDR2
+2025-12-07 01:09:47,278 - INFO - [15/119] Procesando: DDR3
+2025-12-07 01:09:47,508 - INFO - [16/119] Procesando: DDR4
+2025-12-07 01:09:47,688 - INFO - [17/119] Procesando: DDR5
+2025-12-07 01:09:47,854 - INFO - [18/119] Procesando: SODDR3
+2025-12-07 01:09:48,030 - INFO - [19/119] Procesando: SODDR4
+2025-12-07 01:09:48,217 - INFO - [20/119] Procesando: Motherboards
+2025-12-07 01:09:48,403 - INFO - [21/119] Procesando: Amd
+2025-12-07 01:09:48,595 - INFO - [22/119] Procesando: Intel
+2025-12-07 01:09:48,801 - INFO - [23/119] Procesando: Placas
+2025-12-07 01:09:48,964 - INFO - [24/119] Procesando: Placas controladoras
+2025-12-07 01:09:49,140 - INFO - [25/119] Procesando: Placas de Video
+2025-12-07 01:09:49,306 - INFO - [26/119] Procesando: Placas de sonido
+2025-12-07 01:09:49,475 - INFO - [27/119] Procesando: Procesadores
+2025-12-07 01:09:49,676 - INFO - [28/119] Procesando: Amd
+2025-12-07 01:09:49,993 - INFO - [29/119] Procesando: Intel
+2025-12-07 01:09:50,160 - INFO - [30/119] Procesando: Ventiladores
+2025-12-07 01:09:50,331 - INFO - [31/119] Procesando: Conectividad
+2025-12-07 01:09:50,500 - INFO - [32/119] Procesando: Cables y Adaptadores
+2025-12-07 01:09:50,677 - INFO - [33/119] Procesando: Adaptadores Alimentacion
+2025-12-07 01:09:50,878 - INFO - [34/119] Procesando: Adaptadores Audio
+2025-12-07 01:09:51,083 - INFO - [35/119] Procesando: Adaptadores Molex
+2025-12-07 01:09:51,253 - INFO - [36/119] Procesando: Adaptadores USB
+2025-12-07 01:09:51,445 - INFO - [37/119] Procesando: Adaptadores Video
+2025-12-07 01:09:51,623 - INFO - [38/119] Procesando: Cables Audio
+2025-12-07 01:09:51,795 - INFO - [39/119] Procesando: Cables Energia y datos
+2025-12-07 01:09:51,964 - INFO - [40/119] Procesando: Cables USB
+2025-12-07 01:09:52,186 - INFO - [41/119] Procesando: Cables UTP
+2025-12-07 01:09:52,350 - INFO - [42/119] Procesando: Cables Video
+2025-12-07 01:09:52,521 - INFO - [43/119] Procesando: Camaras IP
+2025-12-07 01:09:52,730 - INFO - [44/119] Procesando: Interfaces
+2025-12-07 01:09:53,013 - INFO - [45/119] Procesando: Hub y lectores Usb
+2025-12-07 01:09:53,218 - INFO - [46/119] Procesando: Interfaces USB
+2025-12-07 01:09:53,395 - INFO - [47/119] Procesando: Redes
+2025-12-07 01:09:53,560 - INFO - [48/119] Procesando: Cableadas
+2025-12-07 01:09:53,731 - INFO - [49/119] Procesando: Inalambricas
+2025-12-07 01:09:53,907 - INFO - [50/119] Procesando: Impresion
+2025-12-07 01:09:54,076 - INFO - [51/119] Procesando: Laser
+2025-12-07 01:09:54,259 - INFO - [52/119] Procesando: Tinta
+2025-12-07 01:09:54,468 - INFO - [53/119] Procesando: Insumos
+2025-12-07 01:09:54,641 - INFO - [54/119] Procesando: CDs - DVDs - Sobres
+2025-12-07 01:09:54,890 - INFO - [55/119] Procesando: CDs Virgen
+2025-12-07 01:09:55,086 - INFO - [56/119] Procesando: DVDs Virgen
+2025-12-07 01:09:55,248 - INFO - [57/119] Procesando: Sobres
+2025-12-07 01:09:55,436 - INFO - [58/119] Procesando: Cartuchos Tinta
+2025-12-07 01:09:55,631 - INFO - [59/119] Procesando: Cartuchos Alternativos Epson
+2025-12-07 01:09:55,801 - INFO - [60/119] Procesando: Cartuchos Alternativos HP
+2025-12-07 01:09:55,969 - INFO - [61/119] Procesando: Cartuchos Originales BROTHER
+2025-12-07 01:09:56,141 - INFO - [62/119] Procesando: Cartuchos Originales EPSON
+2025-12-07 01:09:56,310 - INFO - [63/119] Procesando: Cartuchos Originales HP
+2025-12-07 01:09:56,481 - INFO - [64/119] Procesando: Papeleria
+2025-12-07 01:09:56,708 - INFO - [65/119] Procesando: Resmas
+2025-12-07 01:09:56,876 - INFO - [66/119] Procesando: Tintas - Cintas
+2025-12-07 01:09:57,053 - INFO - [67/119] Procesando: Botella Tinta Alternativa
+2025-12-07 01:09:57,235 - INFO - [68/119] Procesando: Botella Tinta Original BROTHER
+2025-12-07 01:09:57,412 - INFO - [69/119] Procesando: Botella Tinta Original EPSON
+2025-12-07 01:09:57,591 - INFO - [70/119] Procesando: Botella Tinta Original HP
+2025-12-07 01:09:57,826 - INFO - [71/119] Procesando: Cintas Alternativas
+2025-12-07 01:09:57,992 - INFO - [72/119] Procesando: Insumos para fax
+2025-12-07 01:09:58,160 - INFO - [73/119] Procesando: Toner
+2025-12-07 01:09:58,334 - INFO - [74/119] Procesando: Toner Alternativos para BROTHER
+2025-12-07 01:09:58,503 - INFO - [75/119] Procesando: Toner Alternativos para HP
+2025-12-07 01:09:58,677 - INFO - [76/119] Procesando: Toner Alternativos para PANTUM
+2025-12-07 01:09:58,892 - INFO - [77/119] Procesando: Toner Alternativos para RICOH
+2025-12-07 01:09:59,068 - INFO - [78/119] Procesando: Toner Alternativos para SAMSUNG
+2025-12-07 01:09:59,257 - INFO - [79/119] Procesando: Toner Alternativos para XEROX
+2025-12-07 01:09:59,425 - INFO - [80/119] Procesando: Toner Originales Brother
+2025-12-07 01:09:59,606 - INFO - [81/119] Procesando: Toner Originales HP
+2025-12-07 01:09:59,869 - INFO - [82/119] Procesando: Toner Originales para PANTUM
+2025-12-07 01:10:00,144 - INFO - [83/119] Procesando: Perifericos
+2025-12-07 01:10:00,310 - INFO - [84/119] Procesando: Auriculares - Microfonos
+2025-12-07 01:10:00,480 - INFO - [85/119] Procesando: Auriculares in ear
+2025-12-07 01:10:00,648 - INFO - [86/119] Procesando: Auriculares on ear
+2025-12-07 01:10:00,834 - INFO - [87/119] Procesando: Microfonos
+2025-12-07 01:10:01,003 - INFO - [88/119] Procesando: Energia
+2025-12-07 01:10:01,228 - INFO - [89/119] Procesando: Cargadores
+2025-12-07 01:10:01,403 - INFO - [90/119] Procesando: Cargadores USB
+2025-12-07 01:10:01,582 - INFO - [91/119] Procesando: Estabilizadores
+2025-12-07 01:10:01,750 - INFO - [92/119] Procesando: Pilas - Baterias
+2025-12-07 01:10:01,933 - INFO - [93/119] Procesando: Estuches
+2025-12-07 01:10:02,126 - INFO - [94/119] Procesando: Joysticks - Gamepads
+2025-12-07 01:10:02,342 - INFO - [95/119] Procesando: Soportes - Limpieza - Accesorios
+2025-12-07 01:10:02,520 - INFO - [96/119] Procesando: Accesorios
+2025-12-07 01:10:02,691 - INFO - [97/119] Procesando: Bases para notebook
+2025-12-07 01:10:02,864 - INFO - [98/119] Procesando: Limpieza
+2025-12-07 01:10:03,033 - INFO - [99/119] Procesando: Teclados - Mouses - Pad
+2025-12-07 01:10:03,202 - INFO - [100/119] Procesando: Lector de Codigos
+2025-12-07 01:10:03,403 - INFO - [101/119] Procesando: Mouses con cable
+2025-12-07 01:10:03,605 - INFO - [102/119] Procesando: Mouses inalambricos
+2025-12-07 01:10:03,780 - INFO - [103/119] Procesando: Pad para Mouse
+2025-12-07 01:10:03,950 - INFO - [104/119] Procesando: Teclados + Mouse inalambricos
+2025-12-07 01:10:04,125 - INFO - [105/119] Procesando: Teclados con cable
+2025-12-07 01:10:04,305 - INFO - [106/119] Procesando: Webcams
+2025-12-07 01:10:04,472 - INFO - [107/119] Procesando: Servicios
+2025-12-07 01:10:04,728 - INFO - [108/119] Procesando: Tecnologia
+2025-12-07 01:10:04,971 - INFO - [109/119] Procesando: Audio
+2025-12-07 01:10:05,140 - INFO - [110/119] Procesando: Parlantes 2.0 2.1 5.0 USB
+2025-12-07 01:10:05,311 - INFO - [111/119] Procesando: Parlantes Bluetooth
+2025-12-07 01:10:05,501 - INFO - [112/119] Procesando: Cpu
+2025-12-07 01:10:05,714 - INFO - [113/119] Procesando: Monitores
+2025-12-07 01:10:05,900 - INFO - [114/119] Procesando: Notebooks
+2025-12-07 01:10:06,069 - INFO - [115/119] Procesando: Botella Tinta Original BROTHER
+2025-12-07 01:10:06,236 - INFO - [116/119] Procesando: Repuestos Notebooks
+2025-12-07 01:10:06,406 - INFO - [117/119] Procesando: Teclados NTBK
+2025-12-07 01:10:06,586 - INFO - [118/119] Procesando: Pantallas
+2025-12-07 01:10:06,762 - INFO - [119/119] Procesando: Tablet
+2025-12-07 01:10:06,991 - INFO - 
+2025-12-07 01:10:06,992 - INFO - ============================================================
+2025-12-07 01:10:06,992 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-07 01:10:06,992 - INFO - ============================================================
+2025-12-07 01:10:06,992 - INFO - 
 📦 CATEGORÍAS DE PRODUCTOS:
-2025-12-03 01:48:16,898 - INFO -    Total:        127
-2025-12-03 01:48:16,898 - INFO -    ✓ Creadas:    127
-2025-12-03 01:48:16,899 - INFO -    ✓ Actualizadas: 0
-2025-12-03 01:48:16,899 - INFO -    ❌ Errores:    0
-2025-12-03 01:48:16,899 - INFO - 
+2025-12-07 01:10:06,992 - INFO -    Total:        127
+2025-12-07 01:10:06,992 - INFO -    ✓ Creadas:    0
+2025-12-07 01:10:06,992 - INFO -    ✓ Actualizadas: 127
+2025-12-07 01:10:06,992 - INFO -    ❌ Errores:    0
+2025-12-07 01:10:06,992 - INFO - 
 🏪 CATEGORÍAS DE POS:
-2025-12-03 01:48:16,900 - INFO -    Total:        117
-2025-12-03 01:48:16,900 - INFO -    ✓ Creadas:    117
-2025-12-03 01:48:16,901 - INFO -    ✓ Actualizadas: 0
-2025-12-03 01:48:16,902 - INFO -    ❌ Errores:    0
-2025-12-03 01:48:16,903 - INFO - 
+2025-12-07 01:10:06,992 - INFO -    Total:        117
+2025-12-07 01:10:06,993 - INFO -    ✓ Creadas:    0
+2025-12-07 01:10:06,993 - INFO -    ✓ Actualizadas: 117
+2025-12-07 01:10:06,993 - INFO -    ❌ Errores:    0
+2025-12-07 01:10:06,993 - INFO - 
 🌐 CATEGORÍAS DE SITIO WEB:
-2025-12-03 01:48:16,903 - INFO -    Total:        119
-2025-12-03 01:48:16,903 - INFO -    ✓ Creadas:    119
-2025-12-03 01:48:16,903 - INFO -    ✓ Actualizadas: 0
-2025-12-03 01:48:16,904 - INFO -    ❌ Errores:    0
-2025-12-03 01:48:16,905 - INFO - 
-⏱ Tiempo total: 0:01:15.476492
-2025-12-03 01:48:16,906 - INFO - ============================================================
-2025-12-03 01:48:16,907 - INFO - ✓ ¡Sincronización completada exitosamente!
+2025-12-07 01:10:06,993 - INFO -    Total:        119
+2025-12-07 01:10:06,993 - INFO -    ✓ Creadas:    0
+2025-12-07 01:10:06,993 - INFO -    ✓ Actualizadas: 119
+2025-12-07 01:10:06,993 - INFO -    ❌ Errores:    0
+2025-12-07 01:10:06,993 - INFO - 
+⏱ Tiempo total: 0:01:45.934492
+2025-12-07 01:10:06,993 - INFO - ============================================================
+2025-12-07 01:10:06,993 - INFO - ✓ ¡Sincronización completada exitosamente!

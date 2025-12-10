@@ -361,6 +361,7 @@ class ProductSync:
             'description', 'description_sale', 'description_purchase',
             'weight', 'volume', 'sale_ok', 'purchase_ok', 'active',
             'pos_categ_id', 'public_categ_ids', 'taxes_id', 'supplier_taxes_id',
+            'available_in_pos',  # Campo para POS
             'write_date'  # Para sincronización incremental
         ]
         
@@ -491,20 +492,21 @@ class ProductSync:
             )
             
             if not currency_info:
+                logger.warning(f"⚠ No se encontró moneda con ID {source_currency_id} en origen")
                 return None
             
             currency_code = currency_info[0]['name']
             
-            # Buscar en Odoo 18 por código
-            target_currency = self.target.search(
+            # Buscar en Odoo 18 por código usando search (no search_read)
+            target_currency_ids = self.target.search(
                 'res.currency',
-                [('name', '=', currency_code)],
-                limit=1
+                [('name', '=', currency_code)]
             )
             
-            if target_currency:
-                logger.debug(f"✓ Moneda mapeada: {currency_code} (Origen: {source_currency_id} → Destino: {target_currency[0]})")
-                return target_currency[0]
+            if target_currency_ids and len(target_currency_ids) > 0:
+                target_currency_id = target_currency_ids[0] if isinstance(target_currency_ids, list) else target_currency_ids
+                logger.debug(f"✓ Moneda mapeada: {currency_code} (Origen: {source_currency_id} → Destino: {target_currency_id})")
+                return target_currency_id
             else:
                 logger.warning(f"⚠ Moneda '{currency_code}' no encontrada en Odoo 18")
                 return None
@@ -543,6 +545,7 @@ class ProductSync:
             'active': product.get('active', True),
             'sale_ok': product.get('sale_ok', True),
             'purchase_ok': product.get('purchase_ok', True),
+            'available_in_pos': product.get('available_in_pos', False),
         }
         
         # Agregar is_storable si corresponde (solo para type='consu')

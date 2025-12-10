@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="wt_create_so_from_pos.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//t[@t-if='props.showRemainingButtons']/div/OrderlineNoteButton" position="after">
+            <button t-if="pos.config.create_so" class="btn btn-secondary btn-lg py-5" t-on-click="() => this.clickCreateSaleOrder()">
+                <i class="o_button_icon fa fa-fw fa-pencil-square-o" aria-hidden="true"/>
+                Create Sale Order
+            </button>
+        </xpath>
+    </t>
+</templates>
