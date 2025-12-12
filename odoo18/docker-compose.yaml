@@ -1,7 +1,7 @@
 services:
   # --- TRAEFIK (Reverse Proxy) ---
   traefik:
-    image: traefik:v2.10
+    image: traefik:latest
     container_name: traefik_proxy
     restart: always
     command:
