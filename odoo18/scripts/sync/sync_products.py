@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script de sincronización de PRODUCTOS
+Script de sincronización de PRODUCTOS 2026
 Odoo 16 (VPS) -> Odoo 18 (Local)
 
 Sincroniza:
