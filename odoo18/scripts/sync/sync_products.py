@@ -535,34 +535,16 @@ class ProductSync:
                 target_ids.append(target_id)
                 logger.debug(f"✓ Impuesto mapeado (manual): {source_id} → {target_id}")
             else:
-                # Si no hay mapeo manual, intentar buscar automáticamente
+                # Si no hay mapeo manual, buscar por ID directo
+                # (asumiendo que pueden tener el mismo ID)
                 try:
-                    tax_info = self.source.search_read(
-                        'account.tax',
-                        [('id', '=', source_id)],
-                        ['name', 'amount', 'type_tax_use']
-                    )
-                    
-                    if tax_info:
-                        tax = tax_info[0]
-                        
-                        # Buscar en Odoo 18 por nombre y porcentaje
-                        target_tax = self.target.search(
-                            'account.tax',
-                            [
-                                ('name', '=', tax['name']),
-                                ('amount', '=', tax.get('amount', 0)),
-                                ('type_tax_use', '=', tax.get('type_tax_use', 'sale'))
-                            ],
-                            limit=1
-                        )
-                        
-                        if target_tax:
-                            target_id = target_tax[0] if isinstance(target_tax, list) else target_tax
-                            target_ids.append(target_id)
-                            logger.debug(f"✓ Impuesto mapeado (auto): {tax['name']} ({source_id} → {target_id})")
-                        else:
-                            logger.warning(f"⚠ Impuesto {source_id} no encontrado ni en mapeo ni automáticamente. Agrega al config: {source_id}: ?")
+                    existing = self.target.search('account.tax', [('id', '=', source_id)])
+                    if existing:
+                        target_id = existing[0] if isinstance(existing, list) else existing
+                        target_ids.append(target_id)
+                        logger.debug(f"✓ Impuesto encontrado por ID: {source_id}")
+                    else:
+                        logger.warning(f"⚠ Impuesto {source_id} no encontrado. Agrégalo al config.py: {source_id}: ?")
                             
                 except Exception as e:
                     logger.warning(f"⚠ Error mapeando impuesto {source_id}: {e}")
@@ -785,7 +767,7 @@ class ProductSync:
         logger.info("")
         logger.info("╔" + "=" * 58 + "╗")
         logger.info("║" + " " * 12 + "SINCRONIZACIÓN DE PRODUCTOS" + " " * 19 + "║")
-        logger.info("║" + " " * 15 + "Odoo 16 → Odoo 18" + " " * 26 + "║")
+        logger.info("║" + " " * 15 + "Odoo 16 → Odoo 18" + " " * 25 + "║")
         logger.info("╚" + "=" * 58 + "╝")
         logger.info("")
         

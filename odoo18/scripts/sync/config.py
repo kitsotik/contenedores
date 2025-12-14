@@ -53,8 +53,47 @@ SYNC_OPTIONS = {
     # Campos personalizados de productos a sincronizar
     'custom_product_fields': [
         'replenishment_base_cost',
-        'replenishment_base_cost_currency_id',
+        'replenishment_base_cost_currency_id',  # Moneda del costo base
         'list_price_type',
         'sale_margin'
-    ]
+    ],
+    
+    # Mapeo manual de impuestos (Odoo 16 ID → Odoo 18 ID)
+    # Basado en las imágenes proporcionadas
+    'tax_mapping': {
+        # IVA 21%
+        63: 64,  # IVA 21% venta
+        62: 65,  # IVA 21% venta (alternativo)
+        
+        # IVA 10.5%
+        61: 62,  # IVA 10.5% venta
+        60: 63,  # IVA 10.5% venta (alternativo)
+        
+        # IVA 27%
+        64: 66,  # IVA 27% venta
+        65: 67,  # IVA 27% venta (alternativo)
+        
+        # IVA 0% / Exento / No Gravado
+        53: 54,  # IVA No Corresponde
+        54: 55,  # IVA No Gravado
+        55: 56,  # IVA No Gravado (alternativo)
+        56: 57,  # IVA Exento
+        57: 58,  # IVA Exento (alternativo)
+        58: 60,  # IVA 0%
+        59: 61,  # IVA 0% (alternativo)
+        
+        # Percepciones
+        25: 27,  # Percepción IVA Aplicada
+        70: 72,  # Percepción IVA Sufrida
+        
+        # Adicionales
+        71: 73,  # IVA Adicional 20%
+        67: 68,  # IVA 2,5%
+        66: 69,  # IVA 2,5% (alternativo)
+        68: 70,  # IVA 5%
+        69: 71,  # IVA 5% (alternativo)
+        
+        # Compras (si los IDs son diferentes, agrégalos aquí)
+        # Ejemplo: si en Odoo 16 compras usa ID 100 → Odoo 18 usa ID 200
+    }
 }
