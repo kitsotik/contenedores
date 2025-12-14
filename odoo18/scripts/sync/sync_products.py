@@ -785,7 +785,7 @@ class ProductSync:
         logger.info("")
         logger.info("╔" + "=" * 58 + "╗")
         logger.info("║" + " " * 12 + "SINCRONIZACIÓN DE PRODUCTOS" + " " * 19 + "║")
-        logger.info("║" + " " * 15 + "Odoo 16 → Odoo 18" + " " * 25 + "║")
+        logger.info("║" + " " * 15 + "Odoo 16 → Odoo 18" + " " * 26 + "║")
         logger.info("╚" + "=" * 58 + "╝")
         logger.info("")
         
