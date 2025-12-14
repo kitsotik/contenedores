@@ -516,7 +516,7 @@ class ProductSync:
             return None
     
     def sync_taxes(self, tax_ids) -> List[int]:
-        """Busca los impuestos mapeados en Odoo 18 por nombre"""
+        """Mapea impuestos usando el mapeo manual del config"""
         if not tax_ids:
             return []
         
@@ -524,56 +524,48 @@ class ProductSync:
         if isinstance(tax_ids, (list, tuple)) and len(tax_ids) == 2 and isinstance(tax_ids[0], int):
             tax_ids = [tax_ids[0]]
         
+        # Obtener mapeo del config
+        tax_mapping = SYNC_OPTIONS.get('tax_mapping', {})
+        
         target_ids = []
         for source_id in tax_ids:
-            try:
-                # Leer el impuesto del origen para obtener su información
-                tax_info = self.source.search_read(
-                    'account.tax',
-                    [('id', '=', source_id)],
-                    ['name', 'amount', 'type_tax_use']
-                )
-                
-                if not tax_info:
-                    continue
-                
-                tax = tax_info[0]
-                
-                # Buscar en Odoo 18 por nombre y porcentaje (más confiable que por ID)
-                target_tax = self.target.search(
-                    'account.tax',
-                    [
-                        ('name', '=', tax['name']),
-                        ('amount', '=', tax.get('amount', 0)),
-                        ('type_tax_use', '=', tax.get('type_tax_use', 'sale'))
-                    ],
-                    limit=1
-                )
-                
-                if target_tax:
-                    target_id = target_tax[0] if isinstance(target_tax, list) else target_tax
-                    target_ids.append(target_id)
-                    logger.debug(f"✓ Impuesto mapeado: {tax['name']} ({source_id} → {target_id})")
-                else:
-                    # Si no encuentra por nombre exacto, buscar solo por tipo y monto similar
-                    target_tax_approx = self.target.search(
+            # Primero intentar con mapeo manual
+            if source_id in tax_mapping:
+                target_id = tax_mapping[source_id]
+                target_ids.append(target_id)
+                logger.debug(f"✓ Impuesto mapeado (manual): {source_id} → {target_id}")
+            else:
+                # Si no hay mapeo manual, intentar buscar automáticamente
+                try:
+                    tax_info = self.source.search_read(
                         'account.tax',
-                        [
-                            ('amount', '=', tax.get('amount', 0)),
-                            ('type_tax_use', '=', tax.get('type_tax_use', 'sale'))
-                        ],
-                        limit=1
+                        [('id', '=', source_id)],
+                        ['name', 'amount', 'type_tax_use']
                     )
                     
-                    if target_tax_approx:
-                        target_id = target_tax_approx[0] if isinstance(target_tax_approx, list) else target_tax_approx
-                        target_ids.append(target_id)
-                        logger.debug(f"✓ Impuesto mapeado (aprox): {tax['name']} → ID {target_id}")
-                    else:
-                        logger.warning(f"⚠ Impuesto no encontrado: {tax['name']} ({tax.get('amount')}%)")
+                    if tax_info:
+                        tax = tax_info[0]
                         
-            except Exception as e:
-                logger.warning(f"⚠ Error mapeando impuesto {source_id}: {e}")
+                        # Buscar en Odoo 18 por nombre y porcentaje
+                        target_tax = self.target.search(
+                            'account.tax',
+                            [
+                                ('name', '=', tax['name']),
+                                ('amount', '=', tax.get('amount', 0)),
+                                ('type_tax_use', '=', tax.get('type_tax_use', 'sale'))
+                            ],
+                            limit=1
+                        )
+                        
+                        if target_tax:
+                            target_id = target_tax[0] if isinstance(target_tax, list) else target_tax
+                            target_ids.append(target_id)
+                            logger.debug(f"✓ Impuesto mapeado (auto): {tax['name']} ({source_id} → {target_id})")
+                        else:
+                            logger.warning(f"⚠ Impuesto {source_id} no encontrado ni en mapeo ni automáticamente. Agrega al config: {source_id}: ?")
+                            
+                except Exception as e:
+                    logger.warning(f"⚠ Error mapeando impuesto {source_id}: {e}")
         
         return target_ids
     
