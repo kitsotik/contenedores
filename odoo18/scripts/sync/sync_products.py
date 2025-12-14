@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script de sincronización de PRODUCTOS 2026
+Script de sincronización de PRODUCTOS
 Odoo 16 (VPS) -> Odoo 18 (Local)
 
 Sincroniza:
@@ -516,7 +516,7 @@ class ProductSync:
             return None
     
     def sync_taxes(self, tax_ids) -> List[int]:
-        """Busca los impuestos mapeados en Odoo 18"""
+        """Busca los impuestos mapeados en Odoo 18 por nombre"""
         if not tax_ids:
             return []
         
@@ -526,10 +526,54 @@ class ProductSync:
         
         target_ids = []
         for source_id in tax_ids:
-            # Intentar buscar por el mismo ID
-            existing = self.target.search('account.tax', [('id', '=', source_id)])
-            if existing:
-                target_ids.append(source_id)
+            try:
+                # Leer el impuesto del origen para obtener su información
+                tax_info = self.source.search_read(
+                    'account.tax',
+                    [('id', '=', source_id)],
+                    ['name', 'amount', 'type_tax_use']
+                )
+                
+                if not tax_info:
+                    continue
+                
+                tax = tax_info[0]
+                
+                # Buscar en Odoo 18 por nombre y porcentaje (más confiable que por ID)
+                target_tax = self.target.search(
+                    'account.tax',
+                    [
+                        ('name', '=', tax['name']),
+                        ('amount', '=', tax.get('amount', 0)),
+                        ('type_tax_use', '=', tax.get('type_tax_use', 'sale'))
+                    ],
+                    limit=1
+                )
+                
+                if target_tax:
+                    target_id = target_tax[0] if isinstance(target_tax, list) else target_tax
+                    target_ids.append(target_id)
+                    logger.debug(f"✓ Impuesto mapeado: {tax['name']} ({source_id} → {target_id})")
+                else:
+                    # Si no encuentra por nombre exacto, buscar solo por tipo y monto similar
+                    target_tax_approx = self.target.search(
+                        'account.tax',
+                        [
+                            ('amount', '=', tax.get('amount', 0)),
+                            ('type_tax_use', '=', tax.get('type_tax_use', 'sale'))
+                        ],
+                        limit=1
+                    )
+                    
+                    if target_tax_approx:
+                        target_id = target_tax_approx[0] if isinstance(target_tax_approx, list) else target_tax_approx
+                        target_ids.append(target_id)
+                        logger.debug(f"✓ Impuesto mapeado (aprox): {tax['name']} → ID {target_id}")
+                    else:
+                        logger.warning(f"⚠ Impuesto no encontrado: {tax['name']} ({tax.get('amount')}%)")
+                        
+            except Exception as e:
+                logger.warning(f"⚠ Error mapeando impuesto {source_id}: {e}")
         
         return target_ids
     
@@ -638,17 +682,25 @@ class ProductSync:
             if public_cats:
                 vals['public_categ_ids'] = [(6, 0, public_cats)]
         
-        # Impuestos de venta (many2many)
+        # Impuestos de venta (many2many) - SIEMPRE sincronizar
         if product.get('taxes_id'):
             taxes = self.sync_taxes(product['taxes_id'])
             if taxes:
                 vals['taxes_id'] = [(6, 0, taxes)]
+            else:
+                # Si no se encontraron impuestos, limpiar (opcional)
+                # vals['taxes_id'] = [(5, 0, 0)]  # Descomenta para limpiar impuestos si no hay coincidencias
+                pass
         
-        # Impuestos de compra (many2many)
+        # Impuestos de compra (many2many) - SIEMPRE sincronizar  
         if product.get('supplier_taxes_id'):
             supplier_taxes = self.sync_taxes(product['supplier_taxes_id'])
             if supplier_taxes:
                 vals['supplier_taxes_id'] = [(6, 0, supplier_taxes)]
+            else:
+                # Si no se encontraron impuestos, limpiar (opcional)
+                # vals['supplier_taxes_id'] = [(5, 0, 0)]  # Descomenta para limpiar
+                pass
         
         # UOM (Unidad de medida) - intentar mapear por ID, si falla usar por defecto
         if product.get('uom_id') and isinstance(product['uom_id'], (list, tuple)):
