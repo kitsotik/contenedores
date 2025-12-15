@@ -45,6 +45,17 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+# TABLA DE MAPEO DE NOMBRES DE IMPUESTOS CONOCIDOS
+# (Origen en español -> Destino en inglés)
+# La clave (e.g., 'IVA') se busca de forma insensible a mayúsculas.
+TAX_NAME_MAP = {
+    'IVA': 'VAT', 
+    'I.V.A.': 'VAT',
+    'P. IVA': 'VAT',
+    'Impuesto al Valor Agregado': 'VAT',
+    # Puedes añadir más si encuentras otros conflictos (e.g., impuestos locales)
+}
+
 
 class OdooConnection:
     """Maneja la conexión a una instancia de Odoo"""
@@ -523,8 +534,7 @@ class ProductSync:
     
     def sync_taxes(self, tax_ids: List[int]) -> List[int]:
         """
-        Busca impuestos en Odoo 18 por nombre exacto (flexible), tomando los IDs de Odoo 16.
-        Utiliza un caché para evitar llamadas repetidas.
+        Busca impuestos en Odoo 18 por nombre exacto (flexible) y con mapeo de IVA/VAT.
         """
         if not tax_ids or not isinstance(tax_ids, list) or len(tax_ids) == 0:
             return []
@@ -557,14 +567,49 @@ class ProductSync:
                 logger.debug(f"✓ Impuesto '{tax_name}' encontrado en caché: {target_id}")
                 continue
             
-            # 🚀 LIMPIEZA Y BÚSQUEDA ROBUSTA
+            # 🚀 LIMPIEZA, SUSTITUCIÓN Y BÚSQUEDA ROBUSTA
             clean_tax_name = tax_name.strip()
-                
+            
+            # Aplicar mapeo de nombres conocidos (e.g., IVA -> VAT)
+            mapped_tax_name = clean_tax_name
+            for source_term, target_term in TAX_NAME_MAP.items():
+                # Búsqueda insensible a mayúsculas
+                if source_term.lower() in clean_tax_name.lower():
+                    # Sustitución del término (ej. 'IVA 21%' -> 'VAT 21%')
+                    # Hacemos la sustitución conservando la parte restante de la cadena
+                    mapped_tax_name = mapped_tax_name.replace(source_term, target_term)
+                    mapped_tax_name = mapped_tax_name.replace(source_term.lower(), target_term)
+                    mapped_tax_name = mapped_tax_name.replace(source_term.upper(), target_term.upper())
+                    
+                    # Aseguramos que la primera letra del nuevo término sea mayúscula (para VAT)
+                    mapped_tax_name = mapped_tax_name.replace(target_term.upper(), target_term)
+                    
+                    # Para el caso específico 'IVA 21%' -> 'VAT 21%'
+                    # La sustitución debería dejar 'VAT 21%'
+                    if source_term == 'IVA' and mapped_tax_name.startswith('VAT'):
+                         mapped_tax_name = mapped_tax_name.replace('VAT', 'VAT', 1) # Aseguramos caso correcto
+                    
+                    # La forma más simple y robusta: solo reemplazar el término clave y usar ilike
+                    if source_term.lower() in clean_tax_name.lower():
+                        # Creamos la versión a buscar normalizando todo a mayúsculas para la sustitución
+                        parts = clean_tax_name.upper().split(source_term.upper())
+                        mapped_tax_name = target_term + parts[-1]
+                        
+                    logger.debug(f"  → Nombre transformado: '{clean_tax_name}' a '{mapped_tax_name}'")
+                    break
+            
+            # Si no hubo mapeo, usa el nombre original limpio
+            if mapped_tax_name == clean_tax_name:
+                mapped_tax_name = clean_tax_name
+            
+            # Limpiar de nuevo por si la sustitución agregó espacios
+            mapped_tax_name = mapped_tax_name.strip()
+
             try:
-                # Buscar en Odoo 18 por nombre usando 'ilike' (insensible a mayúsculas/minúsculas y espacios/caracteres especiales leves)
+                # Buscar en Odoo 18 por nombre usando 'ilike' con el nombre mapeado
                 target_tax_ids = self.target.search(
                     'account.tax',
-                    [('name', 'ilike', clean_tax_name)] 
+                    [('name', 'ilike', mapped_tax_name)] 
                 )
                 
                 if target_tax_ids:
@@ -572,13 +617,13 @@ class ProductSync:
                     target_id = target_tax_ids[0]
                     target_ids.append(target_id)
                     
-                    # Guardar en caché
+                    # Guardar en caché con el nombre original de Odoo 16
                     self.tax_name_to_id[tax_name] = target_id
-                    logger.debug(f"✓ Impuesto '{clean_tax_name}' mapeado y cacheado: → {target_id}")
+                    logger.debug(f"✓ Impuesto '{mapped_tax_name}' mapeado y cacheado: → {target_id}")
                 else:
-                    logger.warning(f"❌ Impuesto '{clean_tax_name}' NO ENCONTRADO en Odoo 18. Verificar nombre exacto.")
+                    logger.warning(f"❌ Impuesto '{clean_tax_name}' (Buscado como: '{mapped_tax_name}') NO ENCONTRADO en Odoo 18.")
                     
-                    # 🚨 DIAGNÓSTICO AVANZADO EN CASO DE FALLO 🚨
+                    # 🚨 DIAGNÓSTICO AVANZADO EN CASO DE FALLO 🚨 (Mantenido para otros errores)
                     if not self.target_taxes_dumped:
                         self.target_taxes_dumped = True
                         logger.error("-" * 50)
@@ -597,11 +642,9 @@ class ProductSync:
                             if not visible_names:
                                 logger.error("🔴 ¡ALERTA CRÍTICA! El usuario RPC NO PUEDE VER NINGÚN IMPUESTO en Odoo 18.")
                                 logger.error("Esto es un problema de SEGURIDAD/PERMISOS (Access Rights) o de CONTEXTO (Company).")
-                                logger.error("Asegúrese de que el usuario tiene permisos de lectura sobre 'account.tax'.")
                             else:
                                 logger.error(f"🟡 Impuestos VISIBLES en Odoo 18 ({len(visible_names)}):")
                                 logger.error(f"Lista de nombres: {', '.join(visible_names)}")
-                                logger.error("Si el impuesto buscado ('IVA 21%') NO está en la lista de arriba, el nombre es diferente en Odoo 18.")
                             
                         except Exception as e_dump:
                             logger.error(f"❌ Falló el volcado de impuestos (Problema de permisos): {e_dump}")
@@ -609,7 +652,7 @@ class ProductSync:
                         logger.error("-" * 50)
                         
             except Exception as e:
-                logger.warning(f"⚠ Error buscando impuesto '{clean_tax_name}': {e}")
+                logger.warning(f"⚠ Error buscando impuesto '{mapped_tax_name}': {e}")
         
         return target_ids
     
