@@ -657,24 +657,43 @@ class ProductSync:
                 vals['public_categ_ids'] = [(6, 0, public_cats)]
         
         # Impuestos de venta (many2many) - SIEMPRE sincronizar
-        if product.get('taxes_id'):
-            taxes = self.sync_taxes(product['taxes_id'])
-            if taxes:
-                vals['taxes_id'] = [(6, 0, taxes)]
+        if 'taxes_id' in product:
+            tax_data = product.get('taxes_id')
+            if tax_data:
+                # taxes_id puede venir como lista de IDs o como False
+                if isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
+                    taxes = self.sync_taxes(tax_data)
+                    if taxes:
+                        # (6, 0, [ids]) reemplaza todos los impuestos
+                        vals['taxes_id'] = [(6, 0, taxes)]
+                        logger.debug(f"Impuestos de venta asignados: {taxes}")
+                    else:
+                        # Si no se mapeó ninguno, limpiar impuestos
+                        vals['taxes_id'] = [(5, 0, 0)]
+                        logger.debug("Limpiando impuestos de venta (no se encontraron)")
+                else:
+                    # Si viene vacío o False, limpiar
+                    vals['taxes_id'] = [(5, 0, 0)]
             else:
-                # Si no se encontraron impuestos, limpiar (opcional)
-                # vals['taxes_id'] = [(5, 0, 0)]  # Descomenta para limpiar impuestos si no hay coincidencias
-                pass
+                # Si es False o None, limpiar impuestos
+                vals['taxes_id'] = [(5, 0, 0)]
         
         # Impuestos de compra (many2many) - SIEMPRE sincronizar  
-        if product.get('supplier_taxes_id'):
-            supplier_taxes = self.sync_taxes(product['supplier_taxes_id'])
-            if supplier_taxes:
-                vals['supplier_taxes_id'] = [(6, 0, supplier_taxes)]
+        if 'supplier_taxes_id' in product:
+            tax_data = product.get('supplier_taxes_id')
+            if tax_data:
+                if isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
+                    supplier_taxes = self.sync_taxes(tax_data)
+                    if supplier_taxes:
+                        vals['supplier_taxes_id'] = [(6, 0, supplier_taxes)]
+                        logger.debug(f"Impuestos de compra asignados: {supplier_taxes}")
+                    else:
+                        vals['supplier_taxes_id'] = [(5, 0, 0)]
+                        logger.debug("Limpiando impuestos de compra (no se encontraron)")
+                else:
+                    vals['supplier_taxes_id'] = [(5, 0, 0)]
             else:
-                # Si no se encontraron impuestos, limpiar (opcional)
-                # vals['supplier_taxes_id'] = [(5, 0, 0)]  # Descomenta para limpiar
-                pass
+                vals['supplier_taxes_id'] = [(5, 0, 0)]
         
         # UOM (Unidad de medida) - intentar mapear por ID, si falla usar por defecto
         if product.get('uom_id') and isinstance(product['uom_id'], (list, tuple)):
@@ -737,6 +756,12 @@ class ProductSync:
         try:
             # Preparar valores
             vals = self.prepare_values(product)
+            
+            # Log de impuestos para debug
+            if 'taxes_id' in vals:
+                logger.info(f"  → Impuestos venta: {vals['taxes_id']}")
+            if 'supplier_taxes_id' in vals:
+                logger.info(f"  → Impuestos compra: {vals['supplier_taxes_id']}")
             
             # Buscar si existe
             existing_id = self.find_existing_product(external_id)
