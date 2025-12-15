@@ -46,14 +46,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # TABLA DE MAPEO DE NOMBRES DE IMPUESTOS CONOCIDOS
-# (Origen en español -> Destino en inglés)
-# La clave (e.g., 'IVA') se busca de forma insensible a mayúsculas.
+# (Origen en español -> Destino en inglés) - Añadido para robustez
 TAX_NAME_MAP = {
     'IVA': 'VAT', 
     'I.V.A.': 'VAT',
     'P. IVA': 'VAT',
-    'Impuesto al Valor Agregado': 'VAT',
-    # Puedes añadir más si encuentras otros conflictos (e.g., impuestos locales)
+    # Puedes añadir más mapeos aquí si los nombres en Odoo 18 son diferentes
 }
 
 
@@ -168,12 +166,6 @@ class ProductSync:
         
         # Cargar mapeos de categorías
         self.load_category_mappings()
-        
-        # Diccionario para almacenar IDs de impuestos mapeados (cache)
-        self.tax_name_to_id = {}
-        
-        # Bandera para saber si ya volcamos los nombres de impuestos en Odoo 18
-        self.target_taxes_dumped = False 
     
     def detect_valid_product_types(self) -> dict:
         """Detecta qué valores de 'type' son válidos en Odoo 18"""
@@ -532,127 +524,73 @@ class ProductSync:
             logger.warning(f"⚠ Error mapeando moneda: {e}")
             return None
     
-    def sync_taxes(self, tax_ids: List[int]) -> List[int]:
+    def sync_taxes(self, tax_data) -> List[int]:
         """
-        Busca impuestos en Odoo 18 por nombre exacto (flexible) y con mapeo de IVA/VAT.
+        Busca impuestos en Odoo 18 por nombre exacto desde Odoo 16.
+        Asegura que el input sea una lista limpia de IDs de impuestos de origen.
         """
-        if not tax_ids or not isinstance(tax_ids, list) or len(tax_ids) == 0:
+        if not tax_data:
             return []
+        
+        source_tax_ids = []
+        
+        # --- LÓGICA DE LIMPIEZA DE DATOS DE ENTRADA (Maneja M2O, M2M, M2M lista de tuplas) ---
+        if isinstance(tax_data, (list, tuple)):
+            if len(tax_data) == 2 and isinstance(tax_data[0], int) and isinstance(tax_data[1], str):
+                 # Caso M2O: [ID, Nombre]
+                 source_tax_ids = [tax_data[0]]
+            elif len(tax_data) > 0 and isinstance(tax_data[0], int):
+                 # Caso M2M: [ID, ID, ...]
+                 source_tax_ids = list(tax_data)
+            elif len(tax_data) > 0 and isinstance(tax_data[0], (list, tuple)):
+                 # Caso M2M: [[ID, Nombre], ...] - Limpiar a solo [ID, ...]
+                 source_tax_ids = [t[0] for t in tax_data if isinstance(t, (list, tuple)) and len(t) >= 1 and isinstance(t[0], int)]
+
+        if not source_tax_ids:
+            return []
+        # --- FIN DE LÓGICA DE LIMPIEZA ---
         
         target_ids = []
-        
-        # 1. Leer los nombres de todos los impuestos de Odoo 16 en un solo lote
-        try:
-            tax_info_list = self.source.search_read(
-                'account.tax',
-                [('id', 'in', tax_ids)],
-                ['name']
-            )
-        except Exception as e:
-            logger.warning(f"⚠ Error leyendo nombres de impuestos de origen (IDs: {tax_ids}): {e}")
-            return []
-            
-        tax_names = [info['name'] for info in tax_info_list if info.get('name')]
-        
-        if not tax_names:
-            logger.warning(f"⚠ No se encontraron nombres válidos para los IDs de impuestos {tax_ids}")
-            return []
-
-        # 2. Mapear cada nombre al ID de Odoo 18 (usando caché)
-        for tax_name in tax_names:
-            # Revisar caché primero
-            if tax_name in self.tax_name_to_id:
-                target_id = self.tax_name_to_id[tax_name]
-                target_ids.append(target_id)
-                logger.debug(f"✓ Impuesto '{tax_name}' encontrado en caché: {target_id}")
-                continue
-            
-            # 🚀 LIMPIEZA, SUSTITUCIÓN Y BÚSQUEDA ROBUSTA
-            clean_tax_name = tax_name.strip()
-            
-            # Aplicar mapeo de nombres conocidos (e.g., IVA -> VAT)
-            mapped_tax_name = clean_tax_name
-            for source_term, target_term in TAX_NAME_MAP.items():
-                # Búsqueda insensible a mayúsculas
-                if source_term.lower() in clean_tax_name.lower():
-                    # Sustitución del término (ej. 'IVA 21%' -> 'VAT 21%')
-                    # Hacemos la sustitución conservando la parte restante de la cadena
-                    mapped_tax_name = mapped_tax_name.replace(source_term, target_term)
-                    mapped_tax_name = mapped_tax_name.replace(source_term.lower(), target_term)
-                    mapped_tax_name = mapped_tax_name.replace(source_term.upper(), target_term.upper())
-                    
-                    # Aseguramos que la primera letra del nuevo término sea mayúscula (para VAT)
-                    mapped_tax_name = mapped_tax_name.replace(target_term.upper(), target_term)
-                    
-                    # Para el caso específico 'IVA 21%' -> 'VAT 21%'
-                    # La sustitución debería dejar 'VAT 21%'
-                    if source_term == 'IVA' and mapped_tax_name.startswith('VAT'):
-                         mapped_tax_name = mapped_tax_name.replace('VAT', 'VAT', 1) # Aseguramos caso correcto
-                    
-                    # La forma más simple y robusta: solo reemplazar el término clave y usar ilike
-                    if source_term.lower() in clean_tax_name.lower():
-                        # Creamos la versión a buscar normalizando todo a mayúsculas para la sustitución
-                        parts = clean_tax_name.upper().split(source_term.upper())
-                        mapped_tax_name = target_term + parts[-1]
-                        
-                    logger.debug(f"  → Nombre transformado: '{clean_tax_name}' a '{mapped_tax_name}'")
-                    break
-            
-            # Si no hubo mapeo, usa el nombre original limpio
-            if mapped_tax_name == clean_tax_name:
-                mapped_tax_name = clean_tax_name
-            
-            # Limpiar de nuevo por si la sustitución agregó espacios
-            mapped_tax_name = mapped_tax_name.strip()
-
+        for source_id in source_tax_ids:
             try:
-                # Buscar en Odoo 18 por nombre usando 'ilike' con el nombre mapeado
+                # Leer el nombre del impuesto desde Odoo 16
+                tax_info = self.source.search_read(
+                    'account.tax',
+                    [('id', '=', source_id)],
+                    ['name']
+                )
+                
+                if not tax_info:
+                    logger.warning(f"⚠ Impuesto ID {source_id} no encontrado en origen")
+                    continue
+                
+                tax_name = tax_info[0]['name'].strip()
+                mapped_tax_name = tax_name
+                
+                # OPCIONAL: Aplicar lógica de mapeo (Ej. IVA -> VAT)
+                for source_term, target_term in TAX_NAME_MAP.items():
+                    if source_term.lower() == tax_name.lower():
+                        mapped_tax_name = target_term
+                        break
+
+                
+                # Buscar en Odoo 18 por nombre exacto
                 target_tax_ids = self.target.search(
                     'account.tax',
-                    [('name', 'ilike', mapped_tax_name)] 
+                    [('name', '=', mapped_tax_name)]
                 )
                 
                 if target_tax_ids:
                     # Tomar el primero si hay varios
-                    target_id = target_tax_ids[0]
-                    target_ids.append(target_id)
-                    
-                    # Guardar en caché con el nombre original de Odoo 16
-                    self.tax_name_to_id[tax_name] = target_id
-                    logger.debug(f"✓ Impuesto '{mapped_tax_name}' mapeado y cacheado: → {target_id}")
+                    target_id = target_tax_ids[0] if isinstance(target_tax_ids, list) else target_tax_ids
+                    if target_id not in target_ids: # Evitar duplicados
+                         target_ids.append(target_id)
+                    logger.debug(f"✓ Impuesto '{tax_name}' mapeado: {source_id} → {target_id}")
                 else:
-                    logger.warning(f"❌ Impuesto '{clean_tax_name}' (Buscado como: '{mapped_tax_name}') NO ENCONTRADO en Odoo 18.")
-                    
-                    # 🚨 DIAGNÓSTICO AVANZADO EN CASO DE FALLO 🚨 (Mantenido para otros errores)
-                    if not self.target_taxes_dumped:
-                        self.target_taxes_dumped = True
-                        logger.error("-" * 50)
-                        logger.error("¡DIAGNÓSTICO DE IMPUESTOS EN ODOO 18 ACTIVADO!")
-                        logger.error(f"El impuesto '{clean_tax_name}' no se encuentra con la búsqueda robusta.")
-                        
-                        try:
-                            all_target_taxes = self.target.search_read(
-                                'account.tax',
-                                [], # Dominio vacío para obtener todos los visibles
-                                ['name']
-                            )
-                            
-                            visible_names = [t['name'].strip() for t in all_target_taxes]
-                            
-                            if not visible_names:
-                                logger.error("🔴 ¡ALERTA CRÍTICA! El usuario RPC NO PUEDE VER NINGÚN IMPUESTO en Odoo 18.")
-                                logger.error("Esto es un problema de SEGURIDAD/PERMISOS (Access Rights) o de CONTEXTO (Company).")
-                            else:
-                                logger.error(f"🟡 Impuestos VISIBLES en Odoo 18 ({len(visible_names)}):")
-                                logger.error(f"Lista de nombres: {', '.join(visible_names)}")
-                            
-                        except Exception as e_dump:
-                            logger.error(f"❌ Falló el volcado de impuestos (Problema de permisos): {e_dump}")
-                        
-                        logger.error("-" * 50)
+                    logger.warning(f"⚠ Impuesto '{tax_name}' (Buscado como: '{mapped_tax_name}') no encontrado en Odoo 18")
                         
             except Exception as e:
-                logger.warning(f"⚠ Error buscando impuesto '{mapped_tax_name}': {e}")
+                logger.warning(f"⚠ Error buscando impuesto {source_id}: {e}")
         
         return target_ids
     
@@ -761,31 +699,25 @@ class ProductSync:
             if public_cats:
                 vals['public_categ_ids'] = [(6, 0, public_cats)]
         
-        # === INICIO DE MANEJO DE IMPUESTOS (Optimizado) ===
-        
-        # Impuestos de venta (many2many) - Usamos sync_taxes
+        # Impuestos de venta (many2many) - Usa la función robusta
         if 'taxes_id' in product and product.get('taxes_id'):
             tax_data = product['taxes_id']
-            # Asegurarse de que tax_data es una lista de IDs (Many2many)
-            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0 and isinstance(tax_data[0], int):
-                taxes = self.sync_taxes(list(tax_data))
+            # Si no es False y tiene datos
+            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
+                taxes = self.sync_taxes(tax_data)
                 if taxes:
-                    # El formato (6, 0, [IDs]) reemplaza todas las relaciones existentes
                     vals['taxes_id'] = [(6, 0, taxes)]
                     logger.debug(f"  Impuestos venta mapeados: {tax_data} → {taxes}")
         
-        # Impuestos de compra (many2many) - Usamos sync_taxes
+        # Impuestos de compra (many2many) - Usa la función robusta (CORRECCIÓN CLAVE)
         if 'supplier_taxes_id' in product and product.get('supplier_taxes_id'):
             tax_data = product['supplier_taxes_id']
-            # Asegurarse de que tax_data es una lista de IDs (Many2many)
-            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0 and isinstance(tax_data[0], int):
-                supplier_taxes = self.sync_taxes(list(tax_data))
+            # Si no es False y tiene datos
+            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
+                supplier_taxes = self.sync_taxes(tax_data)
                 if supplier_taxes:
-                    # El formato (6, 0, [IDs]) reemplaza todas las relaciones existentes
                     vals['supplier_taxes_id'] = [(6, 0, supplier_taxes)]
                     logger.debug(f"  Impuestos compra mapeados: {tax_data} → {supplier_taxes}")
-        
-        # === FIN DE MANEJO DE IMPUESTOS ===
         
         # UOM (Unidad de medida) - intentar mapear por ID, si falla usar por defecto
         if product.get('uom_id') and isinstance(product['uom_id'], (list, tuple)):
@@ -849,6 +781,12 @@ class ProductSync:
             # Preparar valores
             vals = self.prepare_values(product)
             
+            # Log de impuestos para debug
+            if 'taxes_id' in vals:
+                logger.info(f"  → Impuestos venta: {vals['taxes_id']}")
+            if 'supplier_taxes_id' in vals:
+                logger.info(f"  → Impuestos compra: {vals['supplier_taxes_id']}")
+            
             # Buscar si existe
             existing_id = self.find_existing_product(external_id)
             
@@ -856,13 +794,6 @@ class ProductSync:
                 # Actualizar producto existente
                 self.target.write('product.product', [existing_id], vals)
                 logger.info(f"✓ Actualizado: [{product_ref}] {product_name} (ID: {existing_id})")
-                
-                # Log de impuestos para debug - después de actualizar
-                if 'taxes_id' in vals:
-                    logger.debug(f"  → Impuestos venta escritos: {vals['taxes_id']}")
-                if 'supplier_taxes_id' in vals:
-                    logger.debug(f"  → Impuestos compra escritos: {vals['supplier_taxes_id']}")
-                
                 self.stats['updated'] += 1
             else:
                 # Crear nuevo producto
@@ -885,7 +816,7 @@ class ProductSync:
         logger.info("")
         logger.info("╔" + "=" * 58 + "╗")
         logger.info("║" + " " * 12 + "SINCRONIZACIÓN DE PRODUCTOS" + " " * 19 + "║")
-        logger.info("║" + " " * 15 + "Odoo 16 → Odoo 18" + " " * 25 + "║")
+        logger.info("║" + " " * 15 + "Odoo 16 → Odoo 18" + " " * 26 + "║")
         logger.info("╚" + "=" * 58 + "╝")
         logger.info("")
         
