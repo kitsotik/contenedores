@@ -157,6 +157,9 @@ class ProductSync:
         
         # Cargar mapeos de categorías
         self.load_category_mappings()
+        
+        # Diccionario para almacenar IDs de impuestos mapeados (cache)
+        self.tax_name_to_id = {}
     
     def detect_valid_product_types(self) -> dict:
         """Detecta qué valores de 'type' son válidos en Odoo 18"""
@@ -515,31 +518,43 @@ class ProductSync:
             logger.warning(f"⚠ Error mapeando moneda: {e}")
             return None
     
-    def sync_taxes(self, tax_ids) -> List[int]:
-        """Busca impuestos en Odoo 18 por nombre exacto desde Odoo 16"""
-        if not tax_ids:
+    def sync_taxes(self, tax_ids: List[int]) -> List[int]:
+        """
+        Busca impuestos en Odoo 18 por nombre exacto, tomando los IDs de Odoo 16.
+        Utiliza un caché para evitar llamadas repetidas.
+        """
+        if not tax_ids or not isinstance(tax_ids, list) or len(tax_ids) == 0:
             return []
         
-        # Si es many2one [id, name], convertir a lista
-        if isinstance(tax_ids, (list, tuple)) and len(tax_ids) == 2 and isinstance(tax_ids[0], int):
-            tax_ids = [tax_ids[0]]
-        
         target_ids = []
-        for source_id in tax_ids:
+        
+        # 1. Leer los nombres de todos los impuestos de Odoo 16 en un solo lote
+        try:
+            tax_info_list = self.source.search_read(
+                'account.tax',
+                [('id', 'in', tax_ids)],
+                ['name']
+            )
+        except Exception as e:
+            logger.warning(f"⚠ Error leyendo nombres de impuestos de origen (IDs: {tax_ids}): {e}")
+            return []
+            
+        tax_names = [info['name'] for info in tax_info_list if info.get('name')]
+        
+        if not tax_names:
+            logger.warning(f"⚠ No se encontraron nombres válidos para los IDs de impuestos {tax_ids}")
+            return []
+
+        # 2. Mapear cada nombre al ID de Odoo 18 (usando caché)
+        for tax_name in tax_names:
+            # Revisar caché primero
+            if tax_name in self.tax_name_to_id:
+                target_id = self.tax_name_to_id[tax_name]
+                target_ids.append(target_id)
+                logger.debug(f"✓ Impuesto '{tax_name}' encontrado en caché: {target_id}")
+                continue
+                
             try:
-                # Leer el nombre del impuesto desde Odoo 16
-                tax_info = self.source.search_read(
-                    'account.tax',
-                    [('id', '=', source_id)],
-                    ['name']
-                )
-                
-                if not tax_info:
-                    logger.warning(f"⚠ Impuesto ID {source_id} no encontrado en origen")
-                    continue
-                
-                tax_name = tax_info[0]['name']
-                
                 # Buscar en Odoo 18 por nombre exacto
                 target_tax_ids = self.target.search(
                     'account.tax',
@@ -548,14 +563,17 @@ class ProductSync:
                 
                 if target_tax_ids:
                     # Tomar el primero si hay varios
-                    target_id = target_tax_ids[0] if isinstance(target_tax_ids, list) else target_tax_ids
+                    target_id = target_tax_ids[0]
                     target_ids.append(target_id)
-                    logger.debug(f"✓ Impuesto '{tax_name}' mapeado: {source_id} → {target_id}")
+                    
+                    # Guardar en caché
+                    self.tax_name_to_id[tax_name] = target_id
+                    logger.debug(f"✓ Impuesto '{tax_name}' mapeado y cacheado: → {target_id}")
                 else:
-                    logger.warning(f"⚠ Impuesto '{tax_name}' no encontrado en Odoo 18")
+                    logger.warning(f"❌ Impuesto '{tax_name}' NO ENCONTRADO en Odoo 18. Se omitirá.")
                         
             except Exception as e:
-                logger.warning(f"⚠ Error buscando impuesto {source_id}: {e}")
+                logger.warning(f"⚠ Error buscando impuesto '{tax_name}': {e}")
         
         return target_ids
     
@@ -664,25 +682,33 @@ class ProductSync:
             if public_cats:
                 vals['public_categ_ids'] = [(6, 0, public_cats)]
         
-        # Impuestos de venta (many2many) - Buscar por nombre
+        # === INICIO DE CAMBIOS DE IMPUESTOS ===
+        
+        # Impuestos de venta (many2many) - Usamos sync_taxes
         if 'taxes_id' in product and product.get('taxes_id'):
             tax_data = product['taxes_id']
-            # Si no es False y tiene datos
-            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
-                taxes = self.sync_taxes(tax_data)
+            # Asegurarse de que tax_data es una lista de IDs (Many2many)
+            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0 and isinstance(tax_data[0], int):
+                taxes = self.sync_taxes(list(tax_data))
                 if taxes:
+                    # El formato (6, 0, [IDs]) reemplaza todas las relaciones existentes
                     vals['taxes_id'] = [(6, 0, taxes)]
                     logger.debug(f"  Impuestos venta mapeados: {tax_data} → {taxes}")
+                # Si taxes está vacío, no se agrega el campo al vals, conservando el valor por defecto/anterior
         
-        # Impuestos de compra (many2many) - Buscar por nombre
+        # Impuestos de compra (many2many) - Usamos sync_taxes
         if 'supplier_taxes_id' in product and product.get('supplier_taxes_id'):
             tax_data = product['supplier_taxes_id']
-            # Si no es False y tiene datos
-            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
-                supplier_taxes = self.sync_taxes(tax_data)
+            # Asegurarse de que tax_data es una lista de IDs (Many2many)
+            if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0 and isinstance(tax_data[0], int):
+                supplier_taxes = self.sync_taxes(list(tax_data))
                 if supplier_taxes:
+                    # El formato (6, 0, [IDs]) reemplaza todas las relaciones existentes
                     vals['supplier_taxes_id'] = [(6, 0, supplier_taxes)]
                     logger.debug(f"  Impuestos compra mapeados: {tax_data} → {supplier_taxes}")
+                # Si supplier_taxes está vacío, no se agrega el campo al vals
+        
+        # === FIN DE CAMBIOS DE IMPUESTOS ===
         
         # UOM (Unidad de medida) - intentar mapear por ID, si falla usar por defecto
         if product.get('uom_id') and isinstance(product['uom_id'], (list, tuple)):
@@ -746,12 +772,6 @@ class ProductSync:
             # Preparar valores
             vals = self.prepare_values(product)
             
-            # Log de impuestos para debug
-            if 'taxes_id' in vals:
-                logger.info(f"  → Impuestos venta: {vals['taxes_id']}")
-            if 'supplier_taxes_id' in vals:
-                logger.info(f"  → Impuestos compra: {vals['supplier_taxes_id']}")
-            
             # Buscar si existe
             existing_id = self.find_existing_product(external_id)
             
@@ -759,6 +779,13 @@ class ProductSync:
                 # Actualizar producto existente
                 self.target.write('product.product', [existing_id], vals)
                 logger.info(f"✓ Actualizado: [{product_ref}] {product_name} (ID: {existing_id})")
+                
+                # Log de impuestos para debug - después de actualizar
+                if 'taxes_id' in vals:
+                    logger.debug(f"  → Impuestos venta escritos: {vals['taxes_id']}")
+                if 'supplier_taxes_id' in vals:
+                    logger.debug(f"  → Impuestos compra escritos: {vals['supplier_taxes_id']}")
+                
                 self.stats['updated'] += 1
             else:
                 # Crear nuevo producto
