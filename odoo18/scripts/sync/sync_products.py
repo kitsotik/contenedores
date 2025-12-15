@@ -45,14 +45,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# TABLA DE MAPEO DE NOMBRES DE IMPUESTOS CONOCIDOS
-# (Origen en español -> Destino en inglés)
-TAX_NAME_MAP = {
-    'IVA': 'VAT', 
-    'I.V.A.': 'VAT',
-    'Impuesto al Valor Agregado': 'VAT',
-}
-
 
 class OdooConnection:
     """Maneja la conexión a una instancia de Odoo"""
@@ -155,6 +147,17 @@ class ProductSync:
         # Mapeo de tipos de producto (detectar valores válidos en Odoo 18)
         self.valid_product_types = self.detect_valid_product_types()
         
+        # MAPEO DE IMPUESTOS - Odoo 16 (español) → Odoo 18 (inglés VAT)
+        self.tax_name_mapping = {
+            # Ventas
+            'IVA 21%': 'VAT 21%',
+            'IVA 10.5%': 'VAT 10.5%',
+            'IVA 10,5%': 'VAT 10.5%',  # Por si tiene coma
+            
+            # Compras (si tienen nombres diferentes)
+            # Agregar aquí si los nombres de compra son distintos
+        }
+        
         self.stats = {
             'total': 0,
             'created': 0,
@@ -165,10 +168,19 @@ class ProductSync:
         
         # Cargar mapeos de categorías
         self.load_category_mappings()
+        
+        # Cargar mapeo de impuestos por nombre
+        self.load_tax_mappings()
     
     def detect_valid_product_types(self) -> dict:
         """Detecta qué valores de 'type' son válidos en Odoo 18"""
         logger.info("Configurando tipos de producto para Odoo 18...")
+        
+        # En tu Odoo 18:
+        # - 'consu' = Consumible (con is_storable=False)
+        # - 'consu' + is_storable=True = Almacenable (antes 'product' en v16)
+        # - 'service' = Servicio
+        # - 'combo' = Combo (si existe)
         
         valid_types = {
             'consu': 'Consumible/Almacenable',
@@ -182,6 +194,20 @@ class ProductSync:
     def convert_product_type(self, odoo16_type: str) -> tuple:
         """
         Convierte el tipo de producto de Odoo 16 a Odoo 18
+        
+        En Odoo 16:
+        - 'product' = Almacenable
+        - 'consu' = Consumible
+        - 'service' = Servicio
+        
+        En Odoo 18:
+        - 'consu' = Consumible (is_storable=False)
+        - 'consu' + is_storable=True = Almacenable (antes 'product')
+        - 'service' = Servicio
+        - 'combo' = Combo
+        
+        Returns:
+            tuple: (type, is_storable)
         """
         if odoo16_type == 'product':
             # Almacenable en Odoo 16 = consu + is_storable en Odoo 18
@@ -196,6 +222,44 @@ class ProductSync:
             # Fallback: consumible
             logger.warning(f"Tipo desconocido '{odoo16_type}', usando 'consu'")
             return ('consu', False)
+    
+    def load_tax_mappings(self):
+        """Carga el mapeo de impuestos español → inglés"""
+        logger.info("Cargando mapeo de impuestos...")
+        
+        self.tax_map = {}  # {id_odoo16: id_odoo18}
+        
+        try:
+            for spanish_name, english_name in self.tax_name_mapping.items():
+                # Buscar impuesto en Odoo 16 por nombre en español
+                source_taxes = self.source.search_read(
+                    'account.tax',
+                    [('name', '=', spanish_name)],
+                    ['id', 'name', 'type_tax_use']
+                )
+                
+                if not source_taxes:
+                    continue
+                
+                # Buscar impuesto en Odoo 18 por nombre en inglés
+                for source_tax in source_taxes:
+                    target_taxes = self.target.search(
+                        'account.tax',
+                        [
+                            ('name', '=', english_name),
+                            ('type_tax_use', '=', source_tax['type_tax_use'])
+                        ]
+                    )
+                    
+                    if target_taxes:
+                        target_id = target_taxes[0] if isinstance(target_taxes, list) else target_taxes
+                        self.tax_map[source_tax['id']] = target_id
+                        logger.info(f"✓ Impuesto mapeado: '{spanish_name}' ({source_tax['id']}) → '{english_name}' ({target_id})")
+            
+            logger.info(f"✓ Total impuestos mapeados: {len(self.tax_map)}")
+            
+        except Exception as e:
+            logger.warning(f"⚠ Error cargando mapeo de impuestos: {e}")
     
     def load_category_mappings(self):
         """Carga los mapeos de categorías sincronizadas previamente"""
@@ -503,95 +567,23 @@ class ProductSync:
             logger.warning(f"⚠ Error mapeando moneda: {e}")
             return None
     
-    def sync_taxes(self, tax_data) -> List[int]:
-        """
-        Busca impuestos en Odoo 18 por nombre, con lógica flexible para mapear IVA->VAT.
-        Asegura que el input sea una lista limpia de IDs de impuestos de origen.
-        """
-        if not tax_data:
+    def sync_taxes(self, tax_ids) -> List[int]:
+        """Mapea impuestos usando el diccionario pre-cargado"""
+        if not tax_ids:
             return []
         
-        source_tax_ids = []
-        
-        # --- LÓGICA DE LIMPIEZA DE DATOS DE ENTRADA (Maneja M2O, M2M, M2M lista de tuplas) ---
-        if isinstance(tax_data, (list, tuple)):
-            if len(tax_data) == 2 and isinstance(tax_data[0], int) and isinstance(tax_data[1], str):
-                 # Caso M2O: [ID, Nombre]
-                 source_tax_ids = [tax_data[0]]
-            elif len(tax_data) > 0 and isinstance(tax_data[0], int):
-                 # Caso M2M: [ID, ID, ...]
-                 source_tax_ids = list(tax_data)
-            elif len(tax_data) > 0 and isinstance(tax_data[0], (list, tuple)):
-                 # Caso M2M: [[ID, Nombre], ...] - Limpiar a solo [ID, ...]
-                 source_tax_ids = [t[0] for t in tax_data if isinstance(t, (list, tuple)) and len(t) >= 1 and isinstance(t[0], int)]
-
-        if not source_tax_ids:
-            return []
-        # --- FIN DE LÓGICA DE LIMPIEZA ---
+        # Si es many2one [id, name], convertir a lista
+        if isinstance(tax_ids, (list, tuple)) and len(tax_ids) == 2 and isinstance(tax_ids[0], int):
+            tax_ids = [tax_ids[0]]
         
         target_ids = []
-        for source_id in source_tax_ids:
-            try:
-                # 1. Leer el nombre del impuesto desde Odoo 16
-                tax_info = self.source.search_read(
-                    'account.tax',
-                    [('id', '=', source_id)],
-                    ['name']
-                )
-                
-                if not tax_info:
-                    logger.warning(f"⚠ Impuesto ID {source_id} no encontrado en origen")
-                    continue
-                
-                tax_name = tax_info[0]['name'].strip()
-                mapped_tax_name = tax_name # Valor por defecto
-                
-                # --- 2. INTENTO DE BÚSQUEDA ROBUSTA (Aplica IVA -> VAT) ---
-                target_tax_ids = []
-                
-                # A. Buscar por nombre exacto (Caso: nombres iguales)
-                target_tax_ids = self.target.search('account.tax', [('name', '=', tax_name)])
-                
-                if not target_tax_ids:
-                    # B. Intentar mapeo y búsqueda flexible (Caso: IVA -> VAT)
-                    for source_term, target_term in TAX_NAME_MAP.items():
-                        # Usar CONTAINMENT (in) para manejar "IVA 21%" vs "IVA"
-                        if source_term.lower() in tax_name.lower(): 
-                            
-                            # Reemplazar el término de origen (ej. 'iva') por el de destino (ej. 'vat')
-                            # en el nombre completo (ej. 'iva 21.00%')
-                            mapped_tax_name = tax_name.lower().replace(
-                                source_term.lower(), 
-                                target_term.lower(), 
-                                1 # Solo el primer reemplazo
-                            )
-                            # Poner en mayúscula la primera letra de cada palabra (Title Case)
-                            mapped_tax_name = mapped_tax_name.title().strip()
-                            
-                            logger.debug(f"  → Nombre mapeado: '{tax_name}' a '{mapped_tax_name}'")
-                            
-                            # Buscar con el nombre mapeado usando 'ilike' (flexible)
-                            target_tax_ids = self.target.search(
-                                'account.tax',
-                                [('name', 'ilike', mapped_tax_name)] 
-                            )
-                            
-                            if target_tax_ids:
-                                break # Encontrado, salir del loop de mapeo
-                            
-                    
-                # 3. Finalizar y añadir ID
-                if target_tax_ids:
-                    # Tomar el primero si hay varios
-                    target_id = target_tax_ids[0] if isinstance(target_tax_ids, list) else target_tax_ids
-                    if target_id not in target_ids: # Evitar duplicados
-                         target_ids.append(target_id)
-                    logger.debug(f"✓ Impuesto '{tax_name}' mapeado a ID: {target_id}")
-                else:
-                    logger.warning(f"⚠ Impuesto '{tax_name}' (Mapeo: '{mapped_tax_name}') NO ENCONTRADO en Odoo 18.")
-                        
-            except Exception as e:
-                logger.warning(f"⚠ Error buscando impuesto {source_id}: {e}")
+        for source_id in tax_ids:
+            if source_id in self.tax_map:
+                target_id = self.tax_map[source_id]
+                target_ids.append(target_id)
+                logger.debug(f"✓ Impuesto {source_id} → {target_id}")
+            else:
+                logger.warning(f"⚠ Impuesto {source_id} no mapeado (agregar al diccionario)")
         
         return target_ids
     
@@ -663,6 +655,7 @@ class ProductSync:
                     vals['categ_id'] = default_cat[0]
         
         # Moneda de costo base (campo personalizado relacional)
+        # Puede llamarse 'replenishment_base_cost_currency_id' o 'replenishment_base_cost_on_currency'
         currency_field = None
         if 'replenishment_base_cost_currency_id' in custom_fields and product.get('replenishment_base_cost_currency_id'):
             currency_field = 'replenishment_base_cost_currency_id'
@@ -676,6 +669,8 @@ class ProductSync:
                 logger.debug(f"Moneda sincronizada para {product['name']}: {currency_id}")
         
         # Categorías POS
+        # En Odoo 16: pos_categ_id (many2one)
+        # En Odoo 18: pos_categ_ids (many2many)
         if product.get('pos_categ_id'):
             pos_cat_id = product['pos_categ_id']
             if isinstance(pos_cat_id, (list, tuple)):
@@ -685,6 +680,7 @@ class ProductSync:
             if pos_cats:
                 vals['pos_categ_ids'] = [(6, 0, pos_cats)]
         
+        # Por si acaso viene como many2many en alguna versión
         elif product.get('pos_categ_ids'):
             pos_cats = self.sync_pos_categories(product['pos_categ_ids'])
             if pos_cats:
@@ -696,20 +692,20 @@ class ProductSync:
             if public_cats:
                 vals['public_categ_ids'] = [(6, 0, public_cats)]
         
-        # === MANEJO DE IMPUESTOS (Venta y Compra) ===
-        
-        # Impuestos de venta (taxes_id)
+        # Impuestos de venta (many2many) - Buscar por nombre
         if 'taxes_id' in product and product.get('taxes_id'):
             tax_data = product['taxes_id']
+            # Si no es False y tiene datos
             if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
                 taxes = self.sync_taxes(tax_data)
                 if taxes:
                     vals['taxes_id'] = [(6, 0, taxes)]
                     logger.debug(f"  Impuestos venta mapeados: {tax_data} → {taxes}")
         
-        # Impuestos de compra (supplier_taxes_id) - Usa la misma función robusta
+        # Impuestos de compra (many2many) - Buscar por nombre
         if 'supplier_taxes_id' in product and product.get('supplier_taxes_id'):
             tax_data = product['supplier_taxes_id']
+            # Si no es False y tiene datos
             if tax_data and isinstance(tax_data, (list, tuple)) and len(tax_data) > 0:
                 supplier_taxes = self.sync_taxes(tax_data)
                 if supplier_taxes:
