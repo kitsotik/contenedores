@@ -160,6 +160,9 @@ class ProductSync:
         
         # Diccionario para almacenar IDs de impuestos mapeados (cache)
         self.tax_name_to_id = {}
+        
+        # Bandera para saber si ya volcamos los nombres de impuestos en Odoo 18
+        self.target_taxes_dumped = False 
     
     def detect_valid_product_types(self) -> dict:
         """Detecta qué valores de 'type' son válidos en Odoo 18"""
@@ -558,10 +561,10 @@ class ProductSync:
             clean_tax_name = tax_name.strip()
                 
             try:
-                # Buscar en Odoo 18 por nombre usando 'ilike' (insensible a mayúsculas/minúsculas)
+                # Buscar en Odoo 18 por nombre usando 'ilike' (insensible a mayúsculas/minúsculas y espacios/caracteres especiales leves)
                 target_tax_ids = self.target.search(
                     'account.tax',
-                    [('name', 'ilike', clean_tax_name)] # <-- Uso de 'ilike' para robustez
+                    [('name', 'ilike', clean_tax_name)] 
                 )
                 
                 if target_tax_ids:
@@ -574,6 +577,36 @@ class ProductSync:
                     logger.debug(f"✓ Impuesto '{clean_tax_name}' mapeado y cacheado: → {target_id}")
                 else:
                     logger.warning(f"❌ Impuesto '{clean_tax_name}' NO ENCONTRADO en Odoo 18. Verificar nombre exacto.")
+                    
+                    # 🚨 DIAGNÓSTICO AVANZADO EN CASO DE FALLO 🚨
+                    if not self.target_taxes_dumped:
+                        self.target_taxes_dumped = True
+                        logger.error("-" * 50)
+                        logger.error("¡DIAGNÓSTICO DE IMPUESTOS EN ODOO 18 ACTIVADO!")
+                        logger.error(f"El impuesto '{clean_tax_name}' no se encuentra con la búsqueda robusta.")
+                        
+                        try:
+                            all_target_taxes = self.target.search_read(
+                                'account.tax',
+                                [], # Dominio vacío para obtener todos los visibles
+                                ['name']
+                            )
+                            
+                            visible_names = [t['name'].strip() for t in all_target_taxes]
+                            
+                            if not visible_names:
+                                logger.error("🔴 ¡ALERTA CRÍTICA! El usuario RPC NO PUEDE VER NINGÚN IMPUESTO en Odoo 18.")
+                                logger.error("Esto es un problema de SEGURIDAD/PERMISOS (Access Rights) o de CONTEXTO (Company).")
+                                logger.error("Asegúrese de que el usuario tiene permisos de lectura sobre 'account.tax'.")
+                            else:
+                                logger.error(f"🟡 Impuestos VISIBLES en Odoo 18 ({len(visible_names)}):")
+                                logger.error(f"Lista de nombres: {', '.join(visible_names)}")
+                                logger.error("Si el impuesto buscado ('IVA 21%') NO está en la lista de arriba, el nombre es diferente en Odoo 18.")
+                            
+                        except Exception as e_dump:
+                            logger.error(f"❌ Falló el volcado de impuestos (Problema de permisos): {e_dump}")
+                        
+                        logger.error("-" * 50)
                         
             except Exception as e:
                 logger.warning(f"⚠ Error buscando impuesto '{clean_tax_name}': {e}")
