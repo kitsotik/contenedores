@@ -184,7 +184,8 @@ class ProductArchiveSync:
             products_without_ref = []
             
             for product in all_products:
-                ref = product.get('default_code', '').strip()
+                ref = product.get('default_code') or ''
+                ref = ref.strip() if isinstance(ref, str) else ''
                 
                 if ref:  # Solo productos con referencia
                     products_by_ref[ref] = (
@@ -240,7 +241,8 @@ class ProductArchiveSync:
             products_without_ref = []
             
             for product in all_products:
-                ref = product.get('default_code', '').strip()
+                ref = product.get('default_code') or ''
+                ref = ref.strip() if isinstance(ref, str) else ''
                 
                 if ref:  # Solo productos con referencia
                     products_by_ref[ref] = (
