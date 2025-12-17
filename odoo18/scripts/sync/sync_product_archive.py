@@ -311,34 +311,60 @@ class ProductArchiveSync:
             # Obtener estado de todos los productos en Odoo 16
             products_status = self.get_all_products_status()
             
+            # Crear set de IDs activos en Odoo 16
+            active_in_odoo16 = {
+                source_id for source_id, (_, _, active) in products_status.items() 
+                if active
+            }
+            
+            logger.info(f"📊 Productos activos en Odoo 16: {len(active_in_odoo16)}")
+            logger.info(f"📦 Productos archivados en Odoo 16: {len(products_status) - len(active_in_odoo16)}")
+            
             self.stats['total'] = len(product_map)
             
             logger.info("")
             logger.info("=" * 60)
             logger.info("SINCRONIZANDO ESTADO DE PRODUCTOS")
             logger.info("=" * 60)
+            logger.info("Estrategia: Si producto NO está activo en Odoo 16 → Archivar en Odoo 18")
+            logger.info("")
             
-            # Sincronizar cada producto
+            # Recorrer todos los productos en Odoo 18 (que están en el mapeo)
             processed = 0
             for source_id, target_id in product_map.items():
+                processed += 1
+                if processed % 100 == 0:
+                    logger.info(f"⏳ Procesados {processed}/{len(product_map)} productos...")
+                
+                # Buscar info del producto en Odoo 16
                 if source_id in products_status:
-                    product_name, product_ref, should_be_active = products_status[source_id]
+                    product_name, product_ref, is_active_in_odoo16 = products_status[source_id]
                     
-                    # Mostrar progreso cada 100 productos
-                    processed += 1
-                    if processed % 100 == 0:
-                        logger.info(f"⏳ Procesados {processed}/{len(product_map)} productos...")
-                    
+                    # Sincronizar: debe estar activo en O18 solo si está activo en O16
                     self.sync_product_status(
                         source_id, 
                         target_id, 
                         product_name, 
                         product_ref, 
-                        should_be_active
+                        is_active_in_odoo16  # True si debe estar activo, False si debe archivarse
                     )
                 else:
-                    logger.warning(f"⚠ Producto {source_id} no encontrado en origen")
-                    self.stats['not_found'] += 1
+                    # Producto existe en O18 pero NO en O16 → Archivarlo
+                    logger.warning(f"⚠ Producto {source_id} no encontrado en Odoo 16 → Archivando en Odoo 18")
+                    try:
+                        self.target.models.execute_kw(
+                            self.target.config['db'],
+                            self.target.uid,
+                            self.target.config['password'],
+                            'product.product',
+                            'write',
+                            [[target_id], {'active': False}],
+                            {'context': {'active_test': False}}
+                        )
+                        self.stats['archived'] += 1
+                    except Exception as e:
+                        logger.error(f"Error archivando producto {target_id}: {e}")
+                        self.stats['errors'] += 1
             
             # Resumen
             elapsed = datetime.now() - start_time
@@ -348,29 +374,27 @@ class ProductArchiveSync:
             logger.info("RESUMEN DE SINCRONIZACIÓN")
             logger.info("=" * 60)
             logger.info(f"Total productos en Odoo 16:  {len(products_status)}")
-            logger.info(f"  - Activos en O16:          {sum(1 for _, _, active in products_status.values() if active)}")
-            logger.info(f"  - Archivados en O16:       {sum(1 for _, _, active in products_status.values() if not active)}")
+            logger.info(f"  - Activos en O16:          {len(active_in_odoo16)}")
+            logger.info(f"  - Archivados en O16:       {len(products_status) - len(active_in_odoo16)}")
             logger.info(f"")
-            logger.info(f"Total productos mapeados:    {self.stats['total']}")
+            logger.info(f"Total productos en Odoo 18:  {self.stats['total']}")
             logger.info(f"✓ Activados en O18:          {self.stats['activated']}")
             logger.info(f"📦 Archivados en O18:         {self.stats['archived']}")
             logger.info(f"⊙ Sin cambios:               {self.stats['unchanged']}")
-            logger.info(f"⚠ No encontrados:            {self.stats['not_found']}")
             logger.info(f"❌ Errores:                   {self.stats['errors']}")
             logger.info(f"⏱ Tiempo:                     {elapsed}")
             logger.info("=" * 60)
             
-            # Advertencia si hay muchos productos sin mapear
-            unmapped = len(products_status) - self.stats['total']
-            if unmapped > 0:
-                logger.warning(f"")
-                logger.warning(f"⚠ HAY {unmapped} PRODUCTOS EN ODOO 16 QUE NO ESTÁN SINCRONIZADOS")
-                logger.warning(f"⚠ Ejecuta 'python3 sync_products.py' para sincronizarlos primero")
-            
             if self.stats['errors'] == 0:
                 logger.info("✓ ¡Sincronización completada exitosamente!")
+                if self.stats['archived'] > 0:
+                    logger.info(f"📦 Se archivaron {self.stats['archived']} productos que no están activos en Odoo 16")
             else:
                 logger.warning(f"⚠ Completado con {self.stats['errors']} errores")
+            
+        except Exception as e:
+            logger.error(f"❌ Error crítico en sincronización: {e}")
+            raise
             
         except Exception as e:
             logger.error(f"❌ Error crítico en sincronización: {e}")
