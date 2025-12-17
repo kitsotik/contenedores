@@ -1,157 +1,96 @@
 #!/usr/bin/env python3
 import xmlrpc.client
 import logging
-from datetime import datetime
-from typing import Dict, List, Tuple, Optional
 import sys
 import os
+from datetime import datetime
 
-# Configuración de directorio para importar config.py
+# Mantener lógica de importación de config
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 try:
     from config import ODOO_16, ODOO_18
 except ImportError:
     print("❌ Error: No se encontró config.py")
     sys.exit(1)
 
-# Configuración de logging
+# Logging configurado para lo que pediste
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('sync_product_archive.log'),
-        logging.StreamHandler()
-    ]
+    format='%(message)s',
+    handlers=[logging.FileHandler('archivo_productos.log'), logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
 
 class OdooConnection:
-    """Maneja la conexión a una instancia de Odoo"""
-    def __init__(self, config: Dict, name: str):
+    def __init__(self, config, name):
         self.config = config
         self.name = name
-        self.uid = None
-        self.models = None
         self.connect()
-    
+
     def connect(self):
-        try:
-            common = xmlrpc.client.ServerProxy(f"{self.config['url']}/xmlrpc/2/common")
-            self.uid = common.authenticate(
-                self.config['db'], self.config['username'], self.config['password'], {}
-            )
-            if not self.uid:
-                raise Exception(f"Autenticación fallida en {self.name}")
-            self.models = xmlrpc.client.ServerProxy(f"{self.config['url']}/xmlrpc/2/object")
-        except Exception as e:
-            logger.error(f"❌ Error conectando a {self.name}: {e}")
-            raise
+        common = xmlrpc.client.ServerProxy(f"{self.config['url']}/xmlrpc/2/common")
+        self.uid = common.authenticate(self.config['db'], self.config['username'], self.config['password'], {})
+        self.models = xmlrpc.client.ServerProxy(f"{self.config['url']}/xmlrpc/2/object")
 
-    def search_read(self, model: str, domain: List, fields: List, context: Dict = None) -> List[Dict]:
-        kwargs = {'fields': fields}
-        if context: kwargs['context'] = context
-        return self.models.execute_kw(
-            self.config['db'], self.uid, self.config['password'],
-            model, 'search_read', [domain], kwargs
-        )
+    def execute(self, model, method, *args, **kwargs):
+        return self.models.execute_kw(self.config['db'], self.uid, self.config['password'], model, method, args, kwargs)
 
-    def write(self, model: str, record_ids: List[int], values: Dict, context: Dict = None) -> bool:
-        kwargs = {}
-        if context: kwargs['context'] = context
-        return self.models.execute_kw(
-            self.config['db'], self.uid, self.config['password'],
-            model, 'write', [record_ids, values], kwargs
-        )
+def get_product_map(conn):
+    """Obtiene todos los productos (activos y archivados) mapeados por referencia"""
+    logger.info(f"Consultando productos en {conn.name}...")
+    # ESENCIAL: active_test=False para poder ver los archivados
+    products = conn.execute(
+        'product.product', 'search_read',
+        [], # Todos los productos
+        ['default_code', 'active', 'name'],
+        context={'active_test': False}
+    )
+    
+    # Creamos un diccionario { 'REF123': {'id': 1, 'active': True, 'name': 'Producto'} }
+    product_map = {}
+    for p in products:
+        ref = str(p.get('default_code') or '').strip()
+        if ref:
+            product_map[ref] = p
+    return product_map
 
-class ProductArchiveSync:
-    """Sincroniza el estado activo/archivado basado en default_code"""
-    def __init__(self):
-        self.source = OdooConnection(ODOO_16, "Odoo 16 (VPS)")
-        self.target = OdooConnection(ODOO_18, "Odoo 18 (Local)")
-        self.stats = {
-            'matched': 0,
-            'archived': 0,
-            'activated': 0,
-            'not_found_in_o16': 0,
-            'errors': 0
-        }
+def run_sync():
+    o16 = OdooConnection(ODOO_16, "Odoo 16 (VPS)")
+    o18 = OdooConnection(ODOO_18, "Odoo 18 (Local)")
 
-    def get_products_dict(self, connection: OdooConnection) -> Dict[str, dict]:
-        """Obtiene productos y los indexa por referencia normalizada"""
-        logger.info(f"--- Cargando productos de {connection.name} ---")
-        try:
-            # Traemos todos incluyendo archivados usando active_test: False
-            products = connection.search_read(
-                'product.product', 
-                [], 
-                ['id', 'name', 'default_code', 'active'],
-                context={'active_test': False}
-            )
+    # 1. Traer datos de ambos mundos
+    mapa_16 = get_product_map(o16)
+    mapa_18 = get_product_map(o18)
+
+    logger.info(f"\nAnalizando {len(mapa_18)} productos de Odoo 18...")
+    logger.info("-" * 50)
+
+    stats = {'archivados': 0, 'no_encontrados': 0, 'ya_estaban_bien': 0}
+
+    # 2. Iterar sobre lo que hay en Odoo 18
+    for ref, prod_18 in mapa_18.items():
+        
+        # Si el producto existe en Odoo 16
+        if ref in mapa_16:
+            prod_16 = mapa_16[ref]
             
-            p_dict = {}
-            for p in products:
-                # Normalización: quitamos espacios y pasamos a mayúsculas
-                ref = str(p.get('default_code') or '').strip().upper()
-                if ref:
-                    p_dict[ref] = {
-                        'id': p['id'],
-                        'name': p['name'],
-                        'active': p['active']
-                    }
-            logger.info(f"✓ {len(p_dict)} productos con referencia encontrados.")
-            return p_dict
-        except Exception as e:
-            logger.error(f"Error cargando productos: {e}")
-            return {}
-
-    def run(self):
-        start_time = datetime.now()
-        logger.info("Iniciando proceso de comparación...")
-
-        o16_data = self.get_products_dict(self.source)
-        o18_data = self.get_products_dict(self.target)
-
-        if not o16_data or not o18_data:
-            logger.error("No se pudo obtener datos de una de las instancias. Abortando.")
-            return
-
-        for ref, p18 in o18_data.items():
-            # CASO: Existe en Odoo 18
-            if ref in o16_data:
-                p16 = o16_data[ref]
-                self.stats['matched'] += 1
-
-                # Comparar estados
-                if p18['active'] != p16['active']:
-                    try:
-                        self.target.write('product.product', [p18['id']], {'active': p16['active']})
-                        status_txt = "ACTIVANDO" if p16['active'] else "ARCHIVANDO"
-                        logger.info(f"➔ {status_txt}: [{ref}] {p18['name']} (Igualando a O16)")
-                        
-                        if p16['active']: self.stats['activated'] += 1
-                        else: self.stats['archived'] += 1
-                    except Exception as e:
-                        logger.error(f"❌ Error con {ref}: {e}")
-                        self.stats['errors'] += 1
+            # CASO: En O16 está ARCHIVADO (active=False) pero en O18 está ACTIVO (active=True)
+            if not prod_16['active'] and prod_18['active']:
+                logger.info(f"📦 ARCHIVANDO: [{ref}] {prod_18['name']} (Detectado archivado en O16)")
+                o18.execute('product.product', 'write', [prod_18['id']], {'active': False})
+                stats['archivados'] += 1
             else:
-                # REQUERIMIENTO: Log de lo que está en O18 pero no en O16
-                logger.warning(f"🔍 ANALISIS: Encontré esto en Odoo 18 [{ref}] y NO lo encuentro activo/existente en Odoo 16")
-                self.stats['not_found_in_o16'] += 1
+                stats['ya_estaban_bien'] += 1
+        
+        else:
+            # REQUERIMIENTO: Log de lo que hay en 18 pero no está activo en 16
+            logger.warning(f"⚠️  ANÁLISIS: Encontré esto en odoo 18 [{ref}] y no lo encuentro activo en odoo 16")
+            stats['no_encontrados'] += 1
 
-        # Resumen
-        logger.info("="*60)
-        logger.info(f"RESUMEN FINAL - Tiempo: {datetime.now() - start_time}")
-        logger.info(f"• Coincidencias procesadas: {self.stats['matched']}")
-        logger.info(f"• Archivados en O18:       {self.stats['archived']}")
-        logger.info(f"• Activados en O18:        {self.stats['activated']}")
-        logger.info(f"• No encontrados en O16:   {self.stats['not_found_in_o16']}")
-        logger.info(f"• Errores técnicos:        {self.stats['errors']}")
-        logger.info("="*60)
+    # 3. Resumen
+    logger.info("-" * 50)
+    logger.info(f"Finalizado. Se archivaron {stats['archivados']} productos en Odoo 18.")
+    logger.info(f"Productos en O18 sin referencia activa en O16: {stats['not_found']}")
 
 if __name__ == "__main__":
-    try:
-        sync = ProductArchiveSync()
-        sync.run()
-    except Exception as e:
-        logger.error(f"Error fatal: {e}")
+    run_sync()
