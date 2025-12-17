@@ -3,7 +3,6 @@ import xmlrpc.client
 import logging
 import sys
 import os
-import re
 from datetime import datetime
 
 # Configuración de entorno
@@ -17,7 +16,7 @@ except ImportError:
 logging.basicConfig(
     level=logging.INFO,
     format='%(message)s',
-    handlers=[logging.FileHandler('sync_limpieza_nombres.log'), logging.StreamHandler()]
+    handlers=[logging.FileHandler('sync_tecnico.log'), logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
 
@@ -39,82 +38,88 @@ class OdooConnection:
     def execute(self, model, method, *args, **kwargs):
         return self.models.execute_kw(self.config['db'], self.uid, self.config['password'], model, method, args, kwargs)
 
-def limpiar_nombre(nombre):
-    """
-    Limpia el nombre profundamente para comparación:
-    - Todo a minúsculas
-    - Quita comillas (", '), guiones, barras
-    - Convierte múltiples espacios en uno solo
-    """
-    if not nombre: return ""
-    # 1. Minúsculas
-    n = nombre.lower()
-    # 2. Quitar caracteres que suelen variar (comillas, símbolos)
-    n = re.sub(r'[\"\'\-\/\(\)]', ' ', n)
-    # 3. Quitar espacios múltiples y espacios en los extremos
-    n = " ".join(n.split())
-    return n
-
-def get_product_map(conn):
+def get_product_maps(conn):
+    """Crea dos mapas: uno por barcode y otro por referencia"""
     logger.info(f"Consultando productos en {conn.name}...")
     products = conn.execute(
         'product.product', 'search_read',
         [], 
-        ['name', 'active', 'default_code'],
+        ['default_code', 'barcode', 'active', 'name'],
         context={'active_test': False}
     )
     
-    product_map = {}
+    by_barcode = {}
+    by_ref = {}
+    
     for p in products:
-        # LLAVE DE COMPARACIÓN LIMPIA
-        key = limpiar_nombre(p.get('name'))
-        if key:
-            # Guardamos la info. Si el nombre limpio se repite, avisamos en debug
-            product_map[key] = {
-                'id': p['id'],
-                'active': p['active'],
-                'full_name': p['name'],
-                'ref': p.get('default_code') or 'Sin Ref'
-            }
-    return product_map
+        barcode = str(p.get('barcode') or '').strip()
+        ref = str(p.get('default_code') or '').strip()
+        
+        data = {'id': p['id'], 'active': p['active'], 'name': p['name']}
+        
+        if barcode:
+            by_barcode[barcode] = data
+        if ref:
+            by_ref[ref] = data
+            
+    return by_barcode, by_ref
 
 def run_sync():
-    logger.info(f"--- Sincronización Reforzada: {datetime.now().strftime('%H:%M:%S')} ---")
+    logger.info(f"--- Sincronización Técnica (Barcode/Ref): {datetime.now().strftime('%H:%M:%S')} ---")
     
     o16 = OdooConnection(ODOO_16, "Odoo 16 (VPS)")
     o18 = OdooConnection(ODOO_18, "Odoo 18 (Local)")
 
-    mapa_16 = get_product_map(o16)
-    mapa_18 = get_product_map(o18)
+    # 1. Obtener mapas de Odoo 16 (Fuente)
+    o16_barcodes, o16_refs = get_product_maps(o16)
+    
+    # 2. Obtener productos de Odoo 18 (Destino)
+    logger.info(f"Consultando productos en Odoo 18...")
+    products_18 = o18.execute(
+        'product.product', 'search_read',
+        [], 
+        ['default_code', 'barcode', 'active', 'name'],
+        context={'active_test': False}
+    )
 
-    logger.info(f"\nComparando {len(mapa_18)} productos de Odoo 18...")
-    logger.info("-" * 60)
+    stats = {'archivados': 0, 'no_encontrados': 0, 'omitidos': 0}
 
-    stats = {'archivados': 0, 'no_encontrados': 0, 'correctos': 0}
-
-    for key_18, data_18 in mapa_18.items():
-        # Verificamos si el nombre limpio existe en O16
-        if key_18 in mapa_16:
-            data_16 = mapa_16[key_18]
+    # 3. Procesar Odoo 18
+    for p18 in products_18:
+        barcode = str(p18.get('barcode') or '').strip()
+        ref = str(p18.get('default_code') or '').strip()
+        p18_id = p18['id']
+        p18_name = p18['name']
+        
+        target_o16 = None
+        
+        # Intentar encontrar por Barcode primero
+        if barcode and barcode in o16_barcodes:
+            target_o16 = o16_barcodes[barcode]
+        # Si no, intentar por Referencia Interna
+        elif ref and ref in o16_refs:
+            target_o16 = o16_refs[ref]
             
-            # Si en O16 está archivado (False) y en O18 está activo (True)
-            if not data_16['active'] and data_18['active']:
-                try:
-                    logger.info(f"📦 ARCHIVANDO: '{data_18['full_name']}'")
-                    logger.info(f"   (Motivo: Coincidencia limpia con O16 archivado)")
-                    o18.execute('product.product', 'write', [data_18['id']], {'active': False})
-                    stats['archivados'] += 1
-                except Exception as e:
-                    logger.error(f"❌ Error al archivar {data_18['full_name']}: {e}")
-            else:
-                stats['correctos'] += 1
+        if target_o16:
+            # Si en O16 está archivado (False) y en O18 está activo (True) -> Archivar
+            if not target_o16['active'] and p18['active']:
+                logger.info(f"📦 ARCHIVANDO: [{ref or 'S/R'}] {p18_name}")
+                o18.execute('product.product', 'write', [p18_id], {'active': False})
+                stats['archivados'] += 1
         else:
-            # Aquí verás si el SSD de 480Gb sigue saliendo como no encontrado
-            logger.warning(f"⚠️  NO ENCONTRADO EN O16: '{data_18['full_name']}'")
-            stats['no_encontrados'] += 1
+            if not barcode and not ref:
+                stats['omitidos'] += 1
+            else:
+                # Log de análisis solicitado
+                logger.warning(f"⚠️  ANÁLISIS: Encontré en O18 [{ref or barcode}] {p18_name} y no existe activo en O16")
+                stats['no_encontrados'] += 1
 
     logger.info("-" * 60)
-    logger.info(f"RESUMEN: Archivados: {stats['archivados']} | No encontrados: {stats['no_encontrados']} | Sin cambios: {stats['correctos']}")
+    logger.info(f"RESULTADOS FINAL:")
+    logger.info(f"- Archivados en O18: {stats['archivados']}")
+    logger.info(f"- No encontrados en O16: {stats['no_encontrados']}")
+    logger.info(f"- Sin códigos (Omitidos): {stats['omitidos']}")
+    logger.info("-" * 60)
 
 if __name__ == "__main__":
     run_sync()
