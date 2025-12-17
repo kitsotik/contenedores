@@ -236,22 +236,27 @@ class ProductArchiveSync:
                 'search_read',
                 [[('id', '=', target_id)]],
                 {
-                    'fields': ['active'],
+                    'fields': ['active', 'name'],
                     'context': {'active_test': False}  # Para poder leer productos archivados
                 }
             )
             
             if not target_product:
-                logger.warning(f"⚠ Producto no encontrado en Odoo 18: [{product_ref}] {product_name}")
+                logger.warning(f"⚠ Producto no encontrado en Odoo 18: [{product_ref}] {product_name} (ID: {target_id})")
                 self.stats['not_found'] += 1
                 return
             
             current_active = target_product[0]['active']
             
+            # Log detallado para debug
+            logger.debug(f"Producto [{product_ref}] {product_name}:")
+            logger.debug(f"  Estado Odoo 16: {'Activo' if should_be_active else 'Archivado'}")
+            logger.debug(f"  Estado Odoo 18: {'Activo' if current_active else 'Archivado'}")
+            
             # Si el estado es diferente, actualizarlo
             if current_active != should_be_active:
                 # Usar execute_kw con context para poder modificar archivados
-                self.target.models.execute_kw(
+                result = self.target.models.execute_kw(
                     self.target.config['db'],
                     self.target.uid,
                     self.target.config['password'],
@@ -263,7 +268,7 @@ class ProductArchiveSync:
                 
                 action = "ACTIVADO" if should_be_active else "ARCHIVADO"
                 status = "✓" if should_be_active else "📦"
-                logger.info(f"{status} {action}: [{product_ref}] {product_name} (ID: {target_id})")
+                logger.info(f"{status} {action}: [{product_ref}] {product_name} (ID O16: {source_id}, O18: {target_id})")
                 
                 if should_be_active:
                     self.stats['activated'] += 1
@@ -272,10 +277,15 @@ class ProductArchiveSync:
             else:
                 # Estado ya es correcto
                 self.stats['unchanged'] += 1
-                logger.debug(f"⊙ Sin cambios: [{product_ref}] {product_name}")
+                # Log solo los primeros 5 para ver qué está pasando
+                if self.stats['unchanged'] <= 5:
+                    state_str = "activo" if current_active else "archivado"
+                    logger.info(f"⊙ Sin cambios [{product_ref}] {product_name}: ya está {state_str} en ambos")
                 
         except Exception as e:
             logger.error(f"❌ Error con [{product_ref}] {product_name}: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
             self.stats['errors'] += 1
     
     def run(self):
@@ -337,14 +347,25 @@ class ProductArchiveSync:
             logger.info("=" * 60)
             logger.info("RESUMEN DE SINCRONIZACIÓN")
             logger.info("=" * 60)
-            logger.info(f"Total productos:    {self.stats['total']}")
-            logger.info(f"✓ Activados:        {self.stats['activated']}")
-            logger.info(f"📦 Archivados:       {self.stats['archived']}")
-            logger.info(f"⊙ Sin cambios:      {self.stats['unchanged']}")
-            logger.info(f"⚠ No encontrados:   {self.stats['not_found']}")
-            logger.info(f"❌ Errores:          {self.stats['errors']}")
-            logger.info(f"⏱ Tiempo:            {elapsed}")
+            logger.info(f"Total productos en Odoo 16:  {len(products_status)}")
+            logger.info(f"  - Activos en O16:          {sum(1 for _, _, active in products_status.values() if active)}")
+            logger.info(f"  - Archivados en O16:       {sum(1 for _, _, active in products_status.values() if not active)}")
+            logger.info(f"")
+            logger.info(f"Total productos mapeados:    {self.stats['total']}")
+            logger.info(f"✓ Activados en O18:          {self.stats['activated']}")
+            logger.info(f"📦 Archivados en O18:         {self.stats['archived']}")
+            logger.info(f"⊙ Sin cambios:               {self.stats['unchanged']}")
+            logger.info(f"⚠ No encontrados:            {self.stats['not_found']}")
+            logger.info(f"❌ Errores:                   {self.stats['errors']}")
+            logger.info(f"⏱ Tiempo:                     {elapsed}")
             logger.info("=" * 60)
+            
+            # Advertencia si hay muchos productos sin mapear
+            unmapped = len(products_status) - self.stats['total']
+            if unmapped > 0:
+                logger.warning(f"")
+                logger.warning(f"⚠ HAY {unmapped} PRODUCTOS EN ODOO 16 QUE NO ESTÁN SINCRONIZADOS")
+                logger.warning(f"⚠ Ejecuta 'python3 sync_products.py' para sincronizarlos primero")
             
             if self.stats['errors'] == 0:
                 logger.info("✓ ¡Sincronización completada exitosamente!")
