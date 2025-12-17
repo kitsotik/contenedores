@@ -227,11 +227,18 @@ class ProductArchiveSync:
                            should_be_active: bool):
         """Sincroniza el estado de un producto individual"""
         try:
-            # Obtener estado actual en Odoo 18
-            target_product = self.target.search_read(
+            # Obtener estado actual en Odoo 18 (con context para leer archivados)
+            target_product = self.target.models.execute_kw(
+                self.target.config['db'],
+                self.target.uid,
+                self.target.config['password'],
                 'product.product',
-                [('id', '=', target_id)],
-                ['active']
+                'search_read',
+                [[('id', '=', target_id)]],
+                {
+                    'fields': ['active'],
+                    'context': {'active_test': False}  # Para poder leer productos archivados
+                }
             )
             
             if not target_product:
@@ -243,10 +250,15 @@ class ProductArchiveSync:
             
             # Si el estado es diferente, actualizarlo
             if current_active != should_be_active:
-                self.target.write(
+                # Usar execute_kw con context para poder modificar archivados
+                self.target.models.execute_kw(
+                    self.target.config['db'],
+                    self.target.uid,
+                    self.target.config['password'],
                     'product.product',
-                    [target_id],
-                    {'active': should_be_active}
+                    'write',
+                    [[target_id], {'active': should_be_active}],
+                    {'context': {'active_test': False}}  # Importante para modificar archivados
                 )
                 
                 action = "ACTIVADO" if should_be_active else "ARCHIVADO"
