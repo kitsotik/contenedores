@@ -97,9 +97,13 @@ class OdooConnection:
             kwargs
         )
     
-    def search_read(self, model: str, domain: List, fields: List) -> List[Dict]:
+    def search_read(self, model: str, domain: List, fields: List, context: Dict = None) -> List[Dict]:
         """Busca y lee registros"""
         try:
+            kwargs = {'fields': fields}
+            if context:
+                kwargs['context'] = context
+            
             return self.models.execute_kw(
                 self.config['db'],
                 self.uid,
@@ -107,7 +111,7 @@ class OdooConnection:
                 model,
                 'search_read',
                 [domain],
-                {'fields': fields}
+                kwargs
             )
         except Exception as e:
             logger.error(f"Error en search_read - Model: {model}")
@@ -117,9 +121,21 @@ class OdooConnection:
         """Busca IDs de registros"""
         return self.execute(model, 'search', domain)
     
-    def write(self, model: str, record_ids: List[int], values: Dict) -> bool:
+    def write(self, model: str, record_ids: List[int], values: Dict, context: Dict = None) -> bool:
         """Actualiza registros"""
-        return self.execute(model, 'write', record_ids, values)
+        kwargs = {}
+        if context:
+            kwargs['context'] = context
+        
+        return self.models.execute_kw(
+            self.config['db'],
+            self.uid,
+            self.config['password'],
+            model,
+            'write',
+            [record_ids, values],
+            kwargs
+        )
 
 
 class ProductArchiveSync:
@@ -177,35 +193,23 @@ class ProductArchiveSync:
         
         try:
             # Buscar TODOS los productos (activos Y archivados)
-            # Para incluir archivados, usamos context con active_test=False
-            logger.info("Leyendo productos activos desde Odoo 16...")
-            active_products = self.source.search_read(
+            logger.info("Leyendo TODOS los productos desde Odoo 16 (activos y archivados)...")
+            
+            # Una sola llamada con active_test=False para obtener TODOS
+            all_products = self.source.search_read(
                 'product.product',
-                [('active', '=', True)],
-                ['id', 'name', 'default_code', 'active']
+                [],  # Sin filtro de dominio
+                ['id', 'name', 'default_code', 'active'],
+                context={'active_test': False}  # CRÍTICO: incluir archivados
             )
             
-            logger.info("Leyendo productos archivados desde Odoo 16...")
-            # Para leer archivados, necesitamos cambiar el contexto
-            archived_products = self.source.models.execute_kw(
-                self.source.config['db'],
-                self.source.uid,
-                self.source.config['password'],
-                'product.product',
-                'search_read',
-                [[('active', '=', False)]],
-                {
-                    'fields': ['id', 'name', 'default_code', 'active'],
-                    'context': {'active_test': False}
-                }
-            )
-            
-            # Combinar todos los productos
-            all_products = active_products + archived_products
+            # Contar activos y archivados
+            active_count = sum(1 for p in all_products if p['active'])
+            archived_count = len(all_products) - active_count
             
             logger.info(f"✓ Total productos en Odoo 16: {len(all_products)}")
-            logger.info(f"  - Activos: {len(active_products)}")
-            logger.info(f"  - Archivados: {len(archived_products)}")
+            logger.info(f"  - Activos: {active_count}")
+            logger.info(f"  - Archivados: {archived_count}")
             
             # Crear diccionario {id: (name, ref, active)}
             products_status = {}
@@ -220,6 +224,8 @@ class ProductArchiveSync:
             
         except Exception as e:
             logger.error(f"❌ Error obteniendo productos: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
             raise
     
     def sync_product_status(self, source_id: int, target_id: int, 
@@ -228,17 +234,11 @@ class ProductArchiveSync:
         """Sincroniza el estado de un producto individual"""
         try:
             # Obtener estado actual en Odoo 18 (con context para leer archivados)
-            target_product = self.target.models.execute_kw(
-                self.target.config['db'],
-                self.target.uid,
-                self.target.config['password'],
+            target_product = self.target.search_read(
                 'product.product',
-                'search_read',
-                [[('id', '=', target_id)]],
-                {
-                    'fields': ['active', 'name'],
-                    'context': {'active_test': False}  # Para poder leer productos archivados
-                }
+                [('id', '=', target_id)],
+                ['active', 'name'],
+                context={'active_test': False}  # Para poder leer productos archivados
             )
             
             if not target_product:
@@ -248,22 +248,14 @@ class ProductArchiveSync:
             
             current_active = target_product[0]['active']
             
-            # Log detallado para debug
-            logger.debug(f"Producto [{product_ref}] {product_name}:")
-            logger.debug(f"  Estado Odoo 16: {'Activo' if should_be_active else 'Archivado'}")
-            logger.debug(f"  Estado Odoo 18: {'Activo' if current_active else 'Archivado'}")
-            
             # Si el estado es diferente, actualizarlo
             if current_active != should_be_active:
-                # Usar execute_kw con context para poder modificar archivados
-                result = self.target.models.execute_kw(
-                    self.target.config['db'],
-                    self.target.uid,
-                    self.target.config['password'],
+                # Actualizar con context para poder modificar archivados
+                result = self.target.write(
                     'product.product',
-                    'write',
-                    [[target_id], {'active': should_be_active}],
-                    {'context': {'active_test': False}}  # Importante para modificar archivados
+                    [target_id],
+                    {'active': should_be_active},
+                    context={'active_test': False}  # CRÍTICO: permite modificar archivados
                 )
                 
                 action = "ACTIVADO" if should_be_active else "ARCHIVADO"
@@ -277,10 +269,6 @@ class ProductArchiveSync:
             else:
                 # Estado ya es correcto
                 self.stats['unchanged'] += 1
-                # Log solo los primeros 5 para ver qué está pasando
-                if self.stats['unchanged'] <= 5:
-                    state_str = "activo" if current_active else "archivado"
-                    logger.info(f"⊙ Sin cambios [{product_ref}] {product_name}: ya está {state_str} en ambos")
                 
         except Exception as e:
             logger.error(f"❌ Error con [{product_ref}] {product_name}: {e}")
@@ -326,10 +314,10 @@ class ProductArchiveSync:
             logger.info("=" * 60)
             logger.info("SINCRONIZANDO ESTADO DE PRODUCTOS")
             logger.info("=" * 60)
-            logger.info("Estrategia: Si producto NO está activo en Odoo 16 → Archivar en Odoo 18")
+            logger.info("Estrategia: Sincronizar estado activo/archivado de Odoo 16 → Odoo 18")
             logger.info("")
             
-            # Recorrer todos los productos en Odoo 18 (que están en el mapeo)
+            # Recorrer todos los productos mapeados
             processed = 0
             for source_id, target_id in product_map.items():
                 processed += 1
@@ -346,20 +334,17 @@ class ProductArchiveSync:
                         target_id, 
                         product_name, 
                         product_ref, 
-                        is_active_in_odoo16  # True si debe estar activo, False si debe archivarse
+                        is_active_in_odoo16
                     )
                 else:
-                    # Producto existe en O18 pero NO en O16 → Archivarlo
+                    # Producto existe en mapeo pero NO en O16 → Archivarlo en O18
                     logger.warning(f"⚠ Producto {source_id} no encontrado en Odoo 16 → Archivando en Odoo 18")
                     try:
-                        self.target.models.execute_kw(
-                            self.target.config['db'],
-                            self.target.uid,
-                            self.target.config['password'],
+                        self.target.write(
                             'product.product',
-                            'write',
-                            [[target_id], {'active': False}],
-                            {'context': {'active_test': False}}
+                            [target_id],
+                            {'active': False},
+                            context={'active_test': False}
                         )
                         self.stats['archived'] += 1
                     except Exception as e:
@@ -381,6 +366,7 @@ class ProductArchiveSync:
             logger.info(f"✓ Activados en O18:          {self.stats['activated']}")
             logger.info(f"📦 Archivados en O18:         {self.stats['archived']}")
             logger.info(f"⊙ Sin cambios:               {self.stats['unchanged']}")
+            logger.info(f"⚠ No encontrados:            {self.stats['not_found']}")
             logger.info(f"❌ Errores:                   {self.stats['errors']}")
             logger.info(f"⏱ Tiempo:                     {elapsed}")
             logger.info("=" * 60)
@@ -388,16 +374,16 @@ class ProductArchiveSync:
             if self.stats['errors'] == 0:
                 logger.info("✓ ¡Sincronización completada exitosamente!")
                 if self.stats['archived'] > 0:
-                    logger.info(f"📦 Se archivaron {self.stats['archived']} productos que no están activos en Odoo 16")
+                    logger.info(f"📦 Se archivaron {self.stats['archived']} productos en Odoo 18")
+                if self.stats['activated'] > 0:
+                    logger.info(f"✓ Se activaron {self.stats['activated']} productos en Odoo 18")
             else:
                 logger.warning(f"⚠ Completado con {self.stats['errors']} errores")
             
         except Exception as e:
             logger.error(f"❌ Error crítico en sincronización: {e}")
-            raise
-            
-        except Exception as e:
-            logger.error(f"❌ Error crítico en sincronización: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
             raise
 
 
