@@ -57,5 +57,5 @@ SYNC_OPTIONS = {
         'replenishment_base_cost_currency_id',  # Moneda del costo base
         'list_price_type',
         'sale_margin'
-        ],
+    ]
 }
