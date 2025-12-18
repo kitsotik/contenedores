@@ -7,7 +7,7 @@ Sincroniza el campo 'active' de productos:
 - Si está archivado en Odoo 16 → Archiva en Odoo 18
 - Si está activo en Odoo 16 → Activa en Odoo 18
 
-BUSCA PRODUCTOS POR INTERNAL_CODE (campo default_code en Odoo)
+BUSCA PRODUCTOS POR EL CAMPO internal_code
 
 Uso:
     python3 sync_product_archive.py
@@ -175,17 +175,17 @@ class ProductArchiveSync:
             all_products = self.source.search_read(
                 'product.product',
                 [],
-                ['id', 'name', 'default_code', 'active'],
+                ['id', 'name', 'internal_code', 'active'],
                 context={'active_test': False}
             )
             
-            # Crear diccionario por default_code (internal_code)
+            # Crear diccionario por internal_code
             products_by_ref = {}
             products_without_ref = []
             
             for product in all_products:
-                # internal_code es el campo default_code en Odoo
-                internal_code = product.get('default_code') or ''
+                # Obtener el campo internal_code
+                internal_code = product.get('internal_code') or ''
                 internal_code = internal_code.strip() if isinstance(internal_code, str) else ''
                 
                 if internal_code:  # Solo productos con internal_code
@@ -233,17 +233,17 @@ class ProductArchiveSync:
             all_products = self.target.search_read(
                 'product.product',
                 [],
-                ['id', 'name', 'default_code', 'active'],
+                ['id', 'name', 'internal_code', 'active'],
                 context={'active_test': False}
             )
             
-            # Crear diccionario por default_code (internal_code)
+            # Crear diccionario por internal_code
             products_by_ref = {}
             products_without_ref = []
             
             for product in all_products:
-                # internal_code es el campo default_code en Odoo
-                internal_code = product.get('default_code') or ''
+                # Obtener el campo internal_code
+                internal_code = product.get('internal_code') or ''
                 internal_code = internal_code.strip() if isinstance(internal_code, str) else ''
                 
                 if internal_code:  # Solo productos con internal_code
