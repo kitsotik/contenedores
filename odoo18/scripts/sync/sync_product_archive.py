@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 """
-Sincronización de ESTADO DE PRODUCTOS (Activo / Archivado)
+Sincronización REAL de estado de productos (visual)
 Odoo 16 (VPS) -> Odoo 18 (Local)
 
 Clave única: internal_code (campo custom en product.template)
-Estado real: product.template.active
+
+Sincroniza:
+- product.template.active
+- TODAS las product.product.active asociadas
 """
 
 import xmlrpc.client
 import logging
 from datetime import datetime
-from typing import Dict, Tuple
+from typing import Dict
 import sys
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-
 from config import ODOO_16, ODOO_18
 
 # ------------------------------------------------------------
@@ -36,7 +38,7 @@ logger = logging.getLogger(__name__)
 # ODOO CONNECTION
 # ------------------------------------------------------------
 class OdooConnection:
-    def __init__(self, config: Dict, name: str):
+    def __init__(self, config, name):
         self.config = config
         self.name = name
         self.uid = None
@@ -78,6 +80,21 @@ class OdooConnection:
             kwargs
         )
 
+    def search(self, model, domain, context=None):
+        kwargs = {}
+        if context:
+            kwargs["context"] = context
+
+        return self.models.execute_kw(
+            self.config["db"],
+            self.uid,
+            self.config["password"],
+            model,
+            "search",
+            [domain],
+            kwargs
+        )
+
     def write(self, model, ids, values, context=None):
         kwargs = {}
         if context:
@@ -105,23 +122,17 @@ class ProductArchiveSync:
 
         self.stats = {
             "matched": 0,
-            "activated": 0,
             "archived": 0,
+            "activated": 0,
             "unchanged": 0,
             "errors": 0,
         }
 
     # --------------------------------------------------------
-    # LOAD PRODUCTS (TEMPLATE = SOURCE OF TRUTH)
+    # LOAD PRODUCTS (FROM TEMPLATE)
     # --------------------------------------------------------
-    def load_products(self, conn: OdooConnection) -> Dict[str, Tuple[int, bool]]:
-        """
-        Retorna:
-        {
-            internal_code: (template_id, active)
-        }
-        """
-        logger.info(f"Cargando productos de {conn.name}...")
+    def load_templates(self, conn: OdooConnection) -> Dict[str, Dict]:
+        logger.info(f"Cargando templates de {conn.name}...")
 
         templates = conn.search_read(
             "product.template",
@@ -131,48 +142,57 @@ class ProductArchiveSync:
         )
 
         result = {}
-        duplicates = set()
 
         for t in templates:
             code = (t.get("internal_code") or "").strip()
             if not code:
                 continue
 
-            if code in result:
-                duplicates.add(code)
+            result[code] = {
+                "tmpl_id": t["id"],
+                "active": t["active"]
+            }
 
-            result[code] = (t["id"], t["active"])
-
-        if duplicates:
-            logger.warning(
-                f"⚠ {len(duplicates)} internal_code duplicados detectados "
-                f"(se usó el último)"
-            )
-
-        logger.info(f"✓ {len(result)} productos con internal_code")
+        logger.info(f"✓ {len(result)} templates con internal_code")
         return result
 
     # --------------------------------------------------------
-    # SYNC STATUS
+    # SYNC ONE PRODUCT
     # --------------------------------------------------------
-    def sync_status(self, code, tmpl_id, o18_active, should_be_active):
+    def sync_product(self, code, tmpl18_id, active18, active16):
         try:
-            if o18_active == should_be_active:
+            if active18 == active16:
                 self.stats["unchanged"] += 1
                 return
 
+            # 1) TEMPLATE
             self.o18.write(
                 "product.template",
-                [tmpl_id],
-                {"active": should_be_active},
+                [tmpl18_id],
+                {"active": active16},
                 context={"active_test": False}
             )
 
-            if should_be_active:
-                logger.info(f"✓ ACTIVADO [{code}]")
+            # 2) TODAS LAS VARIANTES
+            variant_ids = self.o18.search(
+                "product.product",
+                [("product_tmpl_id", "=", tmpl18_id)],
+                context={"active_test": False}
+            )
+
+            if variant_ids:
+                self.o18.write(
+                    "product.product",
+                    variant_ids,
+                    {"active": active16},
+                    context={"active_test": False}
+                )
+
+            if active16:
+                logger.info(f"✓ ACTIVADO [{code}] ({len(variant_ids)} variantes)")
                 self.stats["activated"] += 1
             else:
-                logger.info(f"📦 ARCHIVADO [{code}]")
+                logger.info(f"📦 ARCHIVADO [{code}] ({len(variant_ids)} variantes)")
                 self.stats["archived"] += 1
 
         except Exception as e:
@@ -185,41 +205,40 @@ class ProductArchiveSync:
     def run(self):
         start = datetime.now()
 
-        logger.info("==============================================")
-        logger.info(" SINCRONIZACIÓN ACTIVO / ARCHIVADO")
-        logger.info(" Clave: internal_code (product.template)")
+        logger.info("================================================")
+        logger.info(" SINCRONIZACIÓN VISUAL REAL DE PRODUCTOS")
+        logger.info(" internal_code | template + variantes")
         logger.info(" Odoo 16 → Odoo 18")
-        logger.info("==============================================")
+        logger.info("================================================")
 
-        products_16 = self.load_products(self.o16)
-        products_18 = self.load_products(self.o18)
+        t16 = self.load_templates(self.o16)
+        t18 = self.load_templates(self.o18)
 
-        for code, (tmpl18_id, o18_active) in products_18.items():
-            if code not in products_16:
+        for code, data18 in t18.items():
+            if code not in t16:
                 continue
 
-            _, o16_active = products_16[code]
             self.stats["matched"] += 1
 
-            self.sync_status(
-                code,
-                tmpl18_id,
-                o18_active,
-                o16_active
+            self.sync_product(
+                code=code,
+                tmpl18_id=data18["tmpl_id"],
+                active18=data18["active"],
+                active16=t16[code]["active"]
             )
 
         elapsed = datetime.now() - start
 
-        logger.info("==============================================")
-        logger.info(" RESUMEN")
-        logger.info("==============================================")
+        logger.info("================================================")
+        logger.info(" RESUMEN FINAL")
+        logger.info("================================================")
         logger.info(f"Coincidentes: {self.stats['matched']}")
         logger.info(f"Activados:    {self.stats['activated']}")
         logger.info(f"Archivados:   {self.stats['archived']}")
         logger.info(f"Sin cambios:  {self.stats['unchanged']}")
         logger.info(f"Errores:      {self.stats['errors']}")
         logger.info(f"Tiempo:       {elapsed}")
-        logger.info("==============================================")
+        logger.info("================================================")
 
 
 # ------------------------------------------------------------
