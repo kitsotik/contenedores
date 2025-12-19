@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 """
-Sincronización REAL de estado de productos
-Replica exactamente lo que se ve en Odoo 16
+Archivado por ausencia
+Odoo 16 (fuente) -> Odoo 18 (destino)
 
-Clave: internal_code (product.template)
-Sincroniza:
-- product.template.active
-- product.product.active (variantes)
+Si un producto existe en Odoo 18 pero NO existe en Odoo 16
+(se busca por internal_code),
+entonces se ARCHIVA en Odoo 18.
 """
 
 import xmlrpc.client
@@ -25,7 +24,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[
-        logging.FileHandler("sync_product_archive.log"),
+        logging.FileHandler("sync_archive_by_absence.log"),
         logging.StreamHandler()
     ]
 )
@@ -41,31 +40,48 @@ class Odoo:
         self.name = name
 
         common = xmlrpc.client.ServerProxy(f"{cfg['url']}/xmlrpc/2/common")
-        self.uid = common.authenticate(cfg["db"], cfg["username"], cfg["password"], {})
+        self.uid = common.authenticate(
+            cfg["db"], cfg["username"], cfg["password"], {}
+        )
         if not self.uid:
             raise Exception(f"Auth failed {name}")
 
-        self.models = xmlrpc.client.ServerProxy(f"{cfg['url']}/xmlrpc/2/object")
+        self.models = xmlrpc.client.ServerProxy(
+            f"{cfg['url']}/xmlrpc/2/object"
+        )
         logger.info(f"✓ {name} conectado ({common.version()['server_version']})")
 
-    def search_read(self, model, domain, fields):
+    def search_read(self, model, domain, fields, active_test=True):
+        ctx = {"active_test": active_test}
         return self.models.execute_kw(
-            self.cfg["db"], self.uid, self.cfg["password"],
-            model, "search_read", [domain],
-            {"fields": fields, "context": {"active_test": False}}
+            self.cfg["db"],
+            self.uid,
+            self.cfg["password"],
+            model,
+            "search_read",
+            [domain],
+            {"fields": fields, "context": ctx}
         )
 
     def search(self, model, domain):
         return self.models.execute_kw(
-            self.cfg["db"], self.uid, self.cfg["password"],
-            model, "search", [domain],
+            self.cfg["db"],
+            self.uid,
+            self.cfg["password"],
+            model,
+            "search",
+            [domain],
             {"context": {"active_test": False}}
         )
 
     def write(self, model, ids, values):
         return self.models.execute_kw(
-            self.cfg["db"], self.uid, self.cfg["password"],
-            model, "write", [ids, values],
+            self.cfg["db"],
+            self.uid,
+            self.cfg["password"],
+            model,
+            "write",
+            [ids, values],
             {"context": {"active_test": False}}
         )
 
@@ -73,88 +89,109 @@ class Odoo:
 # ------------------------------------------------------------
 # SYNC
 # ------------------------------------------------------------
-class Sync:
+class ArchiveByAbsence:
 
     def __init__(self):
         self.o16 = Odoo(ODOO_16, "Odoo 16")
         self.o18 = Odoo(ODOO_18, "Odoo 18")
 
         self.stats = {
-            "matched": 0,
-            "tmpl_changed": 0,
-            "variants_changed": 0,
+            "checked": 0,
+            "archived": 0,
+            "skipped_no_code": 0,
             "errors": 0,
         }
 
-    def load_templates(self, odoo):
-        tpls = odoo.search_read(
+    def load_active_codes_o16(self):
+        """Devuelve set de internal_code activos en Odoo 16"""
+        logger.info("Cargando productos ACTIVOS de Odoo 16...")
+
+        templates = self.o16.search_read(
             "product.template",
             [],
-            ["id", "internal_code", "active"]
+            ["internal_code"],
+            active_test=True
         )
 
-        res = {}
-        for t in tpls:
-            code = (t.get("internal_code") or "").strip()
-            if code:
-                res[code] = t
-        return res
+        codes = {
+            (t.get("internal_code") or "").strip()
+            for t in templates
+            if t.get("internal_code")
+        }
 
-    def load_variants(self, odoo, tmpl_id):
-        return odoo.search_read(
-            "product.product",
-            [("product_tmpl_id", "=", tmpl_id)],
-            ["id", "active"]
+        logger.info(f"✓ {len(codes)} internal_code activos en Odoo 16")
+        return codes
+
+    def load_active_templates_o18(self):
+        logger.info("Cargando productos ACTIVOS de Odoo 18...")
+
+        return self.o18.search_read(
+            "product.template",
+            [],
+            ["id", "internal_code"],
+            active_test=True
         )
 
     def run(self):
         start = datetime.now()
 
-        t16 = self.load_templates(self.o16)
-        t18 = self.load_templates(self.o18)
+        logger.info("==============================================")
+        logger.info(" ARCHIVADO POR AUSENCIA")
+        logger.info(" internal_code | Odoo 16 → Odoo 18")
+        logger.info("==============================================")
 
-        for code, tpl18 in t18.items():
-            if code not in t16:
+        codes_16 = self.load_active_codes_o16()
+        templates_18 = self.load_active_templates_o18()
+
+        for t in templates_18:
+            self.stats["checked"] += 1
+
+            code = (t.get("internal_code") or "").strip()
+            if not code:
+                self.stats["skipped_no_code"] += 1
                 continue
 
-            self.stats["matched"] += 1
-            tpl16 = t16[code]
+            if code in codes_16:
+                continue  # existe en 16 → OK
 
-            # --- TEMPLATE ---
-            if tpl16["active"] != tpl18["active"]:
+            try:
+                tmpl_id = t["id"]
+
+                # 1) archivar template
                 self.o18.write(
                     "product.template",
-                    [tpl18["id"]],
-                    {"active": tpl16["active"]}
-                )
-                self.stats["tmpl_changed"] += 1
-                logger.info(
-                    f"TEMPLATE {'ACTIVADO' if tpl16['active'] else 'ARCHIVADO'} [{code}]"
+                    [tmpl_id],
+                    {"active": False}
                 )
 
-            # --- VARIANTES ---
-            v16 = self.load_variants(self.o16, tpl16["id"])
-            v18 = self.load_variants(self.o18, tpl18["id"])
+                # 2) archivar variantes
+                variant_ids = self.o18.search(
+                    "product.product",
+                    [("product_tmpl_id", "=", tmpl_id)]
+                )
 
-            map16 = {v["id"]: v["active"] for v in v16}
-
-            for v in v18:
-                if v["active"] != map16.get(v["id"], v["active"]):
+                if variant_ids:
                     self.o18.write(
                         "product.product",
-                        [v["id"]],
-                        {"active": map16.get(v["id"], v["active"])}
+                        variant_ids,
+                        {"active": False}
                     )
-                    self.stats["variants_changed"] += 1
+
+                logger.info(f"📦 ARCHIVADO [{code}]")
+                self.stats["archived"] += 1
+
+            except Exception as e:
+                logger.error(f"❌ Error archivando [{code}]: {e}")
+                self.stats["errors"] += 1
 
         elapsed = datetime.now() - start
 
         logger.info("==============================================")
         logger.info(" RESUMEN FINAL")
         logger.info("==============================================")
-        logger.info(f"Coincidentes:        {self.stats['matched']}")
-        logger.info(f"Templates cambiados:{self.stats['tmpl_changed']}")
-        logger.info(f"Variantes cambiadas:{self.stats['variants_changed']}")
+        logger.info(f"Revisados:          {self.stats['checked']}")
+        logger.info(f"Archivados:         {self.stats['archived']}")
+        logger.info(f"Sin internal_code:  {self.stats['skipped_no_code']}")
         logger.info(f"Errores:            {self.stats['errors']}")
         logger.info(f"Tiempo:             {elapsed}")
         logger.info("==============================================")
@@ -162,4 +199,4 @@ class Sync:
 
 # ------------------------------------------------------------
 if __name__ == "__main__":
-    Sync().run()
+    ArchiveByAbsence().run()
