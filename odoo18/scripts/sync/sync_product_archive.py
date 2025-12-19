@@ -4,6 +4,7 @@ Sincronización de ESTADO DE PRODUCTOS (Activo / Archivado)
 Odoo 16 (VPS) -> Odoo 18 (Local)
 
 Clave única: internal_code (campo custom en product.template)
+Estado real: product.template.active
 """
 
 import xmlrpc.client
@@ -111,92 +112,71 @@ class ProductArchiveSync:
         }
 
     # --------------------------------------------------------
-    # LOAD PRODUCTS (READ CODE FROM TEMPLATE)
+    # LOAD PRODUCTS (TEMPLATE = SOURCE OF TRUTH)
     # --------------------------------------------------------
-    def load_products(self, conn: OdooConnection) -> Dict[str, Tuple[int, str, bool]]:
+    def load_products(self, conn: OdooConnection) -> Dict[str, Tuple[int, bool]]:
         """
         Retorna:
         {
-            internal_code: (product_id, name, active)
+            internal_code: (template_id, active)
         }
         """
         logger.info(f"Cargando productos de {conn.name}...")
 
-        products = conn.search_read(
-            "product.product",
-            [],
-            ["id", "name", "active", "product_tmpl_id"],
-            context={"active_test": False}
-        )
-
-        tmpl_ids = {
-            p["product_tmpl_id"][0]
-            for p in products
-            if p.get("product_tmpl_id")
-        }
-
         templates = conn.search_read(
             "product.template",
-            [("id", "in", list(tmpl_ids))],
-            ["id", "internal_code"],
+            [],
+            ["id", "internal_code", "active"],
             context={"active_test": False}
         )
 
-        tmpl_code_map = {
-            t["id"]: (t.get("internal_code") or "").strip()
-            for t in templates
-        }
-
         result = {}
-        skipped = 0
+        duplicates = set()
 
-        for p in products:
-            tmpl_id = p["product_tmpl_id"][0]
-            code = tmpl_code_map.get(tmpl_id)
-
+        for t in templates:
+            code = (t.get("internal_code") or "").strip()
             if not code:
-                skipped += 1
                 continue
 
-            # Si hubiera múltiples variantes, se queda con la última
-            result[code] = (
-                p["id"],
-                p.get("name", "Sin nombre"),
-                p["active"]
+            if code in result:
+                duplicates.add(code)
+
+            result[code] = (t["id"], t["active"])
+
+        if duplicates:
+            logger.warning(
+                f"⚠ {len(duplicates)} internal_code duplicados detectados "
+                f"(se usó el último)"
             )
 
-        logger.info(
-            f"✓ {len(result)} productos con internal_code "
-            f"({skipped} ignorados sin código)"
-        )
-
+        logger.info(f"✓ {len(result)} productos con internal_code")
         return result
 
     # --------------------------------------------------------
     # SYNC STATUS
     # --------------------------------------------------------
-    def sync_status(self, code, o18_id, name, o18_active, should_be_active):
+    def sync_status(self, code, tmpl_id, o18_active, should_be_active):
         try:
             if o18_active == should_be_active:
                 self.stats["unchanged"] += 1
                 return
 
             self.o18.write(
-                "product.product",
-                [o18_id],
+                "product.template",
+                [tmpl_id],
                 {"active": should_be_active},
                 context={"active_test": False}
             )
 
             if should_be_active:
-                logger.info(f"✓ ACTIVADO [{code}] {name}")
+                logger.info(f"✓ ACTIVADO [{code}]")
                 self.stats["activated"] += 1
             else:
-                logger.info(f"📦 ARCHIVADO [{code}] {name}")
+                logger.info(f"📦 ARCHIVADO [{code}]")
                 self.stats["archived"] += 1
 
         except Exception as e:
-            logger.error(f"❌ Error [{code}] {name}: {e}")
+            logger.error(f"❌ Error [{code}]: {e}")
             self.stats["errors"] += 1
 
     # --------------------------------------------------------
@@ -214,17 +194,16 @@ class ProductArchiveSync:
         products_16 = self.load_products(self.o16)
         products_18 = self.load_products(self.o18)
 
-        for code, (o18_id, o18_name, o18_active) in products_18.items():
+        for code, (tmpl18_id, o18_active) in products_18.items():
             if code not in products_16:
                 continue
 
-            _, _, o16_active = products_16[code]
+            _, o16_active = products_16[code]
             self.stats["matched"] += 1
 
             self.sync_status(
                 code,
-                o18_id,
-                o18_name,
+                tmpl18_id,
                 o18_active,
                 o16_active
             )
