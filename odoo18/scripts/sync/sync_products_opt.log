@@ -1,0 +1,52 @@
+2025-12-20 00:28:46,827 - INFO - ✓ Conectado a Odoo 16 (VPS)
+2025-12-20 00:28:48,804 - INFO - ✓ Conectado a Odoo 18 (Local)
+2025-12-20 00:28:49,790 - INFO - 🚀 Cargando caché de productos existentes en Odoo 18...
+2025-12-20 00:28:50,324 - INFO - 🔍 Obteniendo lista de IDs a sincronizar...
+2025-12-20 00:28:50,442 - INFO - ⚡ Se encontraron 891 productos. Procesando en lotes de 50...
+2025-12-20 00:28:50,443 - INFO - 📦 Lote 1/18 - Descargando datos...
+2025-12-20 00:28:52,966 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T504220-AL Cian (ID: 126): Request-sent
+2025-12-20 00:28:52,967 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T504120-AL Negro (ID: 125): Idle
+2025-12-20 00:28:52,975 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T504420-AL Amarillo (ID: 128): Request-sent
+2025-12-20 00:28:52,977 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T504320-AL Magenta (ID: 127): Idle
+2025-12-20 00:28:52,978 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T544120-AL Negro (ID: 130): Idle
+2025-12-20 00:28:52,994 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T544420-AL Amarillo (ID: 133): Request-sent
+2025-12-20 00:28:52,995 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T544320-AL Magenta (ID: 132): Request-sent
+2025-12-20 00:28:53,035 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 122 XL Color (ID: 320): Idle
+2025-12-20 00:28:53,008 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T664120-AL Negro (ID: 138): Idle
+2025-12-20 00:28:53,009 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T544220-AL Cian (ID: 131): Idle
+2025-12-20 00:28:53,014 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T664420-AL Amarillo (ID: 141): Idle
+2025-12-20 00:28:53,018 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T664220-AL Cian (ID: 139): Idle
+2025-12-20 00:28:53,019 - ERROR - ❌ Error en producto Cartucho Alternativo para HP  22 XL Color (ID: 312): Idle
+2025-12-20 00:28:53,021 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 60 XL Color (ID: 326): Request-sent
+2025-12-20 00:28:53,027 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 122 XL Negro (ID: 321): Idle
+2025-12-20 00:28:53,005 - ERROR - ❌ Error en producto Botella Tinta Original EPSON T664320-AL Magenta (ID: 140): Request-sent
+2025-12-20 00:28:53,041 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 60 XL Negro (ID: 327): Idle
+2025-12-20 00:28:53,046 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 662 XL Negro (ID: 329): Request-sent
+2025-12-20 00:28:53,052 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 664 XL Negro (ID: 331): Request-sent
+2025-12-20 00:28:53,061 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 667 XL Negro (ID: 333): Request-sent
+2025-12-20 00:28:53,064 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 667 XL Color (ID: 332): Idle
+2025-12-20 00:28:53,134 - ERROR - ❌ Error en producto Cartucho HP 662 (CZ104AL) Color (ID: 392): Request-sent
+2025-12-20 00:28:53,069 - ERROR - ❌ Error en producto Cartucho Alternativo para HP 75 XL Color (ID: 344): Request-sent
+2025-12-20 00:28:53,121 - ERROR - ❌ Error en producto Cartucho HP 46  (CZ638AL) Color (ID: 1251): Request-sent
+2025-12-20 00:28:53,085 - ERROR - ❌ Error en producto Cartucho HP 122 (CH562HL) Color (ID: 384): Request-sent
+2025-12-20 00:28:53,144 - ERROR - ❌ Error en producto Cartucho HP 664 (F6V29AL) Negro (ID: 394): Request-sent
+2025-12-20 00:28:53,164 - ERROR - ❌ Error en producto Cartucho HP 667 (3YM78AL) Color (ID: 397): Request-sent
+2025-12-20 00:28:53,171 - ERROR - ❌ Error en producto Cartucho HP 711 HEWCZ130A Cyan 29ml (ID: 999): Request-sent
+2025-12-20 00:28:53,189 - ERROR - ❌ Error en producto Cartucho HP 711 HEWCZ129A Negro 38ml (ID: 998): Idle
+2025-12-20 00:28:53,190 - ERROR - ❌ Error en producto Cartucho HP 711 HEWCZ131A Magenta 29ml (ID: 1000): Idle
+2025-12-20 00:28:53,203 - ERROR - ❌ Error en producto Cartucho HP 667  (3YM79AL) Negro (ID: 398): Idle
+2025-12-20 00:28:53,210 - ERROR - ❌ Error en producto Cartucho HP 711 HEWCZ132A Amarillo 29ml (ID: 1001): Idle
+2025-12-20 00:28:53,231 - ERROR - ❌ Error en producto Toner Alternativo para BROTHER 1060 Negro (ID: 615): Request-sent
+2025-12-20 00:28:53,243 - ERROR - ❌ Error en producto Toner Alternativo para HP CB435A 436A CE285A CC388A (ID: 624): Request-sent
+2025-12-20 00:28:53,243 - ERROR - ❌ Error en producto Toner Alternativo para BROTHER 660/2370 (ID: 620): Idle
+2025-12-20 00:28:53,248 - ERROR - ❌ Error en producto Toner Alternativo para HP CF226A (ID: 629): Request-sent
+2025-12-20 00:28:53,262 - ERROR - ❌ Error en producto Toner Alternativo para HP CE278A (ID: 627): Idle
+2025-12-20 00:28:58,548 - ERROR - ❌ Error en producto Toner Alternativo para HP Q2612A (ID: 665): Request-sent
+2025-12-20 00:29:00,136 - ERROR - ❌ Error en producto Toner Alternativo para HP W1105A 105A 1106 1107 NO CHIP (ID: 671): Request-sent
+2025-12-20 00:29:37,243 - INFO - 🚀 Cargando mapeos iniciales...
+2025-12-20 00:29:38,835 - INFO - 🔍 Obteniendo IDs...
+2025-12-20 00:29:38,926 - INFO - 📦 Lote 1/23
+2025-12-20 00:30:37,292 - INFO -    🟢 Progreso: 40/891
+2025-12-20 00:30:37,292 - INFO - 📦 Lote 2/23
+2025-12-20 00:31:38,555 - INFO -    🟢 Progreso: 80/891
+2025-12-20 00:31:38,556 - INFO - 📦 Lote 3/23

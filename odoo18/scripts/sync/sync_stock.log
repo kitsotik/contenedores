@@ -1,0 +1,176 @@
+2025-12-19 23:12:14,055 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-19 23:12:14,714 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-19 23:12:14,717 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-19 23:12:16,353 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-19 23:12:16,354 - INFO - Cargando ubicaciones de stock en Odoo 18...
+2025-12-19 23:12:16,502 - INFO - ✓ Ubicación interna encontrada (ID: 8)
+2025-12-19 23:12:16,571 - INFO - ✓ Ubicación de inventario encontrada (ID: 14)
+2025-12-19 23:12:16,572 - INFO - 
+2025-12-19 23:12:16,573 - INFO - ╔==========================================================╗
+2025-12-19 23:12:16,576 - INFO - ║          SINCRONIZACIÓN DE STOCK/INVENTARIO              ║
+2025-12-19 23:12:16,577 - INFO - ║               Odoo 16 → Odoo 18                         ║
+2025-12-19 23:12:16,578 - INFO - ╚==========================================================╝
+2025-12-19 23:12:16,579 - INFO - 
+2025-12-19 23:12:16,579 - INFO - 
+2025-12-19 23:12:16,580 - INFO - ============================================================
+2025-12-19 23:12:16,581 - INFO - SINCRONIZANDO STOCK
+2025-12-19 23:12:16,581 - INFO - ============================================================
+2025-12-19 23:12:16,582 - INFO - Cargando mapeo de productos...
+2025-12-19 23:12:16,759 - INFO - ✓ Cargados 900 productos mapeados
+2025-12-19 23:12:16,761 - INFO - Obteniendo cantidades de stock desde Odoo 16...
+2025-12-19 23:12:16,761 - INFO - ⏳ Leyendo lote 1/9 (100 productos)...
+2025-12-19 23:12:16,886 - INFO - ⏳ Leyendo lote 2/9 (100 productos)...
+2025-12-19 23:12:17,012 - INFO - ⏳ Leyendo lote 3/9 (100 productos)...
+2025-12-19 23:12:17,137 - INFO - ⏳ Leyendo lote 4/9 (100 productos)...
+2025-12-19 23:12:17,263 - INFO - ⏳ Leyendo lote 5/9 (100 productos)...
+2025-12-19 23:12:17,386 - INFO - ⏳ Leyendo lote 6/9 (100 productos)...
+2025-12-19 23:12:17,511 - INFO - ⏳ Leyendo lote 7/9 (100 productos)...
+2025-12-19 23:12:17,642 - INFO - ⏳ Leyendo lote 8/9 (100 productos)...
+2025-12-19 23:12:17,772 - INFO - ⏳ Leyendo lote 9/9 (100 productos)...
+2025-12-19 23:12:17,911 - INFO - ✓ Obtenidas cantidades de 871 productos almacenables
+2025-12-19 23:12:17,912 - INFO - 
+2025-12-19 23:12:17,913 - INFO - ============================================================
+2025-12-19 23:12:17,914 - INFO - AJUSTANDO INVENTARIO
+2025-12-19 23:12:17,914 - INFO - ============================================================
+2025-12-19 23:12:17,915 - INFO - [1/871] Procesando: [False] Cartucho HP 711 HEWCZ131A Magenta 29ml
+2025-12-19 23:12:20,179 - INFO - ✓ Ajustado: [False] Adaptador USB WiFi 867Mbps AC1300 TPLINK Archer T4U Plus Dual Band (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:21,093 - INFO - ✓ Ajustado: [False] Cargador SHURE (SH-CNF65W-14) 65w 19.0v 3.42a TIP 3.0x1.1mm (ACER) (6.00 → 5.00) [-1.00]
+2025-12-19 23:12:21,549 - INFO - [50/871] Procesando: [False] Ficha Conector RJ45 Cat 5e Bolsa x 100 GLC
+2025-12-19 23:12:23,477 - INFO - ✓ Ajustado: [False] Tarjeta de Memoria MICROSD  32Gb HikSemi V10 R:92MB/s W:15MB/s (7.00 → 6.00) [-1.00]
+2025-12-19 23:12:24,067 - INFO - ✓ Ajustado: [False] Teclado y Mouse Inalambrico LOGITECH MK470 Black (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:24,423 - INFO - ✓ Ajustado: [False] Toner Alternativo para HP W1500A 150A CON CHIP (15.00 → 12.00) [-3.00]
+2025-12-19 23:12:24,943 - INFO - ✓ Ajustado: [False] UPS HIKVISION DS 1000VA (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:25,403 - INFO - [100/871] Procesando: [] Botella Tinta Original EPSON T504420-AL Amarillo
+2025-12-19 23:12:26,041 - INFO - ✓ Ajustado: [] Botella Tinta Original EPSON T664120-AL Negro (1.00 → 3.00) [+2.00]
+2025-12-19 23:12:26,251 - INFO - ✓ Ajustado: [False] Cartucho HP 46  (CZ637AL) Negro (0.00 → 1.00) [+1.00]
+2025-12-19 23:12:28,071 - INFO - ✓ Ajustado: [False] Botella Tinta Alternativa HP 250ml GTC (M) Magenta (4.00 → 3.00) [-1.00]
+2025-12-19 23:12:28,593 - INFO - ✓ Ajustado: [False] Cable USB 2.0 (A/C) M / M - 1.xMts Blanco (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:28,829 - INFO - ✓ Ajustado: [False] Cable USB 3.0 (A/Lightning ) M / M 27W 1.0mts KELYX p/IPhone (9.00 → 8.00) [-1.00]
+2025-12-19 23:12:29,302 - INFO - ✓ Ajustado: [False] Cargador 220v 9V 27W 6.4A a USB - A H Blanco (Carga Rapida) (-6.00 → 7.00) [+13.00]
+2025-12-19 23:12:29,423 - INFO - [150/871] Procesando: [False] Cargador UNIVERSAL 40W Automatico 8 TIPS SH-CN040W
+2025-12-19 23:12:31,483 - INFO - ✓ Ajustado: [False] Teclado USB Raptor Fireclaw M1 Membrana Rainbow 7 colores (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:32,825 - INFO - [200/871] Procesando: [] Botella Tinta Original EPSON T673120-AL Negro
+2025-12-19 23:12:33,842 - INFO - ✓ Ajustado: [False] Adaptador USB WiFi 433Mbps AC600 TPLINK Archer T2U Dual Band High Gain (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:34,087 - INFO - ✓ Ajustado: [False] Adaptador USB WiFi 6 600Mbps Archer TX10UB Nano AX900 + Bluetooth (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:34,800 - INFO - ✓ Ajustado: [False] Cable USB 3.0 (A/C-C/C-A/L-C/L) M / M - 1.5Mts 65W 27W KELYX Negro (2.00 → 6.00) [+4.00]
+2025-12-19 23:12:35,036 - INFO - ✓ Ajustado: [False] Cable USB 3.0 (C/C) M / M - 1.0Mts 240W / 20Gbp - 4K ULTRA HD KELYX (1.00 → 5.00) [+4.00]
+2025-12-19 23:12:35,270 - INFO - ✓ Ajustado: [False] Cable USB 3.0 (C/C) M / M - 1.0Mts 65W / 10Gbp - 4K ULTRA HD KELYX (2.00 → 6.00) [+4.00]
+2025-12-19 23:12:35,583 - INFO - ✓ Ajustado: [False] Cable USB 3.2 (A/C) M / M - 1.0Mts 60W KELYX Negro (2.00 → 5.00) [+3.00]
+2025-12-19 23:12:36,129 - INFO - ✓ Ajustado: [False] Camara Web USB  1080p con Micrófono Full HD – KELYX (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:36,367 - INFO - ✓ Ajustado: [False] Camara Web USB  4k con Micrófono con Tapa – RAPTOR (4.00 → 5.00) [+1.00]
+2025-12-19 23:12:37,172 - INFO - ✓ Ajustado: [False] Jeringa Pasta Termica Corsair TM30 de alto rendimiento para CPU / GPU (6.00 → 3.00) [-3.00]
+2025-12-19 23:12:37,469 - INFO - [250/871] Procesando: [False] Motherboard s1700 DDR4 MSI H610M-S
+2025-12-19 23:12:38,697 - INFO - ✓ Ajustado: [False] Pen Drive 64Gb 3.0 HIKSEMI E307C Dual A/C (4.00 → 3.00) [-1.00]
+2025-12-19 23:12:38,941 - INFO - ✓ Ajustado: [False] Pen Drive 64Gb 3.2 Kingston 3.2 DTXS (5.00 → 4.00) [-1.00]
+2025-12-19 23:12:39,760 - INFO - ✓ Ajustado: [False] Tarjeta de Memoria MICROSD 128Gb KINGSTON U3 V30 A2 - Canvas GO PLUS G4 (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:40,042 - INFO - ✓ Ajustado: [False] Tarjeta de Memoria MICROSD 256Gb KINGSTON U3 V30 A2 - Canvas GO PLUS G4 (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:40,385 - INFO - ✓ Ajustado: [False] Teclado y Mouse Inalambrico LOGITECH MK345 (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:41,343 - INFO - ✓ Ajustado: [] CHEMITEC Alcohol Isopropílico de alta pureza Botella de 500CC (A51000) (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:41,625 - INFO - [300/871] Procesando: [] Cable AUDIO (3.5mm/2 RCA) M M  3.0Mts
+2025-12-19 23:12:42,206 - INFO - ✓ Ajustado: [] Cable AUDIO (3.5mm/3.5mm) M M  3.0Mts (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:42,853 - INFO - ✓ Ajustado: [] Cable HDMI (A/A) - M M -  1. XMts (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:43,677 - INFO - ✓ Ajustado: [] Cable USB 2.0 (A/A) M / H - 1.xMts *Extension (4.00 → 5.00) [+1.00]
+2025-12-19 23:12:44,063 - INFO - ✓ Ajustado: [] Cable USB 2.0 (A/A) M / M - 1.8Mts (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:44,372 - INFO - ✓ Ajustado: [] Cable USB 2.0 (A/B) M / M - 1.xMts (-1.00 → 8.00) [+9.00]
+2025-12-19 23:12:44,608 - INFO - ✓ Ajustado: [] Cable USB 2.0 (A/B) M / M - 3.0Mts (-3.00 → -4.00) [-1.00]
+2025-12-19 23:12:45,959 - INFO - ✓ Ajustado: [] Cable UTP *Metro CAT.6e  Interior (-202.00 → -222.00) [-20.00]
+2025-12-19 23:12:46,220 - INFO - ✓ Ajustado: [] Cable UTP *Rollo 305mts. CAT.5e  Interior (0.00 → 2.00) [+2.00]
+2025-12-19 23:12:46,394 - INFO - [350/871] Procesando: [] Cable VGA (DB15 / DB15) M M - 1.XMts
+2025-12-19 23:12:46,691 - INFO - ✓ Ajustado: [] Cable VGA (DB15 / DB15) M M - 3.0Mts (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:47,496 - INFO - ✓ Ajustado: [] Cable de POWER 220V Trebol/Mickey  1.xMts (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:47,997 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 5 Patchcord   5.0Mts (0.00 → 4.00) [+4.00]
+2025-12-19 23:12:48,240 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 5 Patchcord  10.0Mts (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:48,486 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 5 Patchcord  20.0Mts (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:48,730 - INFO - ✓ Ajustado: [] Cable de red UTP Cat 6 Patchcord   2.0Mts (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:49,032 - INFO - ✓ Ajustado: [] Caja Externa USB 2.0 para discos 2.5 Sata (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:49,412 - INFO - ✓ Ajustado: [False] CPU: INTEL i5 10400T -  16 GB - S.S.D 4 8 0 GB (0.00 → 1.00) [+1.00]
+2025-12-19 23:12:49,770 - INFO - ✓ Ajustado: [False] Hub USB C 3.0 8 en 1 KELYX - HDMI SD USB 2.0 x2 / USB 3.0 x2 RJ45 (2.00 → 1.00) [-1.00]
+2025-12-19 23:12:50,366 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP  21 XL Negro (0.00 → 2.00) [+2.00]
+2025-12-19 23:12:50,878 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 60 XL Color (4.00 → 5.00) [+1.00]
+2025-12-19 23:12:51,127 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 60 XL Negro (9.00 → 10.00) [+1.00]
+2025-12-19 23:12:51,365 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 662 XL Color (2.00 → 6.00) [+4.00]
+2025-12-19 23:12:51,607 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 662 XL Negro (7.00 → 8.00) [+1.00]
+2025-12-19 23:12:51,906 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 664 XL Negro (8.00 → 7.00) [-1.00]
+2025-12-19 23:12:52,151 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 667 XL Color (4.00 → 3.00) [-1.00]
+2025-12-19 23:12:52,215 - INFO - [400/871] Procesando: [] Cartucho Alternativo para HP 74 XL Negro
+2025-12-19 23:12:52,684 - INFO - ✓ Ajustado: [] Adaptador AUDIO (C/3.5mm) M H (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:53,845 - INFO - ✓ Ajustado: [] Cargador SHURE (SH-CNF65W-12) 65w 20.0v 3.25a TIP C (ACER/ASUS/TOSHIBA/LENOVO/DELL/HP/COMPAQ/SAMSUNG) (1.00 → 0.00) [-1.00]
+2025-12-19 23:12:54,511 - INFO - ✓ Ajustado: [] Cargador SHURE (SH-CNF65W-7) 65w 20.0v 3.25a TIP 11x4mm (LENOVO/IBM) (3.00 → 2.00) [-1.00]
+2025-12-19 23:12:55,895 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 1332 Cian (10.00 → 9.00) [-1.00]
+2025-12-19 23:12:56,328 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 1351 Negro (9.00 → 8.00) [-1.00]
+2025-12-19 23:12:56,722 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 136 Negro (6.00 → 4.00) [-2.00]
+2025-12-19 23:12:56,724 - INFO - [450/871] Procesando: [] Cartucho Alternativo para EPSON 196 Amarillo
+2025-12-19 23:12:57,222 - INFO - ✓ Ajustado: [] Cartucho Alternativo para EPSON 197 Negro (34.00 → 31.00) [-3.00]
+2025-12-19 23:12:58,488 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 670 Amarillo (0.00 → 1.00) [+1.00]
+2025-12-19 23:12:58,733 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 670 Cian (1.00 → 2.00) [+1.00]
+2025-12-19 23:12:58,982 - INFO - ✓ Ajustado: [] Cartucho Alternativo para HP 670 Magenta (2.00 → 3.00) [+1.00]
+2025-12-19 23:13:00,079 - INFO - ✓ Ajustado: [] Cartucho HP 664 (F6V28AL) Color (0.00 → 1.00) [+1.00]
+2025-12-19 23:13:00,334 - INFO - ✓ Ajustado: [] Cartucho HP 664 (F6V29AL) Negro (1.00 → 2.00) [+1.00]
+2025-12-19 23:13:00,910 - INFO - ✓ Ajustado: [] Adaptador DisplayPort HDMI (20p / A) M - H (3.00 → 1.00) [-2.00]
+2025-12-19 23:13:01,033 - INFO - [500/871] Procesando: [] Adaptador HDMI (A / A) H - H *Extension
+2025-12-19 23:13:03,201 - INFO - ✓ Ajustado: [] Extensor de Rango 300Mbps Mercusys MW300RE 3 Ant Ext (2.00 → 0.00) [-2.00]
+2025-12-19 23:13:03,779 - INFO - ✓ Ajustado: [] Ficha Conector RJ45 Cat 6e (55.00 → 53.00) [-2.00]
+2025-12-19 23:13:04,029 - INFO - ✓ Ajustado: [] Fuente ATX 450w Mini KELIX (3.00 → 2.00) [-1.00]
+2025-12-19 23:13:04,430 - INFO - [550/871] Procesando: [] Hub USB 2.0 7 Puertos c/luz e Interruptor
+2025-12-19 23:13:05,039 - INFO - ✓ Ajustado: [] Lector de Tarjetas USB Mutiple SKU: C-ADU005 (3.00 → 2.00) [-1.00]
+2025-12-19 23:13:05,955 - INFO - ✓ Ajustado: [] Mouse USB Genius DX-110 Negro (12.00 → 5.00) [-7.00]
+2025-12-19 23:13:06,703 - INFO - ✓ Ajustado: [] MousePad con GEL BKT Azul (5.00 → 4.00) [-1.00]
+2025-12-19 23:13:07,003 - INFO - ✓ Ajustado: [] MousePad con GEL BKT Negro (4.00 → 1.00) [-3.00]
+2025-12-19 23:13:07,477 - INFO - ✓ Ajustado: [] Toner Alternativo para BROTHER 1060 Negro (15.00 → 95.00) [+80.00]
+2025-12-19 23:13:07,718 - INFO - ✓ Ajustado: [] Toner Alternativo para BROTHER 660/2370 (6.00 → 5.00) [-1.00]
+2025-12-19 23:13:07,976 - INFO - ✓ Ajustado: [] Toner Alternativo para HP CB435A 436A CE285A CC388A (21.00 → 5.00) [-16.00]
+2025-12-19 23:13:08,219 - INFO - ✓ Ajustado: [] Toner Alternativo para HP CE278A (5.00 → 2.00) [-3.00]
+2025-12-19 23:13:08,528 - INFO - ✓ Ajustado: [] Toner Alternativo para HP CF279A (12.00 → 9.00) [-3.00]
+2025-12-19 23:13:08,766 - INFO - ✓ Ajustado: [] Toner Alternativo para HP CF283A (22.00 → 20.00) [-2.00]
+2025-12-19 23:13:09,284 - INFO - [600/871] Procesando: [] Adaptador USB 2.0 (A / A) H - H *Extension
+2025-12-19 23:13:09,980 - INFO - ✓ Ajustado: [] Mouse inalambrico LOGITECH M170 USB Negro (3.00 → 1.00) [-2.00]
+2025-12-19 23:13:11,027 - INFO - ✓ Ajustado: [] Pila 2032 (57.00 → 55.00) [-2.00]
+2025-12-19 23:13:11,670 - INFO - ✓ Ajustado: [] Rep. Equipo (-2043.00 → -2051.00) [-8.00]
+2025-12-19 23:13:11,939 - INFO - ✓ Ajustado: [] Resma A4 75GRS Ledesma PUNAX (47.00 → 43.00) [-4.00]
+2025-12-19 23:13:12,833 - INFO - ✓ Ajustado: [] Teclado USB Genius Smart KB-100 (5.00 → 1.00) [-4.00]
+2025-12-19 23:13:13,249 - INFO - [650/871] Procesando: [] Toner Alternativo para BROTHER 360
+2025-12-19 23:13:13,549 - INFO - ✓ Ajustado: [] Toner Alternativo para BROTHER 410/450 (5.00 → 12.00) [+7.00]
+2025-12-19 23:13:14,359 - INFO - ✓ Ajustado: [] Toner Alternativo para HP CF248A CON CHIP (7.00 → 6.00) [-1.00]
+2025-12-19 23:13:15,629 - INFO - ✓ Ajustado: [] Toner Alternativo para HP Q2612A (8.00 → 26.00) [+18.00]
+2025-12-19 23:13:15,984 - INFO - ✓ Ajustado: [] Toner Alternativo para HP W1105A 105A 1106 1107 CON CHIP (1.00 → 0.00) [-1.00]
+2025-12-19 23:13:16,225 - INFO - ✓ Ajustado: [] Toner Alternativo para HP W1105A 105A 1106 1107 NO CHIP (9.00 → 24.00) [+15.00]
+2025-12-19 23:13:16,466 - INFO - ✓ Ajustado: [] Toner Alternativo para PANTUM PB211 (2.00 → 1.00) [-1.00]
+2025-12-19 23:13:17,321 - INFO - ✓ Ajustado: [] Botella Tinta Alternativa EPSON 504 127ml GTC (B) Negro (8.00 → 6.00) [-2.00]
+2025-12-19 23:13:17,570 - INFO - ✓ Ajustado: [] Botella Tinta Alternativa EPSON 504 70ML GTC (Y) Amarilla (4.00 → 3.00) [-1.00]
+2025-12-19 23:13:17,811 - INFO - ✓ Ajustado: [] Botella Tinta Alternativa EPSON 504 70ml GTC (C) Cian (4.00 → 3.00) [-1.00]
+2025-12-19 23:13:18,053 - INFO - ✓ Ajustado: [] Botella Tinta Alternativa EPSON 504 70ml GTC (M) Magenta (4.00 → 3.00) [-1.00]
+2025-12-19 23:13:18,119 - INFO - [700/871] Procesando: [] Botella Tinta Alternativa EPSON 544 70ml GTC (C) Cian
+2025-12-19 23:13:18,663 - INFO - ✓ Ajustado: [] Cargador 220v 5V 4.2A a USB Micro - AITECH (0.00 → 5.00) [+5.00]
+2025-12-19 23:13:18,906 - INFO - ✓ Ajustado: [] Disco SSD  240Gb 2.5" SATA HikSemi Wave (5.00 → 3.00) [-2.00]
+2025-12-19 23:13:19,439 - INFO - ✓ Ajustado: [] Rep. Equipo CPU (-71.00 → -72.00) [-1.00]
+2025-12-19 23:13:19,741 - INFO - ✓ Ajustado: [] Rep. Equipo NTBK (-778.00 → -779.00) [-1.00]
+2025-12-19 23:13:19,986 - INFO - ✓ Ajustado: [] Rep. Equipo PRINTER (-578.00 → -579.00) [-1.00]
+2025-12-19 23:13:20,509 - INFO - ✓ Ajustado: [] Toner Alternativo para HP COLOR CF413X Magenta (1.00 → 0.00) [-1.00]
+2025-12-19 23:13:21,364 - INFO - ✓ Ajustado: [] Toner Alternativo para RICOH 408284 SP 3710X 7K (21.00 → 20.00) [-1.00]
+2025-12-19 23:13:22,008 - INFO - ✓ Ajustado: [] Toner Alternativo para SAMSUNG MLT-D104S (5.00 → 4.00) [-1.00]
+2025-12-19 23:13:22,537 - INFO - ✓ Ajustado: [] Toner Alternativo para XEROX 106R02773 (3020 3025) (2.00 → 0.00) [-2.00]
+2025-12-19 23:13:22,707 - INFO - [750/871] Procesando: [] Toner Original HP CB435A
+2025-12-19 23:13:23,250 - INFO - ✓ Ajustado: [] Unidad de Imagen (Drum) Alternativo BROTHER DR1060 (27.00 → 21.00) [-6.00]
+2025-12-19 23:13:24,161 - INFO - ✓ Ajustado: [] Ventilador 80x80x25 4pines (10.00 → 9.00) [-1.00]
+2025-12-19 23:13:24,739 - INFO - ✓ Ajustado: [False] Disco SSD 480Gb 2.5" SATA HikSemi Wave (2.00 → 1.00) [-1.00]
+2025-12-19 23:13:25,170 - INFO - ✓ Ajustado: [] Adaptador USB WiFi 150Mbps Mercusys MW150US Nano (7.00 → 5.00) [-2.00]
+2025-12-19 23:13:25,711 - INFO - ✓ Ajustado: [] Armado Cable UTP (8.00 → 7.00) [-1.00]
+2025-12-19 23:13:26,608 - INFO - [800/871] Procesando: [False] Botella Tinta Alternativa EPSON 250ml GLOBAL .(LM) Light Magenta
+2025-12-19 23:13:27,429 - INFO - ✓ Ajustado: [False] CPU: AMD RYZEN 3 3200G - 8GB - S.S.D 240GB (1.00 → 2.00) [+1.00]
+2025-12-19 23:13:27,834 - INFO - ✓ Ajustado: [False] Caja Externa USB C 3.2 para discos M.2 NVMe HikSemi (2.00 → 1.00) [-1.00]
+2025-12-19 23:13:29,025 - INFO - ✓ Ajustado: [False] Memoria SODIMM DDR-4  8Gb 3200MHz Kingston (1.00 → 0.00) [-1.00]
+2025-12-19 23:13:29,804 - INFO - ✓ Ajustado: [False] Pen Drive  64Gb 3.2 Kingston 3.2 DTX (4.00 → 2.00) [-2.00]
+2025-12-19 23:13:30,383 - INFO - ✓ Ajustado: [False] Procesador sAM4 AMD Ryzen 3 3200G (-1.00 → 0.00) [+1.00]
+2025-12-19 23:13:30,385 - INFO - [850/871] Procesando: [False] Procesador sAM4 AMD Ryzen 5 5600GT
+2025-12-19 23:13:31,816 - INFO - 
+2025-12-19 23:13:31,817 - INFO - ============================================================
+2025-12-19 23:13:31,818 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-19 23:13:31,819 - INFO - ============================================================
+2025-12-19 23:13:31,820 - INFO - Total productos:     871
+2025-12-19 23:13:31,821 - INFO - ✓ Ajustados:         112
+2025-12-19 23:13:31,823 - INFO - ⊙ Sin cambios:       759
+2025-12-19 23:13:31,824 - INFO - ❌ Errores:           0
+2025-12-19 23:13:31,825 - INFO - 📦 Unidades ajustadas: 354.00
+2025-12-19 23:13:31,828 - INFO - ⏱ Tiempo:             0:01:15.243270
+2025-12-19 23:13:31,829 - INFO - ============================================================
+2025-12-19 23:13:31,831 - INFO - ✓ ¡Sincronización completada exitosamente!
