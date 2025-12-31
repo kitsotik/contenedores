@@ -1,0 +1,306 @@
+2025-12-27 03:29:36,908 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-27 03:29:37,434 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-27 03:29:37,435 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-27 03:29:38,864 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-27 03:29:38,865 - INFO - Configurando tipos de producto para Odoo 18...
+2025-12-27 03:29:38,866 - INFO - ✓ Tipos configurados: ['consu', 'service', 'combo']
+2025-12-27 03:29:38,868 - INFO - Cargando mapeos de categorías...
+2025-12-27 03:29:40,225 - INFO - ✓ Cargadas 127 categorías de productos
+2025-12-27 03:29:40,300 - INFO - ✓ Cargadas 117 categorías de POS
+2025-12-27 03:29:40,394 - INFO - ✓ Cargadas 119 categorías públicas
+2025-12-27 03:29:40,396 - INFO - Cargando mapeo de impuestos...
+2025-12-27 03:29:40,578 - INFO - ✓ Impuesto mapeado: 'IVA 21%' (62) → 'VAT 21%' (62)
+2025-12-27 03:29:40,692 - INFO - ✓ Impuesto mapeado: 'IVA 21%' (63) → 'VAT 21%' (63)
+2025-12-27 03:29:40,841 - INFO - ✓ Impuesto mapeado: 'IVA 10.5%' (60) → 'VAT 10.5%' (60)
+2025-12-27 03:29:40,907 - INFO - ✓ Impuesto mapeado: 'IVA 10.5%' (61) → 'VAT 10.5%' (61)
+2025-12-27 03:29:40,962 - INFO - ✓ Total impuestos mapeados: 4
+2025-12-27 03:29:40,963 - INFO - 
+2025-12-27 03:29:40,964 - INFO - ╔==========================================================╗
+2025-12-27 03:29:40,965 - INFO - ║            SINCRONIZACIÓN DE PRODUCTOS                   ║
+2025-12-27 03:29:40,967 - INFO - ║               Odoo 16 → Odoo 18                          ║
+2025-12-27 03:29:40,969 - INFO - ╚==========================================================╝
+2025-12-27 03:29:40,972 - INFO - 
+2025-12-27 03:29:40,974 - INFO - ============================================================
+2025-12-27 03:29:40,975 - INFO - OBTENIENDO PRODUCTOS DESDE ODOO 16
+2025-12-27 03:29:40,979 - INFO - ============================================================
+2025-12-27 03:29:40,986 - INFO - ✓ Última sincronización: 2025-12-20 23:24:45
+2025-12-27 03:29:40,992 - INFO - 📅 Sincronización incremental: solo productos modificados desde 2025-12-20 23:24:45
+2025-12-27 03:29:40,993 - INFO - 📊 Buscando IDs de productos...
+2025-12-27 03:29:41,051 - INFO - ✓ Encontrados 33 productos
+2025-12-27 03:29:41,052 - INFO - ✓ Campos personalizados: internal_code, replenishment_base_cost, replenishment_base_cost_currency_id, list_price_type, sale_margin
+2025-12-27 03:29:41,053 - INFO - 
+2025-12-27 03:29:41,055 - INFO - 📦 Descargando datos de productos (sin imágenes)...
+2025-12-27 03:29:41,057 - INFO - ⏳ Descargando producto 1/33...
+2025-12-27 03:29:43,388 - INFO - ✓ Descargados 33 productos exitosamente
+2025-12-27 03:29:43,389 - INFO - 
+2025-12-27 03:29:43,390 - INFO - 🖼️  Descargando imágenes de productos...
+2025-12-27 03:29:43,391 - INFO - ⏳ Descargando imagen 1/33...
+2025-12-27 03:29:49,660 - INFO - ✓ Proceso de descarga de imágenes completado
+2025-12-27 03:29:49,661 - INFO - 
+2025-12-27 03:29:49,662 - INFO - ============================================================
+2025-12-27 03:29:49,663 - INFO - SINCRONIZANDO PRODUCTOS
+2025-12-27 03:29:49,663 - INFO - ============================================================
+2025-12-27 03:29:49,664 - INFO - [1/33] Procesando: [] Impresora Laser BROTHER HL-1200 Negra
+2025-12-27 03:29:49,896 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:29:49,897 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:29:51,916 - INFO - ✓ Actualizado: [] Impresora Laser BROTHER HL-1200 Negra (ID: 913)
+2025-12-27 03:29:53,374 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:29:53,375 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:29:54,378 - INFO - ✓ Actualizado: [False] Auricular on ear Bluetooth Inalámbrico Kelyx cancelacion activa B001 (ID: 914)
+2025-12-27 03:29:56,018 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:29:56,020 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:29:56,606 - INFO - ✓ Actualizado: [False] CPU: AMD RYZEN 3 3200G - 8GB - S.S.D 240GB (ID: 626)
+2025-12-27 03:29:58,261 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:29:58,262 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:29:58,820 - INFO - ✓ Actualizado: [False] CPU: AMD RYZEN 5 5600GT - 16 GB - S.S.D 4 8 0 GB (ID: 627)
+2025-12-27 03:30:00,341 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:00,342 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:01,028 - INFO - ✓ Actualizado: [False] Cable VGA Extension (DB15 / DB15) M H - 1.XMts (ID: 915)
+2025-12-27 03:30:02,478 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:02,479 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:03,036 - INFO - ✓ Actualizado: [False] Cable VGA Extension (DB15 / DB15) M H - 3.XMts (ID: 916)
+2025-12-27 03:30:04,526 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:04,528 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:05,075 - INFO - ✓ Actualizado: [False] Cable VGA Extension (DB15 / DB15) M H - 5.XMts (ID: 917)
+2025-12-27 03:30:06,706 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:06,707 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:07,836 - INFO - ✓ Actualizado: [False] Caja Externa USB C 3.1 para discos HDD/SSD 2.5 (ID: 657)
+2025-12-27 03:30:09,315 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:09,316 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:09,959 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Amarillo (ID: 305)
+2025-12-27 03:30:09,961 - INFO - [10/33] Procesando: [False] Cartucho Alternativo para HP 670 Cian
+2025-12-27 03:30:11,566 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:11,567 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:12,198 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Cian (ID: 306)
+2025-12-27 03:30:13,768 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:13,769 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:14,392 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Magenta (ID: 307)
+2025-12-27 03:30:16,106 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:16,107 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:16,718 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Negro (ID: 308)
+2025-12-27 03:30:18,013 - ERROR - ❌ Error con [False] Disco M.2 2280 NvME PCIe 4.0 1TB 5000 mb/s KINGSTON SNV3S: <Fault 1: 'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 165, in xmlrpc_2\n    response = self._xmlrpc(service)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 139, in _xmlrpc\n    result = dispatch_rpc(service, method, params)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/http.py", line 412, in dispatch_rpc\n    return dispatch(method, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 58, in dispatch\n    res = execute_kw(db, uid, *params[3:])\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 81, in execute_kw\n    return execute(db, uid, obj, method, *args, **kw or {})\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 87, in execute\n    res = execute_cr(cr, uid, obj, method, *args, **kw)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 72, in execute_cr\n    result = retrying(partial(odoo.api.call_kw, recs, method, args, kw), env)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 156, in retrying\n    result = func()\n             ^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 535, in call_kw\n    result = getattr(recs, name)(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1749, in search\n    return self.search_fetch(domain, [], offset=offset, limit=limit, order=order)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1781, in search_fetch\n    return self._fetch_query(query, fields_to_fetch)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 4259, in _fetch_query\n    fetched = self.browse(query)\n              ^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 6234, in browse\n    if not ids:\n           ^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 262, in __bool__\n    return bool(self.get_result_ids())\n                ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 226, in get_result_ids\n    self._ids = tuple(id_ for id_, in self._env.execute_query(self.select()))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 993, in execute_query\n    self.cr.execute(query)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 357, in execute\n    res = self._obj.execute(query, params)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npsycopg2.ProgrammingError: can\'t adapt type \'dict\'\n'>
+2025-12-27 03:30:18,081 - ERROR - ❌ Error con [False] Disco M.2 2280 NvME PCIe 4.0 2TB 5000 mb/s KINGSTON SNV3S: <Fault 1: 'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 165, in xmlrpc_2\n    response = self._xmlrpc(service)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 139, in _xmlrpc\n    result = dispatch_rpc(service, method, params)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/http.py", line 412, in dispatch_rpc\n    return dispatch(method, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 58, in dispatch\n    res = execute_kw(db, uid, *params[3:])\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 81, in execute_kw\n    return execute(db, uid, obj, method, *args, **kw or {})\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 87, in execute\n    res = execute_cr(cr, uid, obj, method, *args, **kw)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 72, in execute_cr\n    result = retrying(partial(odoo.api.call_kw, recs, method, args, kw), env)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 156, in retrying\n    result = func()\n             ^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 535, in call_kw\n    result = getattr(recs, name)(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1749, in search\n    return self.search_fetch(domain, [], offset=offset, limit=limit, order=order)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1781, in search_fetch\n    return self._fetch_query(query, fields_to_fetch)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 4259, in _fetch_query\n    fetched = self.browse(query)\n              ^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 6234, in browse\n    if not ids:\n           ^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 262, in __bool__\n    return bool(self.get_result_ids())\n                ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 226, in get_result_ids\n    self._ids = tuple(id_ for id_, in self._env.execute_query(self.select()))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 993, in execute_query\n    self.cr.execute(query)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 357, in execute\n    res = self._obj.execute(query, params)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npsycopg2.ProgrammingError: can\'t adapt type \'dict\'\n'>
+2025-12-27 03:30:18,367 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:18,368 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:19,238 - INFO - ✓ Actualizado: [False] Disco SSD  240Gb 2.5" SATA Lexar (ID: 918)
+2025-12-27 03:30:20,860 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:20,861 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:23,029 - INFO - ✓ Actualizado: [False] Disco SSD 480Gb 2.5" SATA HikSemi Wave (ID: 693)
+2025-12-27 03:30:24,562 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:24,563 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:25,595 - INFO - ✓ Actualizado: [False] Fuente ATX 550w KELIX Cooler  12CM (ID: 359)
+2025-12-27 03:30:27,089 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:27,091 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:28,274 - INFO - ✓ Actualizado: [False] GPU GeForce RTX 5070 12G Gigabyte EAGLE OC (ID: 919)
+2025-12-27 03:30:29,758 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:29,759 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:31,185 - INFO - ✓ Actualizado: [False] Notebook 15" - Core™ i5 12450HX  - 16GB(2x8GB) DDR5 4800Mhz - 512GB NVME - RTX3050 6GB GDDR6 Lenovo LOQ 15IAX9 (ID: 920)
+2025-12-27 03:30:31,186 - INFO - [20/33] Procesando: [False] Notebook 15" - Ryzen™ 3-3200U - 8GB - S.S.D 256Gb  - KELYX
+2025-12-27 03:30:32,642 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:32,642 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:34,315 - INFO - ✓ Actualizado: [False] Notebook 15" - Ryzen™ 3-3200U - 8GB - S.S.D 256Gb  - KELYX (ID: 921)
+2025-12-27 03:30:35,879 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:35,880 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:37,290 - INFO - ✓ Actualizado: [False] Notebook 15" - Ryzen™ 5 7520U - 16GB DDR5 5500MHZ - 512GB NVME W11H - LENOVO IP Slim 3 15AMN8 (ID: 912)
+2025-12-27 03:30:38,753 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:38,754 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:40,297 - INFO - ✓ Actualizado: [False] Notebook 15.6" - Ryzen™ 3 7320U -  8GB - S.S.D 256GB  -  HP 255 G10 (ID: 922)
+2025-12-27 03:30:41,908 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:41,909 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:43,658 - INFO - ✓ Actualizado: [False] Pila Alcalina 1 Unidad VINIC Bateria 9V (ID: 923)
+2025-12-27 03:30:45,329 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:30:45,330 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:30:50,110 - INFO - ✓ Actualizado: [False] PowerBank20000 mHa Type-C+USB+Lightning Fast Charge 22.5W Black  Kelyx Slim (ID: 924)
+2025-12-27 03:30:51,667 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:51,668 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:53,026 - INFO - ✓ Actualizado: [False] Procesador INTEL s1700 Core i5 12400 Alder Lake (ID: 801)
+2025-12-27 03:30:54,503 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:54,504 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:55,283 - INFO - ✓ Actualizado: [False] Procesador INTEL s1700 Core i7 12700 Alder Lake (ID: 802)
+2025-12-27 03:30:57,098 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:57,099 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:30:57,851 - INFO - ✓ Actualizado: [False] Procesador INTEL s1700 Core i7 14700 Raptor Lake (ID: 803)
+2025-12-27 03:30:59,309 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:30:59,311 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:31:02,187 - INFO - ✓ Actualizado: [False] Procesador sAM4 AMD Ryzen 5 5600GT (ID: 805)
+2025-12-27 03:31:03,639 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:31:03,640 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:31:05,461 - INFO - ✓ Actualizado: [False] Procesador sAM5 AMD Ryzen 5 8600G (ID: 810)
+2025-12-27 03:31:05,462 - INFO - [30/33] Procesando: [False] Procesador sAM5 AMD Ryzen 7 8700F
+2025-12-27 03:31:07,105 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 03:31:07,106 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 03:31:08,942 - INFO - ✓ Actualizado: [False] Procesador sAM5 AMD Ryzen 7 8700F (ID: 811)
+2025-12-27 03:31:11,593 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:31:11,594 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:31:12,213 - INFO - ✓ Actualizado: [False] Toner Alternativo para SAMSUNG MLT-D111S (ID: 518)
+2025-12-27 03:31:13,734 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:31:13,735 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:31:14,467 - INFO - ✓ Actualizado: [False] Unidad de Imagen (Drum) Alternativo HP W1104A 104A (ID: 925)
+2025-12-27 03:31:16,073 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 03:31:16,074 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 03:31:17,588 - INFO - ✓ Actualizado: [False] Unidad de Imagen (Drum) Original BROTHER DR-1060 (ID: 926)
+2025-12-27 03:31:17,589 - INFO - 
+2025-12-27 03:31:17,590 - INFO - ============================================================
+2025-12-27 03:31:17,591 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-27 03:31:17,592 - INFO - ============================================================
+2025-12-27 03:31:17,594 - INFO - Total procesados: 33
+2025-12-27 03:31:17,596 - INFO - ✓ Creados:       0
+2025-12-27 03:31:17,597 - INFO - ✓ Actualizados:  31
+2025-12-27 03:31:17,601 - INFO - 🖼️  Imágenes:      33
+2025-12-27 03:31:17,603 - INFO - ❌ Errores:       2
+2025-12-27 03:31:17,608 - INFO - ⏱ Tiempo:         0:01:36.626190
+2025-12-27 03:31:17,609 - INFO - ============================================================
+2025-12-27 03:31:17,610 - WARNING - ⚠ Completado con 2 errores
+2025-12-27 12:27:54,106 - INFO - Conectando a Odoo 16 (VPS) (http://149.50.138.116:8069)...
+2025-12-27 12:27:54,648 - INFO - ✓ Conectado a Odoo 16 (VPS) - Versión: 16.0-20240522
+2025-12-27 12:27:54,649 - INFO - Conectando a Odoo 18 (Local) (http://localhost:8069)...
+2025-12-27 12:27:56,159 - INFO - ✓ Conectado a Odoo 18 (Local) - Versión: 18.0-20251121
+2025-12-27 12:27:56,159 - INFO - Configurando tipos de producto para Odoo 18...
+2025-12-27 12:27:56,160 - INFO - ✓ Tipos configurados: ['consu', 'service', 'combo']
+2025-12-27 12:27:56,161 - INFO - Cargando mapeos de categorías...
+2025-12-27 12:27:57,452 - INFO - ✓ Cargadas 127 categorías de productos
+2025-12-27 12:27:57,533 - INFO - ✓ Cargadas 117 categorías de POS
+2025-12-27 12:27:57,610 - INFO - ✓ Cargadas 119 categorías públicas
+2025-12-27 12:27:57,611 - INFO - Cargando mapeo de impuestos...
+2025-12-27 12:27:57,745 - INFO - ✓ Impuesto mapeado: 'IVA 21%' (62) → 'VAT 21%' (62)
+2025-12-27 12:27:57,821 - INFO - ✓ Impuesto mapeado: 'IVA 21%' (63) → 'VAT 21%' (63)
+2025-12-27 12:27:57,993 - INFO - ✓ Impuesto mapeado: 'IVA 10.5%' (60) → 'VAT 10.5%' (60)
+2025-12-27 12:27:58,069 - INFO - ✓ Impuesto mapeado: 'IVA 10.5%' (61) → 'VAT 10.5%' (61)
+2025-12-27 12:27:58,130 - INFO - ✓ Total impuestos mapeados: 4
+2025-12-27 12:27:58,132 - INFO - 
+2025-12-27 12:27:58,133 - INFO - ╔==========================================================╗
+2025-12-27 12:27:58,134 - INFO - ║            SINCRONIZACIÓN DE PRODUCTOS                   ║
+2025-12-27 12:27:58,136 - INFO - ║               Odoo 16 → Odoo 18                          ║
+2025-12-27 12:27:58,137 - INFO - ╚==========================================================╝
+2025-12-27 12:27:58,139 - INFO - 
+2025-12-27 12:27:58,140 - INFO - ============================================================
+2025-12-27 12:27:58,142 - INFO - OBTENIENDO PRODUCTOS DESDE ODOO 16
+2025-12-27 12:27:58,143 - INFO - ============================================================
+2025-12-27 12:27:58,182 - INFO - ✓ Última sincronización: 2025-12-20 23:24:45
+2025-12-27 12:27:58,184 - INFO - 📅 Sincronización incremental: solo productos modificados desde 2025-12-20 23:24:45
+2025-12-27 12:27:58,185 - INFO - 📊 Buscando IDs de productos...
+2025-12-27 12:27:58,239 - INFO - ✓ Encontrados 33 productos
+2025-12-27 12:27:58,240 - INFO - ✓ Campos personalizados: internal_code, replenishment_base_cost, replenishment_base_cost_currency_id, list_price_type, sale_margin
+2025-12-27 12:27:58,241 - INFO - 
+2025-12-27 12:27:58,242 - INFO - 📦 Descargando datos de productos (sin imágenes)...
+2025-12-27 12:27:58,243 - INFO - ⏳ Descargando producto 1/33...
+2025-12-27 12:28:00,545 - INFO - ✓ Descargados 33 productos exitosamente
+2025-12-27 12:28:00,546 - INFO - 
+2025-12-27 12:28:00,547 - INFO - 🖼️  Descargando imágenes de productos...
+2025-12-27 12:28:00,548 - INFO - ⏳ Descargando imagen 1/33...
+2025-12-27 12:28:06,622 - INFO - ✓ Proceso de descarga de imágenes completado
+2025-12-27 12:28:06,623 - INFO - 
+2025-12-27 12:28:06,624 - INFO - ============================================================
+2025-12-27 12:28:06,625 - INFO - SINCRONIZANDO PRODUCTOS
+2025-12-27 12:28:06,625 - INFO - ============================================================
+2025-12-27 12:28:06,626 - INFO - [1/33] Procesando: [] Impresora Laser BROTHER HL-1200 Negra
+2025-12-27 12:28:06,857 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:06,858 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:08,849 - INFO - ✓ Actualizado: [] Impresora Laser BROTHER HL-1200 Negra (ID: 913)
+2025-12-27 12:28:10,463 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:10,464 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:28:11,503 - INFO - ✓ Actualizado: [False] Auricular on ear Bluetooth Inalámbrico Kelyx cancelacion activa B001 (ID: 914)
+2025-12-27 12:28:13,156 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:13,157 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:13,734 - INFO - ✓ Actualizado: [False] CPU: AMD RYZEN 3 3200G - 8GB - S.S.D 240GB (ID: 626)
+2025-12-27 12:28:15,285 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:15,286 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:15,864 - INFO - ✓ Actualizado: [False] CPU: AMD RYZEN 5 5600GT - 16 GB - S.S.D 4 8 0 GB (ID: 627)
+2025-12-27 12:28:17,363 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:17,365 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:28:17,949 - INFO - ✓ Actualizado: [False] Cable VGA Extension (DB15 / DB15) M H - 1.XMts (ID: 915)
+2025-12-27 12:28:19,409 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:19,410 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:28:20,063 - INFO - ✓ Actualizado: [False] Cable VGA Extension (DB15 / DB15) M H - 3.XMts (ID: 916)
+2025-12-27 12:28:21,516 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:21,518 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:28:22,094 - INFO - ✓ Actualizado: [False] Cable VGA Extension (DB15 / DB15) M H - 5.XMts (ID: 917)
+2025-12-27 12:28:23,573 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:23,574 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:28:24,689 - INFO - ✓ Actualizado: [False] Caja Externa USB C 3.1 para discos HDD/SSD 2.5 (ID: 657)
+2025-12-27 12:28:26,237 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:26,237 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:26,844 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Amarillo (ID: 305)
+2025-12-27 12:28:26,845 - INFO - [10/33] Procesando: [False] Cartucho Alternativo para HP 670 Cian
+2025-12-27 12:28:28,398 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:28,399 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:29,001 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Cian (ID: 306)
+2025-12-27 12:28:30,540 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:30,542 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:31,147 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Magenta (ID: 307)
+2025-12-27 12:28:32,658 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:32,658 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:33,272 - INFO - ✓ Actualizado: [False] Cartucho Alternativo para HP 670 Negro (ID: 308)
+2025-12-27 12:28:34,569 - ERROR - ❌ Error con [False] Disco M.2 2280 NvME PCIe 4.0 1TB 5000 mb/s KINGSTON SNV3S: <Fault 1: 'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 165, in xmlrpc_2\n    response = self._xmlrpc(service)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 139, in _xmlrpc\n    result = dispatch_rpc(service, method, params)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/http.py", line 412, in dispatch_rpc\n    return dispatch(method, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 58, in dispatch\n    res = execute_kw(db, uid, *params[3:])\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 81, in execute_kw\n    return execute(db, uid, obj, method, *args, **kw or {})\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 87, in execute\n    res = execute_cr(cr, uid, obj, method, *args, **kw)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 72, in execute_cr\n    result = retrying(partial(odoo.api.call_kw, recs, method, args, kw), env)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 156, in retrying\n    result = func()\n             ^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 535, in call_kw\n    result = getattr(recs, name)(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1749, in search\n    return self.search_fetch(domain, [], offset=offset, limit=limit, order=order)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1781, in search_fetch\n    return self._fetch_query(query, fields_to_fetch)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 4259, in _fetch_query\n    fetched = self.browse(query)\n              ^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 6234, in browse\n    if not ids:\n           ^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 262, in __bool__\n    return bool(self.get_result_ids())\n                ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 226, in get_result_ids\n    self._ids = tuple(id_ for id_, in self._env.execute_query(self.select()))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 993, in execute_query\n    self.cr.execute(query)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 357, in execute\n    res = self._obj.execute(query, params)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npsycopg2.ProgrammingError: can\'t adapt type \'dict\'\n'>
+2025-12-27 12:28:34,640 - ERROR - ❌ Error con [False] Disco M.2 2280 NvME PCIe 4.0 2TB 5000 mb/s KINGSTON SNV3S: <Fault 1: 'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 165, in xmlrpc_2\n    response = self._xmlrpc(service)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/addons/base/controllers/rpc.py", line 139, in _xmlrpc\n    result = dispatch_rpc(service, method, params)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/http.py", line 412, in dispatch_rpc\n    return dispatch(method, params)\n           ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 58, in dispatch\n    res = execute_kw(db, uid, *params[3:])\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 81, in execute_kw\n    return execute(db, uid, obj, method, *args, **kw or {})\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 87, in execute\n    res = execute_cr(cr, uid, obj, method, *args, **kw)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 72, in execute_cr\n    result = retrying(partial(odoo.api.call_kw, recs, method, args, kw), env)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/service/model.py", line 156, in retrying\n    result = func()\n             ^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 535, in call_kw\n    result = getattr(recs, name)(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1749, in search\n    return self.search_fetch(domain, [], offset=offset, limit=limit, order=order)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 1781, in search_fetch\n    return self._fetch_query(query, fields_to_fetch)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 4259, in _fetch_query\n    fetched = self.browse(query)\n              ^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/models.py", line 6234, in browse\n    if not ids:\n           ^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 262, in __bool__\n    return bool(self.get_result_ids())\n                ^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/tools/query.py", line 226, in get_result_ids\n    self._ids = tuple(id_ for id_, in self._env.execute_query(self.select()))\n                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/odoo/api.py", line 993, in execute_query\n    self.cr.execute(query)\n  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 357, in execute\n    res = self._obj.execute(query, params)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\npsycopg2.ProgrammingError: can\'t adapt type \'dict\'\n'>
+2025-12-27 12:28:34,951 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:34,952 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:35,854 - INFO - ✓ Actualizado: [False] Disco SSD  240Gb 2.5" SATA Lexar (ID: 918)
+2025-12-27 12:28:37,405 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:37,406 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:39,615 - INFO - ✓ Actualizado: [False] Disco SSD 480Gb 2.5" SATA HikSemi Wave (ID: 693)
+2025-12-27 12:28:41,168 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:41,169 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:28:42,167 - INFO - ✓ Actualizado: [False] Fuente ATX 550w KELIX Cooler  12CM (ID: 359)
+2025-12-27 12:28:43,646 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:43,647 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:44,880 - INFO - ✓ Actualizado: [False] GPU GeForce RTX 5070 12G Gigabyte EAGLE OC (ID: 919)
+2025-12-27 12:28:46,331 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:46,332 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:47,650 - INFO - ✓ Actualizado: [False] Notebook 15" - Core™ i5 12450HX  - 16GB(2x8GB) DDR5 4800Mhz - 512GB NVME - RTX3050 6GB GDDR6 Lenovo LOQ 15IAX9 (ID: 920)
+2025-12-27 12:28:47,651 - INFO - [20/33] Procesando: [False] Notebook 15" - Ryzen™ 3-3200U - 8GB - S.S.D 256Gb  - KELYX
+2025-12-27 12:28:49,153 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:49,154 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:50,879 - INFO - ✓ Actualizado: [False] Notebook 15" - Ryzen™ 3-3200U - 8GB - S.S.D 256Gb  - KELYX (ID: 921)
+2025-12-27 12:28:52,316 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:52,317 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:53,627 - INFO - ✓ Actualizado: [False] Notebook 15" - Ryzen™ 5 7520U - 16GB DDR5 5500MHZ - 512GB NVME W11H - LENOVO IP Slim 3 15AMN8 (ID: 912)
+2025-12-27 12:28:55,236 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:28:55,237 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:28:56,753 - INFO - ✓ Actualizado: [False] Notebook 15.6" - Ryzen™ 3 7320U -  8GB - S.S.D 256GB  -  HP 255 G10 (ID: 922)
+2025-12-27 12:28:58,197 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:28:58,198 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:29:00,065 - INFO - ✓ Actualizado: [False] Pila Alcalina 1 Unidad VINIC Bateria 9V (ID: 923)
+2025-12-27 12:29:01,568 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:29:01,569 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:29:06,444 - INFO - ✓ Actualizado: [False] PowerBank20000 mHa Type-C+USB+Lightning Fast Charge 22.5W Black  Kelyx Slim (ID: 924)
+2025-12-27 12:29:07,936 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:29:07,937 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:29:09,361 - INFO - ✓ Actualizado: [False] Procesador INTEL s1700 Core i5 12400 Alder Lake (ID: 801)
+2025-12-27 12:29:10,897 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:29:10,899 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:29:11,645 - INFO - ✓ Actualizado: [False] Procesador INTEL s1700 Core i7 12700 Alder Lake (ID: 802)
+2025-12-27 12:29:13,103 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:29:13,105 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:29:13,875 - INFO - ✓ Actualizado: [False] Procesador INTEL s1700 Core i7 14700 Raptor Lake (ID: 803)
+2025-12-27 12:29:15,427 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:29:15,428 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:29:18,147 - INFO - ✓ Actualizado: [False] Procesador sAM4 AMD Ryzen 5 5600GT (ID: 805)
+2025-12-27 12:29:19,687 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:29:19,688 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:29:21,647 - INFO - ✓ Actualizado: [False] Procesador sAM5 AMD Ryzen 5 8600G (ID: 810)
+2025-12-27 12:29:21,648 - INFO - [30/33] Procesando: [False] Procesador sAM5 AMD Ryzen 7 8700F
+2025-12-27 12:29:23,097 - INFO -   → Impuestos venta: [(6, 0, [60])]
+2025-12-27 12:29:23,098 - INFO -   → Impuestos compra: [(6, 0, [61])]
+2025-12-27 12:29:25,049 - INFO - ✓ Actualizado: [False] Procesador sAM5 AMD Ryzen 7 8700F (ID: 811)
+2025-12-27 12:29:27,513 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:29:27,515 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:29:28,143 - INFO - ✓ Actualizado: [False] Toner Alternativo para SAMSUNG MLT-D111S (ID: 518)
+2025-12-27 12:29:29,764 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:29:29,766 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:29:30,574 - INFO - ✓ Actualizado: [False] Unidad de Imagen (Drum) Alternativo HP W1104A 104A (ID: 925)
+2025-12-27 12:29:32,187 - INFO -   → Impuestos venta: [(6, 0, [62])]
+2025-12-27 12:29:32,188 - INFO -   → Impuestos compra: [(6, 0, [63])]
+2025-12-27 12:29:33,853 - INFO - ✓ Actualizado: [False] Unidad de Imagen (Drum) Original BROTHER DR-1060 (ID: 926)
+2025-12-27 12:29:33,854 - INFO - 
+2025-12-27 12:29:33,855 - INFO - ============================================================
+2025-12-27 12:29:33,857 - INFO - RESUMEN DE SINCRONIZACIÓN
+2025-12-27 12:29:33,860 - INFO - ============================================================
+2025-12-27 12:29:33,862 - INFO - Total procesados: 33
+2025-12-27 12:29:33,864 - INFO - ✓ Creados:       0
+2025-12-27 12:29:33,865 - INFO - ✓ Actualizados:  31
+2025-12-27 12:29:33,865 - INFO - 🖼️  Imágenes:      33
+2025-12-27 12:29:33,866 - INFO - ❌ Errores:       2
+2025-12-27 12:29:33,868 - INFO - ⏱ Tiempo:         0:01:35.722573
+2025-12-27 12:29:33,869 - INFO - ============================================================
+2025-12-27 12:29:33,869 - WARNING - ⚠ Completado con 2 errores
