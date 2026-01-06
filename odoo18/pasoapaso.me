@@ -1,8 +1,8 @@
  sudo sh remove-odoo.sh
- sudo docker compose up -d --build
  sudo sh ./scripts/addons_extra.sh
  sudo sh ./scripts/addons_l10n_ar_adhoc.sh
  sudo sh ./scripts/addons_oca.sh
+ sudo docker compose up -d --build
  CREARDB
  sudo sh ./scripts/install_base_apps.sh o18db
  sudo sh ./scripts/install_addons_l10n_ar.sh o18db
