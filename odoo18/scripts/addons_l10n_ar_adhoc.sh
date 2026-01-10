@@ -27,14 +27,3 @@ git clone -b 18.0 https://github.com/ingadhoc/sale ./addons-l10n_ar/sale
 ## adhoc multicompany
 git clone -b 18.0 https://github.com/ingadhoc/multi-company ./addons-l10n_ar/multi-company
 cp -r ./addons-l10n_ar/multi-company/account_multicompany_ux ./addons-l10n_ar/account_multicompany_ux
-
-## factura electronica PyAfipWS
-#git clone -b py3k https://github.com/pyar/pyafipws.git ./addons-l10n_ar/pyafipws
-#pip3 install -r ./addons-l10n_ar/pyafipws/requirements.txt
-#python3 ./addons-l10n_ar/pyafipws/setup.py install
-#mkdir ./addons-l10n_ar/pyafipws/cache
-#chmod -R 777 ./addons-l10n_ar/pyafipws/cache
-#chmod -R 777 /usr/local/lib/python3.9/dist-packages/PyAfipWs-3.9.0-py3.9.egg/pyafipws
-
-## Localizacion codize/a2 informa cambiar este valor
-#sed -i 's/DEFAULT@SECLEVEL=2/DEFAULT@SECLEVEL=1/g' /etc/ssl/openssl.cnf
