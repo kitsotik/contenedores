@@ -3,59 +3,22 @@ FROM odoo:${ODOO_VERSION}
 
 USER root
 
-# 1. Copiamos el requirements desde la raíz del contexto
+#Copiamos el requirements desde la raíz del contexto
 COPY ./requirements.txt /etc/odoo/requirements.txt
 
 COPY addons-l10n_ar/ /tmp/community_addons/
 
-# 2. Consolidamos todos los requirements.txt que existan dentro de los módulos
+#Consolidamos todos los requirements.txt que existan dentro de los módulos
 RUN find /tmp/community_addons/ -type f -name 'requirements.txt' -exec cat {} + >> /tmp/all_requirements.txt
 
-# 2. Instalamos SOLO las librerías del sistema necesarias para compilar otras cosas
-#    Eliminamos libpq-dev para evitar el conflicto.
-RUN apt-get update  \
-    && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends \
-    git \
-    gcc \
-    swig \
-    unzip \
-    curl \
-    build-essential \
-    # Dependencias de librerías Python (para Pillow, lxml, etc.)
-    libxml2-dev \
-    libxslt1-dev \
-    libldap2-dev \
-    libsasl2-dev \
-    libjpeg-dev \
-    zlib1g-dev \
-    libfreetype6-dev \
-    liblcms2-dev \
-    libwebp-dev \
-    libharfbuzz-dev \
-    libfribidi-dev \
-    libxcb1-dev \
-    libtiff5-dev \
-    libopenjp2-7-dev \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    python3 \
-    python3-dev \
-    python3-pip \
-    python3-m2crypto \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+## Instalar dependencias necesarias
+RUN apt-get update \
+ && apt-get install -y git gcc swig python3-m2crypto unzip curl python3-venv \
+ && curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+ && python3 get-pip.py --break-system-packages --ignore-installed\
+ && rm get-pip.py
 
-# 3. Instalamos dependencias de Python
-#    Asegúrate de agregar 'psycopg2-binary' a tu requirements.txt si no está.
-#    Si usas 'pandas' u otra, agrégala aquí.
-# Dockerfile: Línea 50
-RUN pip3 install --no-cache-dir -r /etc/odoo/requirements.txt --break-system-packages 
-RUN pip3 install --upgrade reportlab --break-system-packages
-RUN pip3 install rlPyCairo --break-system-packages
-RUN pip3 install astor --break-system-packages
-RUN pip3 install paramiko pysftp --break-system-packages 
-RUN pip3 install setuptools wheel --break-system-packages
+RUN pip install setuptools==69.0.3 wheel --break-system-packages 
 
 ## Instalar pyfafipws versión 2025 
 RUN pip install git+https://github.com/reingart/pyafipws.git@2025 --break-system-packages
