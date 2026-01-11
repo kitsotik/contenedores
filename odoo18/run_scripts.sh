@@ -4,6 +4,7 @@ sudo sh ./scripts/addons_oca.sh
 sudo sh ./scripts/addons_omyg.sh
 sudo sh ./scripts/fix_l10n_ar_account_reports.sh
 sudo sh ./scripts/fix_odoo18_translation_defaults.sh
+sudo sh ./scripts/fix_sale_ux_deferred_date.sh
 sudo chown -R oem:oem addons-extra
 sudo chown -R oem:oem addons-l10n_ar
 sudo chown -R oem:oem addons-oca

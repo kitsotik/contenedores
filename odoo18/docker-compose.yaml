@@ -56,6 +56,7 @@ services:
       - HOST=${DB_HOST}
       - USER=${DB_USER}
       - PASSWORD=${DB_PASSWD}
+      - PYTHONWARNINGS=ignore::DeprecationWarning
     networks:
       - traefik_public
     volumes:
